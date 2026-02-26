@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photos — fgd135</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">fgd135</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="stories.html">Stories</a></li>
+      <li><a href="photos.html" class="active">Photos</a></li>
+      <li><a href="index.html">About</a></li>
+      <li><a href="index.html">Now</a></li>
+      <li><a href="index.html">Contact</a></li>
+    </ul>
+    <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.toggle('open')">✕ Close</button>
+  <a href="index.html">Home</a>
+  <a href="stories.html">Stories</a>
+  <a href="photos.html">Photos</a>
+  <a href="index.html">About</a>
+  <a href="index.html">Now</a>
+  <a href="index.html">Contact</a>
+</div>
+
+<!-- ── LIGHTBOX ───────────────────────────────────────────── -->
+<div id="lightbox">
+  <div class="lb-img-wrap">
+    <img id="lbImg" src="" alt="" />
+  </div>
+  <div class="lb-bar">
+    <button class="lb-btn" onclick="lbNav(-1)">← Prev</button>
+    <span class="lb-caption" id="lbCaption"></span>
+    <span class="lb-counter" id="lbCounter"></span>
+    <button class="lb-btn" onclick="lbNav(1)">Next →</button>
+    <button class="lb-btn" onclick="closeLightbox()">✕ Close</button>
+  </div>
+</div>
+
+<!-- ── PAGE HEADER ─────────────────────────────────────────── -->
+<div class="page-header">
+  <div class="container-wide">
+    <span class="label">Photography</span>
+    <h1>Travel</h1>
+    <p>Selected photographs from Spain, France, and the UK.</p>
+  </div>
+</div>
+
+<!-- ── SERIES NAV ──────────────────────────────────────────── -->
+<div class="container-wide" style="padding-top:1.5rem;padding-bottom:0;">
+  <nav class="series-nav" aria-label="Jump to series">
+    <a href="#spain">Spain</a>
+    <a href="#paris">Paris</a>
+    <a href="#uk">United Kingdom</a>
+  </nav>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SPAIN
+═══════════════════════════════════════════════════════════ -->
+<section class="photo-series" id="spain">
+  <div class="container-wide">
+    <div class="photo-series-header">
+      <h2 class="photo-series-title">Spain</h2>
+      <p class="photo-series-desc">Barcelona · Sagrada Família · beyond</p>
+    </div>
+    <div class="photo-grid">
+
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-01-thumb.jpg" data-full="images/travel/spain/spain-01.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-02-thumb.jpg" data-full="images/travel/spain/spain-02.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-03-thumb.jpg" data-full="images/travel/spain/spain-03.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-04-thumb.jpg" data-full="images/travel/spain/spain-04.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-05-thumb.jpg" data-full="images/travel/spain/spain-05.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-06-thumb.jpg" data-full="images/travel/spain/spain-06.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-07-thumb.jpg" data-full="images/travel/spain/spain-07.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-08-thumb.jpg" data-full="images/travel/spain/spain-08.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-09-thumb.jpg" data-full="images/travel/spain/spain-09.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-10-thumb.jpg" data-full="images/travel/spain/spain-10.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-11-thumb.jpg" data-full="images/travel/spain/spain-11.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-12-thumb.jpg" data-full="images/travel/spain/spain-12.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-13-thumb.jpg" data-full="images/travel/spain/spain-13.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-14-thumb.jpg" data-full="images/travel/spain/spain-14.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-15-thumb.jpg" data-full="images/travel/spain/spain-15.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-16-thumb.jpg" data-full="images/travel/spain/spain-16.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-17-thumb.jpg" data-full="images/travel/spain/spain-17.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-18-thumb.jpg" data-full="images/travel/spain/spain-18.jpg" alt="Spain" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/spain/spain-19-thumb.jpg" data-full="images/travel/spain/spain-19.jpg" alt="Spain" loading="lazy" />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     PARIS
+═══════════════════════════════════════════════════════════ -->
+<section class="photo-series" id="paris">
+  <div class="container-wide">
+    <div class="photo-series-header">
+      <h2 class="photo-series-title">Paris</h2>
+      <p class="photo-series-desc">France</p>
+    </div>
+    <div class="photo-grid">
+
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-01-thumb.jpg" data-full="images/travel/paris/paris-01.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-02-thumb.jpg" data-full="images/travel/paris/paris-02.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-03-thumb.jpg" data-full="images/travel/paris/paris-03.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-04-thumb.jpg" data-full="images/travel/paris/paris-04.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-05-thumb.jpg" data-full="images/travel/paris/paris-05.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-06-thumb.jpg" data-full="images/travel/paris/paris-06.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-07-thumb.jpg" data-full="images/travel/paris/paris-07.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-08-thumb.jpg" data-full="images/travel/paris/paris-08.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-09-thumb.jpg" data-full="images/travel/paris/paris-09.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-10-thumb.jpg" data-full="images/travel/paris/paris-10.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-11-thumb.jpg" data-full="images/travel/paris/paris-11.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-12-thumb.jpg" data-full="images/travel/paris/paris-12.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-13-thumb.jpg" data-full="images/travel/paris/paris-13.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-14-thumb.jpg" data-full="images/travel/paris/paris-14.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-15-thumb.jpg" data-full="images/travel/paris/paris-15.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-16-thumb.jpg" data-full="images/travel/paris/paris-16.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-17-thumb.jpg" data-full="images/travel/paris/paris-17.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-18-thumb.jpg" data-full="images/travel/paris/paris-18.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-19-thumb.jpg" data-full="images/travel/paris/paris-19.jpg" alt="Paris" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/paris/paris-20-thumb.jpg" data-full="images/travel/paris/paris-20.jpg" alt="Paris" loading="lazy" />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     UNITED KINGDOM
+═══════════════════════════════════════════════════════════ -->
+<section class="photo-series" id="uk">
+  <div class="container-wide">
+    <div class="photo-series-header">
+      <h2 class="photo-series-title">United Kingdom</h2>
+      <p class="photo-series-desc">2013</p>
+    </div>
+    <div class="photo-grid">
+
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-01-thumb.jpg" data-full="images/travel/uk/uk-01.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-02-thumb.jpg" data-full="images/travel/uk/uk-02.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-03-thumb.jpg" data-full="images/travel/uk/uk-03.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-04-thumb.jpg" data-full="images/travel/uk/uk-04.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-05-thumb.jpg" data-full="images/travel/uk/uk-05.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-06-thumb.jpg" data-full="images/travel/uk/uk-06.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-07-thumb.jpg" data-full="images/travel/uk/uk-07.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-08-thumb.jpg" data-full="images/travel/uk/uk-08.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-09-thumb.jpg" data-full="images/travel/uk/uk-09.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-10-thumb.jpg" data-full="images/travel/uk/uk-10.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-11-thumb.jpg" data-full="images/travel/uk/uk-11.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-12-thumb.jpg" data-full="images/travel/uk/uk-12.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-13-thumb.jpg" data-full="images/travel/uk/uk-13.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-14-thumb.jpg" data-full="images/travel/uk/uk-14.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-15-thumb.jpg" data-full="images/travel/uk/uk-15.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-16-thumb.jpg" data-full="images/travel/uk/uk-16.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-17-thumb.jpg" data-full="images/travel/uk/uk-17.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-18-thumb.jpg" data-full="images/travel/uk/uk-18.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-19-thumb.jpg" data-full="images/travel/uk/uk-19.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="images/travel/uk/uk-20-thumb.jpg" data-full="images/travel/uk/uk-20.jpg" alt="United Kingdom" loading="lazy" />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner" style="max-width:1080px;margin:0 auto;">
+    <div class="site-name">fgd135</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="stories.html">Stories</a>
+      <a href="photos.html">Photos</a>
+      <a href="index.html">About</a>
+      <a href="index.html">Now</a>
+      <a href="index.html">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 fgd135. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+let lbImages = [];
+let lbIndex  = 0;
+
+function openLightbox(el) {
+  const grid = el.closest('.photo-grid');
+  lbImages = Array.from(grid.querySelectorAll('.photo-item img'));
+  if (!lbImages.length) return;
+  lbIndex = lbImages.indexOf(el.querySelector('img'));
+  if (lbIndex < 0) lbIndex = 0;
+  showLbImage();
+  document.getElementById('lightbox').style.display = 'flex';
+  document.addEventListener('keydown', lbKeyHandler);
+}
+
+function showLbImage() {
+  const img = lbImages[lbIndex];
+  // Use full-size version for lightbox if available, fall back to src
+  document.getElementById('lbImg').src = img.dataset.full || img.src;
+  document.getElementById('lbImg').alt = img.alt;
+  document.getElementById('lbCaption').textContent = img.alt;
+  document.getElementById('lbCounter').textContent = `${lbIndex + 1} / ${lbImages.length}`;
+}
+
+function lbNav(dir) {
+  lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+  showLbImage();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.removeEventListener('keydown', lbKeyHandler);
+}
+
+function lbKeyHandler(e) {
+  if (e.key === 'ArrowLeft')  lbNav(-1);
+  if (e.key === 'ArrowRight') lbNav(1);
+  if (e.key === 'Escape')     closeLightbox();
+}
+
+// Close on backdrop click
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+</script>
+
+</body>
+</html>

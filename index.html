@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fgd135</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo" id="navLogo">fgd135</span>
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')"    data-page="home">Home</a></li>
+      <li><a onclick="window.location='stories.html'" data-page="stories">Stories</a></li>
+      <li><a onclick="window.location='photos.html'" data-page="photos">Photos</a></li>
+      <li><a onclick="showPage('about')"   data-page="about">About</a></li>
+      <li><a onclick="showPage('now')"     data-page="now">Now</a></li>
+      <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
+    </ul>
+    <button class="nav-burger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMobile()">✕ Close</button>
+  <a onclick="showPage('home');toggleMobile()">Home</a>
+  <a onclick="window.location='stories.html';toggleMobile()">Stories</a>
+  <a onclick="window.location='photos.html';toggleMobile()">Photos</a>
+  <a onclick="showPage('about');toggleMobile()">About</a>
+  <a onclick="showPage('now');toggleMobile()">Now</a>
+  <a onclick="showPage('contact');toggleMobile()">Contact</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TRIVIA OVERLAY
+═══════════════════════════════════════════════════════ -->
+<div id="bomberOverlay">
+  <div class="bomber-topbar">
+    <span class="bomber-title">◈ CRM114 — Strangelove Intelligence Test</span>
+    <span class="bomber-score-display">SCORE: <span id="bomberScoreDisplay">0</span></span>
+    <button class="bomber-close" onclick="GAME.close()">✕ Escape</button>
+  </div>
+  <div id="triviaBody"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     HOME
+═══════════════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-rim"></div>
+    <div class="hero-content">
+      <div class="hero-kicker">Fiction · Food · Travel · &amp;c.</div>
+      <h1 class="hero-title">Words from<br><em>somewhere</em><br>worth going</h1>
+      <p class="hero-sub">Stories that follow curiosity wherever it leads.</p>
+      <button class="btn-ghost" onclick="window.location='stories.html'">Read the archive</button>
+    </div>
+  </section>
+
+  <div class="rim-rule"></div>
+
+  <section class="featured-band">
+    <div class="container">
+      <div>
+        <div class="featured-meta">
+          <span class="label cr">Featured</span>
+          <span class="label sep">—</span>
+          <span class="label">Fiction</span>
+          <span class="label sep">·</span>
+          <span class="label">Paris</span>
+        </div>
+        <h2 class="featured-title">Truth to Power</h2>
+        <p class="featured-excerpt">A White House press secretary discovers a secret that could unmake a presidency.</p>
+        <button class="btn-text" onclick="window.location='truth.html'">Read the story →</button>
+      </div>
+      <div class="featured-img" onclick="window.location='truth.html'" style="cursor:pointer">
+        <img src="WarRoom.jpg" alt="War Room" onerror="this.parentElement.innerHTML='<div class=\'featured-img-placeholder\'><span>Add WarRoom.jpg here</span></div>'" />
+      </div>
+    </div>
+  </section>
+
+  <section class="story-list-section">
+    <div class="container-wide">
+      <div class="section-header">
+        <span class="section-title">Recent Writing</span>
+        <button class="btn-text dim" onclick="window.location='stories.html'">All stories →</button>
+      </div>
+      <div class="story-row" onclick="window.location='truth.html'">
+        <span class="story-num">01</span>
+        <div class="story-row-title">Truth to Power<small>Fiction · 2024</small></div>
+        <span class="story-row-date">2024</span>
+      </div>
+      <div class="story-row" onclick="window.location='braided.html'">
+        <span class="story-num">02</span>
+        <div class="story-row-title">Three Strands<small>Nonfiction · 2024</small></div>
+        <span class="story-row-date">2024</span>
+      </div>
+      <div class="story-row" onclick="window.location='rabbit.html'">
+        <span class="story-num">03</span>
+        <div class="story-row-title">My Journey Through the Rabbit Hole<small>Nonfiction · 2024</small></div>
+        <span class="story-row-date">2024</span>
+      </div>
+      <div class="story-row" onclick="window.location='orange.html'">
+        <span class="story-num">04</span>
+        <div class="story-row-title">The Orange Man and the End of America<small>Essay · 2024</small></div>
+        <span class="story-row-date">2024</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLUESKY FEED ─────────────────────────────────────── -->
+  <section class="bsky-section">
+    <div class="container-wide">
+      <div class="bsky-header">
+        <span class="section-title">From Bluesky</span>
+        <span class="bsky-handle">@jackbigs.bsky.social</span>
+      </div>
+      <div class="bsky-feed" id="bskyFeed">
+        <div class="bsky-loading">Loading posts…</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-strip">
+    <div class="container">
+      <div class="eyebrow">fgd135</div>
+      <p>Fiction, food, travel, and whatever falls between. The name is from Strangelove. Look it up.</p>
+      <button class="btn-ghost" onclick="showPage('about')">About this</button>
+    </div>
+  </section>
+
+</div>
+
+
+
+
+<!-- ═══════════════════════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="page-header">
+    <div class="container">
+      <span class="label">About</span>
+      <h1>The writer<br>behind the work</h1>
+    </div>
+  </div>
+  <div class="about-body">
+    <div class="container">
+      <div class="about-prose">
+        <p>Born and raised in or near Salt Lake City, Utah. They baptized me but it certainly didn't stick. From there I've traveled the country a good bit. Made it across the Atlantic a few times in a burst of fabulous luck and happenstance and saw most of Western Europe. I'm currently awaiting sponsorship to Asia :).</p>
+        <p>I've been doodling with words my whole life. It's later in my episode that I'm actually producing. Here's a sampling of my writing. Also, photos from my travels and music obsession. I spent a decade plus shooting indie rock concerts. Those photos will be posted as I get them scanned and organized.</p>
+        <p>I'm a proud, but not terribly outspoken atheist. The Pacific Northwest became my home just before Covid. I very much doubt I'll leave.</p>
+        <hr class="rule-h">
+        <p style="color:var(--ink-muted); font-style:italic;">The name fgd135 is from Dr. Strangelove — a code on the CRM114 Discriminator, a device that filters out all but verified signal. It works until it doesn't. This site operates on a similar principle.</p>
+      </div>
+      <aside class="about-aside">
+        <div class="about-photo"><span>Your photo</span></div>
+        <div class="about-details">
+          <div class="about-detail-row"><span class="label">Based in</span><span class="about-detail-value">Pacific Northwest</span></div>
+          <div class="about-detail-row"><span class="label">Writing since</span><span class="about-detail-value">Update this</span></div>
+          <div class="about-detail-row"><span class="label">Currently</span><span class="about-detail-value">Something in progress</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     NOW
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-now">
+  <div class="page-header">
+    <div class="container">
+      <span class="label">Now</span>
+      <h1>What I'm doing<br>at the moment</h1>
+      <p>A <a href="https://nownownow.com/about" style="color:var(--crimson)">now page</a> — updated when things change.</p>
+    </div>
+  </div>
+  <div class="now-body">
+    <div class="container">
+      <div class="now-section"><div class="now-section-title">Writing</div><p>Replace this with what you're working on. Say it plainly — this page works best when it's honest and current.</p><span class="now-timestamp">Updated Feb 2026</span></div>
+      <div class="now-section"><div class="now-section-title">Reading</div><p>What's on the nightstand. What you just finished and whether it was worth it. A title and a sentence is enough.</p><span class="now-timestamp">Updated Feb 2026</span></div>
+      <div class="now-section"><div class="now-section-title">Eating / Cooking</div><p>What you've been cooking, what you're trying to recreate from a trip, what you ordered three times this month without apologizing.</p><span class="now-timestamp">Updated Feb 2026</span></div>
+      <div class="now-section"><div class="now-section-title">Somewhere</div><p>Where you are or where you just were. A trip coming up. This section can be empty when you're home and just home.</p><span class="now-timestamp">Updated Feb 2026</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-header">
+    <div class="container">
+      <span class="label">Contact</span>
+      <h1>Get in touch</h1>
+    </div>
+  </div>
+  <div class="contact-body">
+    <div class="container">
+      <p>If something you read here struck a chord — or you have a bone to pick with the duck order — the best way to reach me is email. I read everything and reply when I have something useful to say.</p>
+      <div class="contact-links">
+        <div class="contact-link-row"><span class="contact-link-label">Email</span><span class="contact-link-val"><a href="mailto:your@email.com">your@email.com</a></span></div>
+        <div class="contact-link-row"><span class="contact-link-label">Bluesky</span><span class="contact-link-val"><a href="https://bsky.app/profile/jackbigs.bsky.social" target="_blank">@jackbigs.bsky.social</a></span></div>
+        <div class="contact-link-row"><span class="contact-link-label">RSS</span><span class="contact-link-val"><a href="#">/feed.xml</a></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner" style="max-width:1080px;margin:0 auto;">
+    <div class="site-name">fgd135</div>
+    <div class="footer-links">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="window.location='stories.html'">Stories</a>
+      <a onclick="window.location='photos.html'">Photos</a>
+      <a onclick="showPage('about')">About</a>
+      <a onclick="showPage('now')">Now</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 fgd135. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+/* ── PAGE NAV ─────────────────────────────────────────────── */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const t = document.getElementById('page-' + id);
+  if (t) t.classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === id);
+  });
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+function toggleMobile() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+/* ── LOGO / EASTER EGG TRIGGER ────────────────────────────── */
+(function() {
+  let clicks = 0, timer = null;
+  document.getElementById('navLogo').addEventListener('click', () => {
+    showPage('home');
+    clicks++;
+    clearTimeout(timer);
+    timer = setTimeout(() => { clicks = 0; }, 2500);
+    if (clicks >= 5) { clicks = 0; GAME.open(); }
+  });
+})();
+
+/* ── BLUESKY FEED ─────────────────────────────────────────── */
+async function fetchBluesky() {
+  const feed = document.getElementById('bskyFeed');
+  try {
+    const res = await fetch('https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=jackbigs.bsky.social&limit=6&filter=posts_no_replies');
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+    const posts = (data.feed || []).filter(f => !f.post.record.reply).slice(0, 5);
+    if (!posts.length) { feed.innerHTML = '<div class="bsky-error">No posts found.</div>'; return; }
+    feed.innerHTML = posts.map(f => {
+      const post = f.post;
+      const text = post.record.text || '';
+      const uri = post.uri; // at://did:.../app.bsky.feed.post/RKEY
+      const rkey = uri.split('/').pop();
+      const url = `https://bsky.app/profile/jackbigs.bsky.social/post/${rkey}`;
+      const likes = post.likeCount || 0;
+      const ago = timeAgo(post.indexedAt);
+      const escaped = text.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      return `<a class="bsky-post" href="${url}" target="_blank" rel="noopener">
+        <div class="bsky-post-text">${escaped}</div>
+        <div class="bsky-post-meta">
+          <span>${ago}</span>
+          ${likes > 0 ? `<span class="bsky-post-likes">♥ ${likes}</span>` : ''}
+        </div>
+      </a>`;
+    }).join('');
+  } catch(e) {
+    feed.innerHTML = '<div class="bsky-error">Could not load posts — open the site in a browser to fetch live data.</div>';
+  }
+}
+
+function timeAgo(iso) {
+  const diff = (Date.now() - new Date(iso)) / 1000;
+  if (diff < 60) return 'just now';
+  if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+  if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+  if (diff < 604800) return Math.floor(diff/86400) + 'd ago';
+  return new Date(iso).toLocaleDateString('en-US', {month:'short', day:'numeric'});
+}
+
+fetchBluesky();
+
+/* ══════════════════════════════════════════════════════════
+   DR. STRANGELOVE TRIVIA — CRM114 INTELLIGENCE TEST
+══════════════════════════════════════════════════════════ */
+const GAME = (function() {
+
+  const QUESTIONS = [
+    {
+      q: 'What is the full subtitle of Dr. Strangelove?',
+      opts: ['How I Learned to Stop Worrying and Love the Bomb', 'How America Survived the Cold War', 'How the Pentagon Learned to Relax', 'How We All Stopped Fearing the Worst'],
+      ans: 0
+    },
+    {
+      q: 'Who directed Dr. Strangelove (1964)?',
+      opts: ['Billy Wilder', 'Sidney Lumet', 'Stanley Kubrick', 'John Frankenheimer'],
+      ans: 2
+    },
+    {
+      q: 'Which actor plays three separate roles in the film?',
+      opts: ['George C. Scott', 'Peter Sellers', 'Sterling Hayden', 'Slim Pickens'],
+      ans: 1
+    },
+    {
+      q: "General Ripper believes the Communists are contaminating America's what?",
+      opts: ['Water supply', 'Food reserves', 'Air supply', 'Precious bodily fluids'],
+      ans: 3
+    },
+    {
+      q: "What is the call sign of the B-52 piloted by Major Kong?",
+      opts: ['Death Rider', 'Leper Colony', 'Atomic Angel', 'Iron Curtain'],
+      ans: 1
+    },
+    {
+      q: "What song plays over the film's final nuclear explosions?",
+      opts: ['"God Save the Queen"', '"Strange Fruit"', '"We\'ll Meet Again" by Vera Lynn', '"Yankee Doodle"'],
+      ans: 2
+    },
+    {
+      q: "How does Major T.J. 'King' Kong meet his end?",
+      opts: ['Parachuting to safety', 'Defusing the bomb at the last second', 'Shot down by Soviet fighters', 'Riding a nuclear bomb out of the plane'],
+      ans: 3
+    },
+    {
+      q: "What does President Muffley famously declare?",
+      opts: ['"There will be no war today, gentlemen."', '"Gentlemen, you can\'t fight in here! This is the War Room!"', '"Fighting is not permitted on military premises."', '"I demand order and civility at all times!"'],
+      ans: 1
+    },
+    {
+      q: "The Soviet Doomsday Machine is designed to do what automatically?",
+      opts: ['Launch missiles at Washington if Moscow falls', 'Notify the UN of any nuclear launch', 'Destroy all life on Earth if the USSR is attacked', 'Shut down all nuclear weapons worldwide'],
+      ans: 2
+    },
+    {
+      q: "What is the CRM 114 Discriminator?",
+      opts: ['The targeting computer on the B-52', 'A Soviet early-warning system', 'The code name for the Doomsday Machine', 'A radio device that filters out unverified transmissions'],
+      ans: 3
+    },
+    {
+      q: "Dr. Strangelove's involuntary arm salute implies he was formerly what?",
+      opts: ['A Nazi', 'A Soviet scientist', 'A British spy', 'An arms dealer'],
+      ans: 0
+    },
+    {
+      q: "What year was Dr. Strangelove released?",
+      opts: ['1960', '1962', '1966', '1964'],
+      ans: 3
+    }
+  ];
+
+  let current = 0;
+  let score = 0;
+
+  function verdict(s, total) {
+    if (s === total)        return 'You have the clarity of a man with a very pure essence. Remarkable.';
+    if (s >= total * 0.75) return 'An impressive performance. General Turgidson would promote you.';
+    if (s >= total * 0.5)  return 'Adequate. You may enter the War Room, but stay away from the Big Board.';
+    if (s >= total * 0.25) return 'Concerning. Have you considered that your precious bodily fluids may be compromised?';
+    return 'You have failed to identify the enemy within. General Ripper weeps.';
+  }
+
+  function render() {
+    const body = document.getElementById('triviaBody');
+    if (current >= QUESTIONS.length) {
+      body.innerHTML = `
+        <div class="trivia-result">
+          <div class="trivia-result-score">${score}/${QUESTIONS.length}</div>
+          <div class="trivia-result-label">Intelligence Rating: ${Math.round(score/QUESTIONS.length*100)}%</div>
+          <p class="trivia-result-verdict">${verdict(score, QUESTIONS.length)}</p>
+          <button class="trivia-next" onclick="GAME.restart()">Try Again →</button>
+        </div>`;
+      return;
+    }
+    const q = QUESTIONS[current];
+    body.innerHTML = `
+      <div class="trivia-q-num">Question ${current + 1} of ${QUESTIONS.length}</div>
+      <div class="trivia-question">${q.q}</div>
+      <div class="trivia-options">
+        ${q.opts.map((opt, i) => `<button class="trivia-option" onclick="GAME.answer(${i})">${opt}</button>`).join('')}
+      </div>`;
+  }
+
+  return {
+    open() {
+      current = 0;
+      score = 0;
+      document.getElementById('bomberScoreDisplay').textContent = '0';
+      document.getElementById('bomberOverlay').style.display = 'flex';
+      render();
+    },
+
+    answer(idx) {
+      const q = QUESTIONS[current];
+      const opts = document.querySelectorAll('.trivia-option');
+      opts.forEach(btn => btn.disabled = true);
+      if (idx === q.ans) {
+        score++;
+        document.getElementById('bomberScoreDisplay').textContent = score;
+        opts[idx].classList.add('correct');
+      } else {
+        opts[idx].classList.add('wrong');
+        opts[q.ans].classList.add('correct');
+      }
+      const btn = document.createElement('button');
+      btn.className = 'trivia-next';
+      btn.textContent = current + 1 < QUESTIONS.length ? 'Next →' : 'See Results →';
+      btn.onclick = () => GAME.next();
+      document.getElementById('triviaBody').appendChild(btn);
+    },
+
+    next() { current++; render(); },
+
+    restart() {
+      current = 0;
+      score = 0;
+      document.getElementById('bomberScoreDisplay').textContent = '0';
+      render();
+    },
+
+    close() {
+      document.getElementById('bomberOverlay').style.display = 'none';
+    }
+  };
+})();
+</script>
+</body>
+</html>
