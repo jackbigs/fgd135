@@ -421,10 +421,4 @@ const GAME = (function() {
         score++;
         document.getElementById('bomberScoreDisplay').textContent = score;
         opts[idx].classList.add('correct');
-      } else {
-        opts[idx].classList.add('wrong');
-        opts[q.ans].classList.add('correct');
-      }
-      const btn = document.createElement('button');
-      btn.className = 'trivia-next';
-      btn.textContent = current + 1 < QUE
+    
