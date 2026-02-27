@@ -72,159 +72,129 @@
     <!-- TOP: illustrated hero — full width -->
     <div class="hero-image-col">
 
-      <!-- Barcelona Pavilion — reflecting pool with sculpture (after own photo) -->
+      <!-- NYC Skyline / WTC Oculus — after own photo (Calatrava + X-brace tower) -->
       <svg class="hero-art-svg" viewBox="0 0 1600 500" xmlns="http://www.w3.org/2000/svg"
            preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
-          <!-- Marble texture: green onyx (panels 1 & 3) -->
-          <filter id="mbl1" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-            <feTurbulence type="fractalNoise" baseFrequency="0.016 0.005" numOctaves="7" seed="11"/>
-            <feColorMatrix type="matrix" values="
-              0.08 0.10 0.05 0 0.16
-              0.12 0.18 0.07 0 0.26
-              0.07 0.09 0.04 0 0.13
-              0    0    0    1 0"/>
-          </filter>
-          <!-- Marble texture: green onyx (panels 2 & 4) -->
-          <filter id="mbl2" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-            <feTurbulence type="fractalNoise" baseFrequency="0.016 0.005" numOctaves="7" seed="29"/>
-            <feColorMatrix type="matrix" values="
-              0.08 0.10 0.05 0 0.14
-              0.12 0.18 0.07 0 0.24
-              0.07 0.09 0.04 0 0.12
-              0    0    0    1 0"/>
-          </filter>
-          <!-- Pool gradient: near-black water -->
-          <linearGradient id="poolGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stop-color="#0f1419"/>
-            <stop offset="60%"  stop-color="#111820"/>
-            <stop offset="100%" stop-color="#0d1117"/>
+          <!-- Sky: overcast, dark charcoal -->
+          <linearGradient id="skyNYC" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#0d0e15"/>
+            <stop offset="65%"  stop-color="#121420"/>
+            <stop offset="100%" stop-color="#181b2a"/>
           </linearGradient>
-          <!-- Sky/foliage gradient -->
-          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stop-color="#141d0f"/>
-            <stop offset="100%" stop-color="#1e2e18"/>
+          <!-- Tower L: dark glass -->
+          <linearGradient id="twrL" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%"   stop-color="#0f1018"/>
+            <stop offset="55%"  stop-color="#151828"/>
+            <stop offset="100%" stop-color="#0e0f18"/>
+          </linearGradient>
+          <!-- Tower R: reflective glass (blue-gray) -->
+          <linearGradient id="twrR" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%"   stop-color="#181d2e"/>
+            <stop offset="45%"  stop-color="#1e2438"/>
+            <stop offset="100%" stop-color="#161a2a"/>
+          </linearGradient>
+          <!-- Text legibility: dark veil on left side -->
+          <linearGradient id="textVeil" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%"   stop-color="#0e0f16" stop-opacity="0.90"/>
+            <stop offset="32%"  stop-color="#0e0f16" stop-opacity="0.52"/>
+            <stop offset="58%"  stop-color="#0e0f16" stop-opacity="0"/>
           </linearGradient>
           <!-- Edge vignette -->
-          <radialGradient id="vig" cx="50%" cy="35%" r="75%">
+          <radialGradient id="vig" cx="52%" cy="38%" r="72%">
             <stop offset="0%"   stop-color="#000000" stop-opacity="0"/>
-            <stop offset="80%"  stop-color="#000000" stop-opacity="0.35"/>
-            <stop offset="100%" stop-color="#000000" stop-opacity="0.60"/>
+            <stop offset="72%"  stop-color="#000000" stop-opacity="0.28"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0.68"/>
           </radialGradient>
         </defs>
 
-        <!-- ① Sky / foliage band -->
-        <rect width="1600" height="84" fill="url(#skyGrad)"/>
-        <!-- Foliage blobs (trees above pavilion wall) -->
-        <ellipse cx="280"  cy="52" rx="230" ry="58" fill="#182514" opacity="0.75"/>
-        <ellipse cx="680"  cy="42" rx="290" ry="52" fill="#152010" opacity="0.65"/>
-        <ellipse cx="1080" cy="56" rx="250" ry="62" fill="#182514" opacity="0.55"/>
-        <ellipse cx="1440" cy="46" rx="210" ry="50" fill="#152010" opacity="0.65"/>
-        <!-- Leaf edge hints -->
-        <ellipse cx="480"  cy="80" rx="120" ry="30" fill="#1c2e18" opacity="0.5"/>
-        <ellipse cx="900"  cy="75" rx="140" ry="28" fill="#1a2a14" opacity="0.45"/>
-        <ellipse cx="1300" cy="78" rx="130" ry="32" fill="#1c2e18" opacity="0.5"/>
+        <!-- ① Sky -->
+        <rect width="1600" height="500" fill="url(#skyNYC)"/>
 
-        <!-- ② Green onyx marble wall — 4 panels -->
-        <!-- Base colors -->
-        <rect x="0"    y="78" width="400" height="268" fill="#2b3d31"/>
-        <rect x="403"  y="78" width="394" height="268" fill="#2f4235"/>
-        <rect x="800"  y="78" width="400" height="268" fill="#2d4033"/>
-        <rect x="1203" y="78" width="397" height="268" fill="#314438"/>
-        <!-- Marble texture overlays -->
-        <rect x="0"    y="78" width="400" height="268" filter="url(#mbl1)" opacity="0.88"/>
-        <rect x="403"  y="78" width="394" height="268" filter="url(#mbl2)" opacity="0.88"/>
-        <rect x="800"  y="78" width="400" height="268" filter="url(#mbl1)" opacity="0.82"/>
-        <rect x="1203" y="78" width="397" height="268" filter="url(#mbl2)" opacity="0.82"/>
-        <!-- Subtle book-match hints (lighter center stripe on each panel) -->
-        <rect x="170"  y="78" width="60"  height="268" fill="#4a6a52" opacity="0.08"/>
-        <rect x="570"  y="78" width="55"  height="268" fill="#4a6a52" opacity="0.07"/>
-        <rect x="970"  y="78" width="60"  height="268" fill="#4a6a52" opacity="0.07"/>
-        <rect x="1365" y="78" width="55"  height="268" fill="#4a6a52" opacity="0.07"/>
+        <!-- ② Towers — five, left to right, staggered heights -->
 
-        <!-- ③ Architectural details -->
-        <!-- Panel joints (dark mortar lines) -->
-        <rect x="400"  y="78" width="4" height="268" fill="#0c0d10"/>
-        <rect x="797"  y="78" width="5" height="268" fill="#0c0d10"/>
-        <rect x="1200" y="78" width="4" height="268" fill="#0c0d10"/>
-        <!-- Roof cap rail (top of marble) -->
-        <rect y="72" width="1600" height="8" fill="#0e0f14"/>
-        <!-- Marble sill (pool threshold) -->
-        <rect y="344" width="1600" height="5" fill="#0c0d10"/>
-        <!-- Travertine floor sill highlight -->
-        <rect y="341" width="1600" height="3" fill="#c4bdb0" opacity="0.22"/>
+        <!-- TL1: far left, narrow dark glass -->
+        <rect x="0"    y="0"   width="210" height="312" fill="#10111a"/>
+        <rect x="52"   y="0"   width="1.5" height="312" fill="#fff" opacity="0.035"/>
+        <rect x="104"  y="0"   width="1.5" height="312" fill="#fff" opacity="0.035"/>
+        <rect x="156"  y="0"   width="1.5" height="312" fill="#fff" opacity="0.035"/>
 
-        <!-- ④ Reflecting pool -->
-        <rect y="349" width="1600" height="151" fill="url(#poolGrad)"/>
-        <!-- Pool surface ripples -->
-        <path d="M0,362 C260,360 520,364 780,362 C1040,360 1300,364 1600,362"
-              stroke="#e8e2d4" stroke-width="0.7" fill="none" opacity="0.09"/>
-        <path d="M0,382 C320,379 640,385 960,382 C1280,379 1500,383 1600,382"
-              stroke="#e8e2d4" stroke-width="0.5" fill="none" opacity="0.06"/>
-        <path d="M200,408 C500,405 800,411 1100,408 C1350,406 1530,409 1600,408"
-              stroke="#e8e2d4" stroke-width="0.4" fill="none" opacity="0.04"/>
-        <!-- Pool far-wall reflection (faint green wash in water) -->
-        <rect y="349" width="1600" height="80" fill="#2d4033" opacity="0.14"/>
+        <!-- TL2: left-center, taller, blue-dark -->
+        <rect x="240"  y="15"  width="262" height="348" fill="#13162a"/>
+        <rect x="300"  y="15"  width="1.5" height="348" fill="#fff" opacity="0.030"/>
+        <rect x="360"  y="15"  width="1.5" height="348" fill="#fff" opacity="0.030"/>
+        <rect x="420"  y="15"  width="1.5" height="348" fill="#fff" opacity="0.030"/>
+        <rect x="476"  y="15"  width="1.5" height="348" fill="#fff" opacity="0.030"/>
 
-        <!-- ⑤ Figure: Georg Kolbe "Alba" — bronze silhouette, right-center -->
-        <!-- Pose: right arm bent at elbow, raised overhead (Alba's signature gesture);
-             left arm extended outward and angled downward — clearly asymmetric, not cruciform -->
-        <g transform="translate(980,0)" opacity="0.94">
-          <!-- Head (tilted slightly back, face upward) -->
-          <ellipse cx="2" cy="188" rx="13" ry="15" fill="#b8855a"/>
-          <!-- Neck -->
-          <rect x="-3" y="201" width="9" height="11" fill="#a87848" rx="2"/>
-          <!-- Torso -->
-          <path d="M-13,211 C-15,232 -17,254 -15,273 C-12,291 -6,307 2,312
-                   C10,307 16,291 17,273 C18,254 16,232 14,211 Z" fill="#b8855a"/>
-          <!-- Hips to feet -->
-          <path d="M-14,273 C-15,287 -12,302 -8,315
-                   C-5,325 -6,332 -8,342 L8,342
-                   C6,331 5,325 8,315 C12,302 15,287 16,273 Z" fill="#a87848"/>
-          <!-- Right arm: upper arm rises up-right to elbow, then forearm bends upward-left overhead -->
-          <!-- Upper arm (shoulder → elbow) -->
-          <path d="M14,216 Q28,200 42,180"
-                stroke="#b8855a" stroke-width="11" fill="none" stroke-linecap="round"/>
-          <!-- Forearm (elbow → wrist): bends back, rising steeply above head -->
-          <path d="M42,180 Q34,155 20,132"
-                stroke="#b8855a" stroke-width="9" fill="none" stroke-linecap="round"/>
-          <!-- Hand/wrist -->
-          <path d="M20,132 Q17,121 14,112"
-                stroke="#b8855a" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <!-- Left arm: extends outward and angles downward (natural, gravity-weighted) -->
-          <path d="M-13,222 Q-46,224 -78,232"
-                stroke="#b8855a" stroke-width="11" fill="none" stroke-linecap="round"/>
-          <path d="M-78,232 Q-96,238 -104,246"
-                stroke="#b8855a" stroke-width="7" fill="none" stroke-linecap="round"/>
-          <!-- Subtle highlight on right side of torso -->
-          <path d="M14,211 C16,232 18,254 17,273" stroke="#d4a070" stroke-width="2" fill="none" opacity="0.4"/>
-        </g>
+        <!-- TC: center tower — X-brace structural lattice (the graphic novel moment) -->
+        <rect x="530"  y="0"   width="338" height="368" fill="url(#twrL)"/>
+        <!-- X structural diagonals -->
+        <line x1="530"  y1="0"   x2="868"  y2="368" stroke="#252a40" stroke-width="4"/>
+        <line x1="868"  y1="0"   x2="530"  y2="368" stroke="#252a40" stroke-width="4"/>
+        <!-- Faint light catch on X -->
+        <line x1="530"  y1="0"   x2="868"  y2="368" stroke="#ffffff" stroke-width="1" opacity="0.07"/>
+        <line x1="868"  y1="0"   x2="530"  y2="368" stroke="#ffffff" stroke-width="1" opacity="0.07"/>
+        <!-- Vertical grid -->
+        <rect x="598"  y="0"   width="1"   height="368" fill="#fff" opacity="0.025"/>
+        <rect x="666"  y="0"   width="1"   height="368" fill="#fff" opacity="0.025"/>
+        <rect x="734"  y="0"   width="1"   height="368" fill="#fff" opacity="0.025"/>
+        <rect x="802"  y="0"   width="1"   height="368" fill="#fff" opacity="0.025"/>
 
-        <!-- ⑥ Figure reflection in pool (mirrored at y=347) -->
-        <!-- transform reflects around y=347: final_y = 694 - original_y -->
-        <g transform="translate(980,0)" opacity="0.20">
-          <g transform="translate(0,694) scale(1,-1)">
-            <ellipse cx="2" cy="188" rx="13" ry="10" fill="#b8855a"/>
-            <rect x="-3" y="201" width="9" height="11" fill="#a87848" rx="2"/>
-            <path d="M-13,211 C-15,232 -17,254 -15,273 C-12,291 -6,307 2,312
-                     C10,307 16,291 17,273 C18,254 16,232 14,211 Z" fill="#b8855a"/>
-            <path d="M-14,273 C-15,287 -12,302 -8,315
-                     C-5,325 -6,332 -8,342 L8,342
-                     C6,331 5,325 8,315 C12,302 15,287 16,273 Z" fill="#a87848"/>
-            <path d="M14,216 Q28,200 42,180"
-                  stroke="#b8855a" stroke-width="11" fill="none" stroke-linecap="round"/>
-            <path d="M42,180 Q34,155 20,132"
-                  stroke="#b8855a" stroke-width="9" fill="none" stroke-linecap="round"/>
-            <path d="M20,132 Q17,121 14,112"
-                  stroke="#b8855a" stroke-width="6" fill="none" stroke-linecap="round"/>
-            <path d="M-13,222 Q-46,224 -78,232"
-                  stroke="#b8855a" stroke-width="11" fill="none" stroke-linecap="round"/>
-            <path d="M-78,232 Q-96,238 -104,246"
-                  stroke="#b8855a" stroke-width="7" fill="none" stroke-linecap="round"/>
-          </g>
-        </g>
+        <!-- TR1: right, reflective glass -->
+        <rect x="920"  y="8"   width="304" height="356" fill="url(#twrR)"/>
+        <rect x="960"  y="8"   width="96"  height="356" fill="#ffffff" opacity="0.018"/>
+        <rect x="920"  y="8"   width="2"   height="356" fill="#fff" opacity="0.05"/>
+        <rect x="1222" y="8"   width="2"   height="356" fill="#fff" opacity="0.04"/>
 
-        <!-- ⑦ Vignette (edges darker, drawing eye to center) -->
+        <!-- TR2: far right, dark, partial -->
+        <rect x="1310" y="25"  width="290" height="328" fill="#0f1018"/>
+        <rect x="1375" y="25"  width="1.5" height="328" fill="#fff" opacity="0.03"/>
+        <rect x="1450" y="25"  width="1.5" height="328" fill="#fff" opacity="0.03"/>
+        <rect x="1525" y="25"  width="1.5" height="328" fill="#fff" opacity="0.03"/>
+
+        <!-- ③ Street-level ground plane -->
+        <rect x="0"    y="372" width="1600" height="128" fill="#0b0c12"/>
+        <rect x="0"    y="370" width="1600" height="3"   fill="#1e2030" opacity="0.8"/>
+
+        <!-- ④ Oculus (Santiago Calatrava, WTC) — white ribbed wing structure -->
+
+        <!-- Base building the Oculus sits on -->
+        <rect x="76"  y="402" width="1028" height="58" fill="#14151e"/>
+        <rect x="76"  y="400" width="1028" height="3"  fill="#c8c8d0" opacity="0.20"/>
+
+        <!-- Oculus interior volume (the dark mass inside the ribs) -->
+        <path d="M92,462 Q300,372 464,260 Q570,310 762,360 Q892,392 1062,434 L1062,462 Z"
+              fill="#1a1c26" opacity="0.72"/>
+
+        <!-- Oculus spine — central ridge, the dominant white element -->
+        <path d="M92,462 Q298,370 464,258 Q568,310 758,358 Q892,392 1062,434"
+              stroke="#d4d4de" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <!-- Spine depth shadow -->
+        <path d="M92,462 Q298,370 464,258 Q568,310 758,358 Q892,392 1062,434"
+              stroke="#8888a0" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.32"/>
+
+        <!-- Oculus ribs — LEFT of peak (7 ribs, angled left-downward) -->
+        <line x1="152"  y1="444" x2="138"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.66"/>
+        <line x1="208"  y1="422" x2="190"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.70"/>
+        <line x1="270"  y1="396" x2="248"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.73"/>
+        <line x1="332"  y1="366" x2="306"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.77"/>
+        <line x1="392"  y1="336" x2="362"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.81"/>
+        <line x1="436"  y1="310" x2="404"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.86"/>
+        <line x1="456"  y1="278" x2="432"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.90"/>
+
+        <!-- Oculus ribs — RIGHT of peak (7 ribs, angled right-downward, foreshortened) -->
+        <line x1="484"  y1="270" x2="500"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.86"/>
+        <line x1="550"  y1="288" x2="574"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.82"/>
+        <line x1="624"  y1="308" x2="656"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.77"/>
+        <line x1="702"  y1="332" x2="742"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.72"/>
+        <line x1="782"  y1="356" x2="830"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.66"/>
+        <line x1="872"  y1="380" x2="922"  y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.60"/>
+        <line x1="972"  y1="410" x2="1014" y2="462" stroke="#c8c8d2" stroke-width="2.5" stroke-linecap="round" opacity="0.54"/>
+
+        <!-- ⑤ Text legibility veil (left side dark overlay) -->
+        <rect width="1600" height="500" fill="url(#textVeil)"/>
+
+        <!-- ⑥ Edge vignette -->
         <rect width="1600" height="500" fill="url(#vig)"/>
       </svg>
 
