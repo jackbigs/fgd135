@@ -3,138 +3,149 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The New Federalist Party | fgd135</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <title>NFP Platform | fgd135</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Courier+Prime&family=Bebas+Neue&display=swap" rel="stylesheet" />
   <style>
-    /* Unique additions for the NFP page to complement your existing styles.css */
-    .nfp-hero {
-      background: var(--ink-dark, #0d0e15);
-      padding: 100px 20px;
+    :root { --accent: #c5a059; --bg: #0d0e15; }
+    body { background: var(--bg); color: #cbd5e1; font-family: 'Cormorant Garamond', serif; margin: 0; line-height: 1.6; }
+    
+    /* Header with Flag Background */
+    .nfp-header {
+      position: relative;
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      border-bottom: 1px solid var(--accent, #c5a059);
+      background: #000;
+      border-bottom: 1px solid var(--accent);
+      overflow: hidden;
     }
-    .nfp-hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 4rem;
-      letter-spacing: 4px;
-      color: #fff;
-      margin: 0;
+    .flag-overlay {
+      position: absolute;
+      width: 120%;
+      opacity: 0.12;
+      filter: sepia(0.5) contrast(1.2);
+      pointer-events: none;
     }
-    .policy-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
+    .nfp-header h1 { 
+      font-family: 'Bebas Neue', sans-serif; 
+      font-size: clamp(3rem, 10vw, 6rem); 
+      color: #fff; margin: 0; 
+      letter-spacing: 8px; 
+      z-index: 2;
     }
-    .policy-card {
-      background: rgba(255,255,255,0.03);
-      padding: 30px;
-      border-left: 2px solid var(--accent, #c5a059);
+
+    /* Toggle Logic */
+    #platform-toggle { display: none; }
+    .full-platform { 
+      max-height: 0; 
+      overflow: hidden; 
+      transition: max-height 0.8s ease-out; 
+      opacity: 0;
     }
-    .policy-tag {
+    #platform-toggle:checked ~ .full-platform { 
+      max-height: 5000px; 
+      opacity: 1; 
+      transition: max-height 1.5s ease-in, opacity 1s;
+    }
+
+    .toggle-label {
+      display: inline-block;
+      margin: 40px auto;
+      padding: 12px 30px;
+      border: 1px solid var(--accent);
       font-family: 'Courier Prime', monospace;
+      color: var(--accent);
+      cursor: pointer;
       text-transform: uppercase;
-      font-size: 0.8rem;
-      color: var(--accent, #c5a059);
-      display: block;
-      margin-bottom: 10px;
+      transition: 0.3s;
+      z-index: 10;
     }
-    .motto-box {
-      text-align: center;
-      padding: 80px 20px;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.8rem;
+    .toggle-label:hover { background: var(--accent); color: #000; }
+    #platform-toggle:checked ~ .toggle-label { display: none; }
+
+    .content-wrap { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+    .preamble { font-size: 1.5rem; font-style: italic; color: #fff; margin-bottom: 40px; }
+    
+    h2 { font-family: 'Bebas Neue', sans-serif; color: var(--accent); font-size: 2.2rem; border-bottom: 1px solid #334155; margin-top: 50px; }
+    h3 { font-family: 'Courier Prime', monospace; color: #fff; font-size: 1.2rem; }
+    ul { list-style: none; padding: 0; }
+    li { margin-bottom: 15px; padding-left: 20px; border-left: 1px solid #334155; }
+    li::before { content: "• "; color: var(--accent); margin-left: -15px; }
+
+    /* Scanlines */
+    body::after {
+      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+      background-size: 100% 4px; z-index: 100; pointer-events: none; opacity: 0.2;
     }
-    /* CRM114 Signal Filter Effect */
-body::before {
-  content: " ";
-  display: block;
-  position: fixed;
-  top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  z-index: 9999;
-  background-size: 100% 4px, 3px 100%;
-  pointer-events: none;
-}
-
-@keyframes flicker {
-  0% { opacity: 0.97; }
-  5% { opacity: 0.95; }
-  10% { opacity: 0.9; }
-  15% { opacity: 0.95; }
-  100% { opacity: 1; }
-}
-
-.nfp-hero h1 {
-  animation: flicker 0.15s infinite;
-  text-shadow: 2px 0 10px rgba(197, 160, 89, 0.3);
-}
   </style>
 </head>
-<body class="page-active">
+<body>
 
-<nav>
-  <div class="nav-inner">
-    <span class="nav-logo" onclick="window.location='index.html'">fgd135</span>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="stories.html">Stories</a></li>
-      <li><a href="photos.html">Photos</a></li>
-      <li><a href="index.html#about">About</a></li>
-    </ul>
-  </div>
-</nav>
-
-<div class="nfp-hero">
-  <span class="label">A Restoration of the American Idea</span>
-  <h1>The New Federalist Party</h1>
+<div class="nfp-header">
+  <svg class="flag-overlay" viewBox="0 0 741 390"><rect width="741" height="390" fill="#333"/><path d="M0 0H741V30H0V0ZM0 60H741V90H0V60ZM0 120H741V150H0V120ZM0 180H741V210H0V180ZM0 240H741V270H0V240ZM0 300H741V330H0V300ZM0 360H741V390H0V360Z" fill="#550000"/><rect width="296" height="210" fill="#111"/></svg>
+  <span style="font-family:'Courier Prime'; color:var(--accent); z-index:2; letter-spacing:2px;">SIGNAL VERIFIED // CRM114</span>
+  <h1>THE NEW FEDERALIST PARTY</h1>
+  <p style="z-index:2; font-style:italic;">“A Restoration of the American Idea”</p>
 </div>
 
-<div class="container-wide">
-  <section class="about-prose" style="max-width: 800px; margin: 60px auto;">
-    <p class="hero-tagline" style="font-size: 1.5rem; border-left: 3px solid #c5a059; padding-left: 30px;">
-      "The New Federalist Party does not seek to reinvent America, but to remember it... We reject the politics of the loudest voice in favor of the politics of the best idea."
-    </p>
+<div class="content-wrap">
+  <input type="checkbox" id="platform-toggle">
+  
+  <section class="preamble">
+    <p>The New Federalist Party does not seek to reinvent America, but to remember it. We believe in a government that acts with intellectual rigor, moral clarity, and a profound sense of duty.</p>
   </section>
 
-  <div class="policy-grid">
-    <div class="policy-card">
-      <span class="policy-tag">Domestic Policy</span>
-      <h3>Architecture of Opportunity</h3>
-      <p>The Bartlet Guarantee ensures no student is turned away from higher education due to cost. We treat the National Teacher Corps as a primary national security asset.</p>
-    </div>
+  <label for="platform-toggle" class="toggle-label">Access Full Platform</label>
 
-    <div class="policy-card">
-      <span class="policy-tag">National Defense</span>
-      <h3>The Shield of Liberty</h3>
-      <p>Transitioning to AI-driven defense and elite cyber-warfare. We maintain the "Proportional Plus" doctrine: a deterrent so decisive it renders conflict obsolete.</p>
-    </div>
+  <div class="full-platform">
+    <h2>I. PREAMBLE: THE CALL TO SERVICE</h2>
+    <p>We reject the politics of the loudest voice in favor of the politics of the best idea. Our mission is simple: to ensure that the federal government remains a "City on a Hill"—a beacon of competence, justice, and unyielding strength.</p>
 
-    <div class="policy-card">
-      <span class="policy-tag">Foreign Policy</span>
-      <h3>The Bartlet Doctrine</h3>
-      <p>A moral obligation to prevent genocide. We lead through multilateral diplomacy first, but we do not stand by while the innocent are slaughtered.</p>
-    </div>
-  </div>
+    <h2>II. DOMESTIC POLICY: ARCHITECTURE OF OPPORTUNITY</h2>
+    <h3>1. Education: The Great Equalizer</h3>
+    <ul>
+      <li><strong>The Foundation:</strong> Implementation of universal, federally-funded Pre-K.</li>
+      <li><strong>The Bartlet Guarantee:</strong> No student admitted to a public university is turned away due to inability to pay.</li>
+      <li><strong>National Teacher Corps:</strong> Treating educators as national security assets.</li>
+    </ul>
 
-  <div class="motto-box">
-    <p>Vestra Res Agitur</p>
-    <p style="font-size: 1rem; font-style: normal; font-family: 'Courier Prime'; opacity: 0.6;">Decisions are made by those who show up.</p>
+    <h3>2. Justice and the Civil Covenant</h3>
+    <ul>
+      <li><strong>The Living Constitution:</strong> Appointing "The Best and the Brightest"—jurists who prioritize individual liberties.</li>
+      <li><strong>The John Lewis Mandate:</strong> Comprehensive federal voting rights protections.</li>
+      <li><strong>Rational Safety:</strong> Universal background checks for all firearm transfers.</li>
+    </ul>
+
+    <h2>III. ECONOMIC POLICY: FISCAL STEWARDSHIP</h2>
+    <h3>3. The "Grand Bargain"</h3>
+    <ul>
+      <li><strong>A Century of Solvency:</strong> Securing the Social Security Trust Fund for the next 75 years.</li>
+      <li><strong>The Fair Share Tax Code:</strong> Eliminating loopholes and taxing capital gains to reflect the value of labor.</li>
+    </ul>
+
+    <h2>IV. NATIONAL DEFENSE: THE SHIELD OF LIBERTY</h2>
+    <h3>4. Technological Primacy</h3>
+    <ul>
+      <li><strong>The Digital Frontier:</strong> Pivoting to AI-driven defense and elite cyber-warfare.</li>
+      <li><strong>The Proportional Plus Doctrine:</strong> A military capacity so advanced it serves as an absolute deterrent.</li>
+    </ul>
+
+    <h3>5. The Veteran Covenant</h3>
+    <p>A total overhaul of the VA system, providing "concierge-level" healthcare and mental health services.</p>
+
+    <h2>V. FOREIGN POLICY: THE BARTLET DOCTRINE</h2>
+    <p>The United States has a moral obligation to prevent genocide. We lead through multilateral diplomacy first, but we do not stand by while the innocent are slaughtered.</p>
+
+    <h2>VI. CONCLUSION: WHAT’S NEXT?</h2>
+    <p>Decisions are made by those who show up. It’s time to get to work.</p>
+    <p style="font-family:'Courier Prime'; text-align:center; color:var(--accent); margin-top:50px;">Vestra Res Agitur</p>
   </div>
 </div>
-
-<footer>
-  <div class="footer-inner">
-    <div class="site-name">fgd135</div>
-    <div class="footer-copy">© 2026 The New Federalist Party | fgd135.com</div>
-  </div>
-</footer>
 
 </body>
 </html>
