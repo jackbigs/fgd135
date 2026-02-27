@@ -8,12 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Courier+Prime&family=Bebas+Neue&display=swap" rel="stylesheet" />
   <style>
     :root { --accent: #c5a059; --bg: #0d0e15; }
-    body { background: var(--bg); color: #cbd5e1; font-family: 'Cormorant Garamond', serif; margin: 0; line-height: 1.6; }
+    body { background: var(--bg); color: #cbd5e1; font-family: 'Cormorant Garamond', serif; margin: 0; line-height: 1.6; overflow-x: hidden; }
     
     /* THE HEADER */
     .nfp-header {
       position: relative;
-      height: 70vh; 
+      height: 75vh; 
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -24,32 +24,67 @@
       overflow: hidden;
     }
 
-    /* THE FLAG - Visibility Boosted */
+    /* THE FLAG */
     .flag-overlay {
       position: absolute;
       width: 120%;
       height: auto;
-      opacity: 0.6; /* Increased from 0.15 to 0.6 */
-      filter: grayscale(0.1) contrast(1.2) brightness(0.7);
+      opacity: 0.55; 
+      filter: grayscale(0.2) contrast(1.2) brightness(0.7);
       pointer-events: none;
       z-index: 1;
     }
 
-    /* THE VIGNETTE - Ensures text stays readable */
+    /* THE VIGNETTE - The "Smoke" layer for readability */
     .nfp-header::after {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(circle, rgba(13,14,21,0.4) 0%, rgba(13,14,21,0.9) 90%);
+      background: radial-gradient(circle, rgba(13,14,21,0.3) 0%, rgba(13,14,21,0.9) 90%);
       z-index: 2;
     }
 
     .nfp-header h1, .nfp-header span, .nfp-header p {
       z-index: 3;
-      text-shadow: 0 0 20px rgba(0,0,0,1);
+      text-shadow: 0 0 25px rgba(0,0,0,1);
     }
 
-    /* Interactive Toggle */
+    /* JAGGED RADIO WAVE */
+    .signal-wrapper {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      overflow: hidden;
+      z-index: 4;
+      opacity: 0.8;
+    }
+
+    .radio-wave {
+      width: 200%;
+      height: 100%;
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 3;
+    }
+
+    .wave-path {
+      animation: wave-flow 4s linear infinite, jitter 0.1s infinite;
+    }
+
+    @keyframes wave-flow {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @keyframes jitter {
+      0% { opacity: 0.7; stroke-width: 2.5; }
+      50% { opacity: 1; stroke-width: 3.5; }
+      100% { opacity: 0.7; stroke-width: 2.5; }
+    }
+
+    /* INTERACTIVE TOGGLE */
     #platform-toggle { display: none; }
     .full-platform { 
       max-height: 0; 
@@ -76,6 +111,7 @@
     .toggle-btn:hover { background: var(--accent); color: #000; }
     #platform-toggle:checked ~ .toggle-btn { display: none; }
 
+    /* CONTENT STYLING */
     .content-wrap { max-width: 850px; margin: 0 auto; padding: 60px 20px; text-align: left; }
     .preamble { font-size: 1.6rem; font-style: italic; color: #fff; border-left: 3px solid var(--accent); padding-left: 30px; margin-bottom: 40px; }
     
@@ -86,32 +122,32 @@
     li::before { content: "»"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
     strong { color: #fff; font-weight: 600; }
 
-    /* Signal Flicker */
-    @keyframes scan { from { top: -100px; } to { top: 100%; } }
-    .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: linear-gradient(to bottom, transparent, rgba(197, 160, 89, 0.05), transparent); animation: scan 8s linear infinite; pointer-events: none; z-index: 1000; }
   </style>
 </head>
 <body>
-
-<div class="scanline"></div>
 
 <div class="nfp-header">
   <svg class="flag-overlay" viewBox="0 0 741 390" xmlns="http://www.w3.org/2000/svg">
     <rect width="741" height="390" fill="#3c3c3c"/>
     <path d="M0 0H741V30H0V0ZM0 60H741V90H0V60ZM0 120H741V150H0V120ZM0 180H741V210H0V180ZM0 240H741V270H0V240ZM0 300H741V330H0V300ZM0 360H741V390H0V360Z" fill="#7b2121"/>
     <rect width="296" height="210" fill="#21294d"/>
-    <path d="M15 15l2 5h5l-4 3 2 5-5-3-5 3 2-5-4-3h5z" fill="#fff" opacity="0.6"/>
-    <rect x="0" y="0" width="296" height="210" fill="url(#star-pattern)" />
     <defs>
-      <pattern id="star-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <pattern id="stars" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
         <path d="M20 10l2 5h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" fill="#fff" opacity="0.4"/>
       </pattern>
     </defs>
+    <rect width="296" height="210" fill="url(#stars)" />
   </svg>
   
-  <span style="font-family:'Courier Prime'; color:var(--accent); z-index:2; letter-spacing:3px; margin-bottom:10px;">DE-CLASSIFIED // RESTRICTED ACCESS</span>
+  <span style="font-family:'Courier Prime'; color:var(--accent); z-index:3; letter-spacing:3px; margin-bottom:10px;">SIGNAL VERIFIED // RESTRICTED ACCESS</span>
   <h1>THE NEW FEDERALIST PARTY</h1>
-  <p style="z-index:2; font-style:italic; font-size:1.4rem;">“A Restoration of the American Idea”</p>
+  <p style="z-index:3; font-style:italic; font-size:1.4rem;">“A Restoration of the American Idea”</p>
+
+  <div class="signal-wrapper">
+    <svg class="radio-wave" viewBox="0 0 1000 100" preserveAspectRatio="none">
+      <path class="wave-path" d="M0,50 L50,50 L60,20 L70,80 L80,50 L150,50 L160,10 L175,90 L190,50 L300,50 L310,30 L320,70 L330,50 L450,50 L460,0 L480,100 L500,50 L1000,50" />
+    </svg>
+  </div>
 </div>
 
 <div class="content-wrap">
@@ -130,41 +166,41 @@
     <h2>II. DOMESTIC POLICY: THE ARCHITECTURE OF OPPORTUNITY</h2>
     <h3>1. Education: The Great Equalizer</h3>
     <ul>
-      <li><strong>The Foundation:</strong> Implementation of universal, federally-funded Pre-K to close the achievement gap before it begins.</li>
-      <li><strong>The Bartlet Guarantee:</strong> A federal-state partnership ensuring that no student who earns admission to a public university is turned away due to an inability to pay.</li>
-      <li><strong>The National Teacher Corps:</strong> Treating educators as national security assets with full scholarships and competitive federal salary subsidies.</li>
+      <li><strong>The Foundation:</strong> Implementation of universal, federally-funded Pre-K.</li>
+      <li><strong>The Bartlet Guarantee:</strong> No student admitted to a public university is turned away due to inability to pay.</li>
+      <li><strong>The National Teacher Corps:</strong> Treating educators as national security assets.</li>
     </ul>
 
     <h3>2. Justice and the Civil Covenant</h3>
     <ul>
-      <li><strong>The Living Constitution:</strong> Appointing jurists who prioritize the protection of individual liberties and the strict separation of church and state.</li>
-      <li><strong>The John Lewis Mandate:</strong> Passing comprehensive federal voting rights protections for an unencumbered path to the ballot.</li>
-      <li><strong>Rational Safety:</strong> Universal background checks for all firearm transfers while respecting responsible ownership heritage.</li>
+      <li><strong>The Living Constitution:</strong> Appointing jurists who prioritize individual liberties.</li>
+      <li><strong>The John Lewis Mandate:</strong> Passing comprehensive federal voting rights protections.</li>
+      <li><strong>Rational Safety:</strong> Universal background checks for all firearm transfers.</li>
     </ul>
 
     <h2>III. ECONOMIC POLICY: FISCAL STEWARDSHIP</h2>
     <h3>3. The "Big Bang" Social Security Reform</h3>
     <ul>
       <li><strong>A Century of Solvency:</strong> A bipartisan "Grand Bargain" to secure the Trust Fund for the next 75 years.</li>
-      <li><strong>The Fair Share Tax Code:</strong> Eliminating corporate loopholes and taxing capital gains at a rate reflecting the true value of labor.</li>
+      <li><strong>The Fair Share Tax Code:</strong> Eliminating corporate loopholes and taxing capital gains fairly.</li>
     </ul>
 
     <h2>IV. NATIONAL DEFENSE: THE SHIELD OF LIBERTY</h2>
     <h3>4. Technological Primacy and Deterrence</h3>
     <ul>
-      <li><strong>The Digital Frontier:</strong> Pivoting the defense budget to AI-driven defense, satellite security, and elite cyber-warfare.</li>
-      <li><strong>The Proportional Plus Doctrine:</strong> Maintaining military capacity so advanced it serves as an absolute deterrent.</li>
-      <li><strong>The HUMINT Initiative:</strong> Drastically increasing funding for human intelligence and diplomatic presence.</li>
+      <li><strong>The Digital Frontier:</strong> Pivoting to AI-driven defense and elite cyber-warfare.</li>
+      <li><strong>The Proportional Plus Doctrine:</strong> A military capacity so advanced it serves as an absolute deterrent.</li>
+      <li><strong>The HUMINT Initiative:</strong> Funding for human intelligence and diplomatic presence.</li>
     </ul>
 
     <h3>5. The Veteran Covenant</h3>
     <p>A total overhaul of the VA system, providing "concierge-level" healthcare and mental health services for life.</p>
 
     <h2>V. FOREIGN POLICY: THE BARTLET DOCTRINE</h2>
-    <p>The United States has a moral obligation to prevent genocide and systemic human rights abuses. We lead with diplomacy first, but we do not stand by while the innocent are slaughtered.</p>
+    <p>The United States has a moral obligation to prevent genocide. We lead with diplomacy first, but we do not stand by while the innocent are slaughtered.</p>
 
     <h2>VI. CONCLUSION: WHAT’S NEXT?</h2>
-    <p>The New Federalist Party is focused on securing the future. Expertise is a virtue, and the American people are capable of handling the truth.</p>
+    <p>Decisions are made by those who show up. It’s time to get to work.</p>
     
     <div style="text-align: center; margin-top: 100px; opacity: 0.6; font-family: 'Courier Prime'; border-top: 1px solid #334155; padding-top: 40px;">
       <p><strong>VESTRA RES AGITUR</strong></p>
