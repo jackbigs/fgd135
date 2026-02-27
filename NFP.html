@@ -24,7 +24,6 @@
       overflow: hidden;
     }
 
-    /* THE FLAG */
     .flag-overlay {
       position: absolute;
       width: 120%;
@@ -35,7 +34,6 @@
       z-index: 1;
     }
 
-    /* THE VIGNETTE - The "Smoke" layer for readability */
     .nfp-header::after {
       content: "";
       position: absolute;
@@ -49,42 +47,33 @@
       text-shadow: 0 0 25px rgba(0,0,0,1);
     }
 
-    /* JAGGED RADIO WAVE */
-    .signal-wrapper {
+    /* MORSE DATA STREAM EFFECT */
+    .morse-stream {
       position: absolute;
-      bottom: 0;
-      left: 0;
+      bottom: 20px;
       width: 100%;
-      height: 80px;
-      overflow: hidden;
+      text-align: center;
       z-index: 4;
+      font-family: 'Courier Prime', monospace;
+      color: var(--accent);
+      letter-spacing: 4px;
+      font-size: 14px;
       opacity: 0.8;
     }
 
-    .radio-wave {
-      width: 200%;
-      height: 100%;
-      fill: none;
-      stroke: var(--accent);
-      stroke-width: 3;
+    .morse-pulse {
+      display: inline-block;
+      animation: signal-blink 8s linear infinite;
     }
 
-    .wave-path {
-      animation: wave-flow 4s linear infinite, jitter 0.1s infinite;
+    @keyframes signal-blink {
+      0% { opacity: 0; transform: translateY(5px); }
+      5% { opacity: 1; transform: translateY(0); }
+      95% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-5px); }
     }
 
-    @keyframes wave-flow {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    @keyframes jitter {
-      0% { opacity: 0.7; stroke-width: 2.5; }
-      50% { opacity: 1; stroke-width: 3.5; }
-      100% { opacity: 0.7; stroke-width: 2.5; }
-    }
-
-    /* INTERACTIVE TOGGLE */
+    /* Interactive Toggle */
     #platform-toggle { display: none; }
     .full-platform { 
       max-height: 0; 
@@ -111,7 +100,6 @@
     .toggle-btn:hover { background: var(--accent); color: #000; }
     #platform-toggle:checked ~ .toggle-btn { display: none; }
 
-    /* CONTENT STYLING */
     .content-wrap { max-width: 850px; margin: 0 auto; padding: 60px 20px; text-align: left; }
     .preamble { font-size: 1.6rem; font-style: italic; color: #fff; border-left: 3px solid var(--accent); padding-left: 30px; margin-bottom: 40px; }
     
@@ -120,7 +108,6 @@
     ul { list-style: none; padding: 0; }
     li { margin-bottom: 20px; padding-left: 25px; position: relative; }
     li::before { content: "»"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
-    strong { color: #fff; font-weight: 600; }
 
   </style>
 </head>
@@ -129,85 +116,4 @@
 <div class="nfp-header">
   <svg class="flag-overlay" viewBox="0 0 741 390" xmlns="http://www.w3.org/2000/svg">
     <rect width="741" height="390" fill="#3c3c3c"/>
-    <path d="M0 0H741V30H0V0ZM0 60H741V90H0V60ZM0 120H741V150H0V120ZM0 180H741V210H0V180ZM0 240H741V270H0V240ZM0 300H741V330H0V300ZM0 360H741V390H0V360Z" fill="#7b2121"/>
-    <rect width="296" height="210" fill="#21294d"/>
-    <defs>
-      <pattern id="stars" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-        <path d="M20 10l2 5h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" fill="#fff" opacity="0.4"/>
-      </pattern>
-    </defs>
-    <rect width="296" height="210" fill="url(#stars)" />
-  </svg>
-  
-  <span style="font-family:'Courier Prime'; color:var(--accent); z-index:3; letter-spacing:3px; margin-bottom:10px;">SIGNAL VERIFIED // RESTRICTED ACCESS</span>
-  <h1>THE NEW FEDERALIST PARTY</h1>
-  <p style="z-index:3; font-style:italic; font-size:1.4rem;">“A Restoration of the American Idea”</p>
-
-  <div class="signal-wrapper">
-    <svg class="radio-wave" viewBox="0 0 1000 100" preserveAspectRatio="none">
-      <path class="wave-path" d="M0,50 L50,50 L60,20 L70,80 L80,50 L150,50 L160,10 L175,90 L190,50 L300,50 L310,30 L320,70 L330,50 L450,50 L460,0 L480,100 L500,50 L1000,50" />
-    </svg>
-  </div>
-</div>
-
-<div class="content-wrap">
-  <input type="checkbox" id="platform-toggle">
-  
-  <section class="preamble">
-    "The New Federalist Party does not seek to reinvent America, but to remember it. We believe in a government that acts with intellectual rigor, moral clarity, and a profound sense of duty."
-  </section>
-
-  <label for="platform-toggle" class="toggle-btn">Read Full Platform</label>
-
-  <div class="full-platform">
-    <h2>I. PREAMBLE: THE CALL TO SERVICE</h2>
-    <p>We reject the politics of the loudest voice in favor of the politics of the best idea. Our mission is simple: to ensure that the federal government remains a "City on a Hill"—a beacon of competence, justice, and unyielding strength.</p>
-
-    <h2>II. DOMESTIC POLICY: THE ARCHITECTURE OF OPPORTUNITY</h2>
-    <h3>1. Education: The Great Equalizer</h3>
-    <ul>
-      <li><strong>The Foundation:</strong> Implementation of universal, federally-funded Pre-K.</li>
-      <li><strong>The Bartlet Guarantee:</strong> No student admitted to a public university is turned away due to inability to pay.</li>
-      <li><strong>The National Teacher Corps:</strong> Treating educators as national security assets.</li>
-    </ul>
-
-    <h3>2. Justice and the Civil Covenant</h3>
-    <ul>
-      <li><strong>The Living Constitution:</strong> Appointing jurists who prioritize individual liberties.</li>
-      <li><strong>The John Lewis Mandate:</strong> Passing comprehensive federal voting rights protections.</li>
-      <li><strong>Rational Safety:</strong> Universal background checks for all firearm transfers.</li>
-    </ul>
-
-    <h2>III. ECONOMIC POLICY: FISCAL STEWARDSHIP</h2>
-    <h3>3. The "Big Bang" Social Security Reform</h3>
-    <ul>
-      <li><strong>A Century of Solvency:</strong> A bipartisan "Grand Bargain" to secure the Trust Fund for the next 75 years.</li>
-      <li><strong>The Fair Share Tax Code:</strong> Eliminating corporate loopholes and taxing capital gains fairly.</li>
-    </ul>
-
-    <h2>IV. NATIONAL DEFENSE: THE SHIELD OF LIBERTY</h2>
-    <h3>4. Technological Primacy and Deterrence</h3>
-    <ul>
-      <li><strong>The Digital Frontier:</strong> Pivoting to AI-driven defense and elite cyber-warfare.</li>
-      <li><strong>The Proportional Plus Doctrine:</strong> A military capacity so advanced it serves as an absolute deterrent.</li>
-      <li><strong>The HUMINT Initiative:</strong> Funding for human intelligence and diplomatic presence.</li>
-    </ul>
-
-    <h3>5. The Veteran Covenant</h3>
-    <p>A total overhaul of the VA system, providing "concierge-level" healthcare and mental health services for life.</p>
-
-    <h2>V. FOREIGN POLICY: THE BARTLET DOCTRINE</h2>
-    <p>The United States has a moral obligation to prevent genocide. We lead with diplomacy first, but we do not stand by while the innocent are slaughtered.</p>
-
-    <h2>VI. CONCLUSION: WHAT’S NEXT?</h2>
-    <p>Decisions are made by those who show up. It’s time to get to work.</p>
-    
-    <div style="text-align: center; margin-top: 100px; opacity: 0.6; font-family: 'Courier Prime'; border-top: 1px solid #334155; padding-top: 40px;">
-      <p><strong>VESTRA RES AGITUR</strong></p>
-      <p>(Your interest is at stake)</p>
-    </div>
-  </div>
-</div>
-
-</body>
-</html>
+    <path d="M0 0H741V30H0V0ZM0 60H74
