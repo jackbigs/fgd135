@@ -1,0 +1,312 @@
+/*
+  =============================================
+  MOTÖRHEAD THEME — fgd135.com
+  Snaggletooth / Biker Metal aesthetic
+  Palette: #0a0a0a black, #c0c0c0 silver/chrome,
+           #ffffff white, #cc2200 blood red (accent),
+           #3a3a3a iron grey
+  Fonts: Metal Mania, Bebas Neue, Oswald 700,
+         Share Tech Mono (all via Google Fonts)
+  =============================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Oswald:wght@700&family=Share+Tech+Mono&family=Bebas+Neue&display=swap');
+
+/* === BODY / BASE === */
+html, body, main {
+  background: #0a0a0a;
+  color: #c0c0c0;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Noise/grain texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* === NAV === */
+header, nav, .site-header {
+  background: #0a0a0a;
+  border-bottom: 2px solid #3a3a3a;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.8);
+}
+
+/* Logo */
+.site-title {
+  font-family: 'Metal Mania', cursive;
+  color: #d8d8d8;
+  font-size: 1.3em;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow:
+    0 0 8px rgba(255,255,255,0.3),
+    1px 1px 0 #000,
+    2px 2px 0 #1a1a1a;
+}
+
+/* Nav links */
+nav a {
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 3px;
+  color: #888;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: none;
+  transition: color 0.15s, text-shadow 0.15s;
+}
+nav a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+nav a.active, nav a[aria-current] {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* === HERO === */
+.hero, .hero-section, .banner, .cover {
+  background: #0a0a0a;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Chain border across top of hero */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: repeating-linear-gradient(
+    90deg,
+    #3a3a3a 0px, #3a3a3a 8px,
+    #0a0a0a 8px, #0a0a0a 12px,
+    #3a3a3a 12px, #3a3a3a 20px,
+    #0a0a0a 20px, #0a0a0a 24px
+  );
+  z-index: 2;
+}
+
+/* Diagonal scratch lines — worn metal plate */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.012) 40px,
+    rgba(255,255,255,0.012) 41px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* === HERO HEADLINE === */
+h1 {
+  font-family: 'Metal Mania', cursive;
+  color: #e8e8e8;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 0.92;
+  font-size: 4.2em;
+  text-shadow:
+    2px 2px 0 #000,
+    4px 4px 0 #111,
+    0 0 30px rgba(200,200,200,0.08);
+}
+
+/* Accent word (e.g. SOMEWHERE) */
+h1 span.accent {
+  color: #cc2200;
+  text-shadow:
+    2px 2px 0 #3a0000,
+    4px 4px 0 #000;
+}
+
+/* Tagline */
+.tagline, .subtitle, .hero p {
+  font-family: 'Share Tech Mono', monospace;
+  color: #666;
+  font-size: 0.82em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+
+/* Category labels */
+.category, .label, .tag {
+  font-family: 'Share Tech Mono', monospace;
+  color: #444;
+  letter-spacing: 4px;
+  font-size: 0.62em;
+  text-transform: uppercase;
+}
+
+/* === CTA BUTTON — welded steel === */
+a.btn, button, .button {
+  font-family: 'Bebas Neue', cursive;
+  background: transparent;
+  border: 1px solid #555;
+  color: #c0c0c0;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding: 10px 28px;
+  font-size: 0.85em;
+  text-decoration: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 2px 8px rgba(0,0,0,0.6);
+  transition: all 0.15s;
+}
+a.btn:hover, button:hover {
+  border-color: #c0c0c0;
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 0 12px rgba(255,255,255,0.1);
+}
+
+/* === FEATURED SECTION === */
+.featured, .spotlight {
+  background: #0d0d0d;
+  border-top: 1px solid #2a2a2a;
+  border-bottom: 1px solid #2a2a2a;
+}
+.featured img, .story img {
+  filter: grayscale(100%) contrast(1.2);
+  border: 1px solid #2a2a2a;
+  box-shadow: 4px 4px 0 #000;
+}
+.featured p, .spotlight p {
+  font-family: 'Share Tech Mono', monospace;
+  color: #555;
+  font-size: 0.82em;
+  line-height: 1.8;
+}
+.featured h2, .spotlight h2 {
+  font-family: 'Metal Mania', cursive;
+  color: #d0d0d0;
+  font-size: 1.8em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* === RECENT WRITING / ARTICLE LIST === */
+.recent-writing, .posts-list {
+  background: #0a0a0a;
+  border-top: 1px solid #2a2a2a;
+}
+
+/* Section heading */
+h2, h3 {
+  font-family: 'Bebas Neue', cursive;
+  color: #555;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+
+/* Article titles */
+.post-title, .entry-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  color: #c0c0c0;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 #000;
+}
+.post-title a, .entry-title a {
+  color: #c0c0c0;
+  text-decoration: none;
+}
+.post-title a:hover, .entry-title a:hover {
+  color: #fff;
+}
+
+/* Numbers */
+.post-number {
+  font-family: 'Share Tech Mono', monospace;
+  color: #333;
+  font-size: 0.75em;
+}
+
+/* Dividers */
+.post-item:not(:last-child) {
+  border-bottom: 1px solid #1e1e1e;
+}
+
+/* Meta — category, date, year */
+.meta, .post-date, time {
+  font-family: 'Share Tech Mono', monospace;
+  color: #3a3a3a;
+  letter-spacing: 3px;
+  font-size: 0.65em;
+  text-transform: uppercase;
+}
+
+/* ALL STORIES link */
+.all-stories, .view-all {
+  font-family: 'Bebas Neue', cursive;
+  color: #555;
+  letter-spacing: 4px;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  border: 1px solid #333;
+  padding: 5px 14px;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.all-stories:hover, .view-all:hover {
+  color: #c0c0c0;
+  border-color: #555;
+}
+
+/* === FOOTER === */
+footer {
+  background: #050505;
+  border-top: 1px solid #1e1e1e;
+  color: #333;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 3px;
+  font-size: 0.65em;
+  text-transform: uppercase;
+}
+footer a {
+  color: #555;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #c0c0c0;
+}
+
+/* === GENERAL LINKS === */
+a {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+a:hover {
+  color: #fff;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar { width: 6px; background: #050505; }
+::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: #666; }
