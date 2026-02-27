@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Courier+Prime&family=Bebas+Neue&display=swap" rel="stylesheet" />
   <style>
-    :root { --accent: #c5a059; --bg: #0d0e15; }
+    :root { --accent: #c5a059; --bg: #0d0e15; --signal-green: #4ade80; }
     body { background: var(--bg); color: #cbd5e1; font-family: 'Cormorant Garamond', serif; margin: 0; line-height: 1.6; overflow-x: hidden; }
     
     /* THE HEADER */
@@ -28,8 +28,8 @@
       position: absolute;
       width: 120%;
       height: auto;
-      opacity: 0.55; 
-      filter: grayscale(0.2) contrast(1.2) brightness(0.7);
+      opacity: 0.45; 
+      filter: grayscale(0.2) contrast(1.2) brightness(0.6);
       pointer-events: none;
       z-index: 1;
     }
@@ -38,77 +38,105 @@
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(circle, rgba(13,14,21,0.3) 0%, rgba(13,14,21,0.9) 90%);
+      background: radial-gradient(circle, rgba(13,14,21,0.2) 0%, rgba(13,14,21,0.95) 90%);
       z-index: 2;
     }
 
     .nfp-header h1, .nfp-header span, .nfp-header p {
-      z-index: 3;
-      text-shadow: 0 0 25px rgba(0,0,0,1);
+      z-index: 10;
+      text-shadow: 0 0 30px rgba(0,0,0,1);
     }
 
-    /* MORSE DATA STREAM EFFECT */
-    .morse-stream {
+    /* MASSIVE SCROLLING MORSE CODE */
+    .morse-container {
       position: absolute;
-      bottom: 20px;
+      bottom: 5%;
       width: 100%;
-      text-align: center;
-      z-index: 4;
-      font-family: 'Courier Prime', monospace;
-      color: var(--accent);
-      letter-spacing: 4px;
-      font-size: 14px;
-      opacity: 0.8;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 5;
+      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     }
 
-    .morse-pulse {
+    .morse-scroll {
       display: inline-block;
-      animation: signal-blink 8s linear infinite;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 8rem; 
+      color: var(--accent);
+      opacity: 0.15; 
+      letter-spacing: 25px;
+      animation: ticker 40s linear infinite;
     }
 
-    @keyframes signal-blink {
-      0% { opacity: 0; transform: translateY(5px); }
-      5% { opacity: 1; transform: translateY(0); }
-      95% { opacity: 1; transform: translateY(0); }
-      100% { opacity: 0; transform: translateY(-5px); }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
-    /* Interactive Toggle */
+    /* FUNDRAISING SIGNAL METER */
+    .fundraising-box {
+      margin: 60px 0;
+      padding: 40px;
+      border: 1px solid var(--accent);
+      background: rgba(197, 160, 89, 0.03);
+      position: relative;
+    }
+
+    .signal-meter-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .signal-track {
+      width: 100%;
+      height: 12px;
+      background: #1e293b;
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .signal-fill {
+      width: 65%; /* ADJUST THIS NUMBER TO CHANGE PROGRESS */
+      height: 100%;
+      background: var(--accent);
+      box-shadow: 0 0 15px var(--accent);
+      transition: width 2s ease-in-out;
+    }
+
+    /* CONTENT WRAPPER */
+    .content-wrap { max-width: 850px; margin: 0 auto; padding: 60px 20px; text-align: left; }
+    
+    /* TOGGLE LOGIC */
     #platform-toggle { display: none; }
-    .full-platform { 
-      max-height: 0; 
-      overflow: hidden; 
-      transition: max-height 0.8s ease-out, opacity 0.5s; 
-      opacity: 0;
-    }
-    #platform-toggle:checked ~ .full-platform { 
-      max-height: 8000px; 
-      opacity: 1; 
-    }
+    .full-platform { max-height: 0; overflow: hidden; transition: max-height 0.8s ease-out; opacity: 0; }
+    #platform-toggle:checked ~ .full-platform { max-height: 10000px; opacity: 1; margin-bottom: 100px; }
 
     .toggle-btn {
       display: inline-block;
       margin: 40px auto;
-      padding: 12px 40px;
+      padding: 15px 45px;
       border: 1px solid var(--accent);
       font-family: 'Courier Prime', monospace;
       color: var(--accent);
       cursor: pointer;
       text-transform: uppercase;
       transition: 0.3s;
+      background: none;
     }
     .toggle-btn:hover { background: var(--accent); color: #000; }
-    #platform-toggle:checked ~ .toggle-btn { display: none; }
+    #platform-toggle:checked ~ .toggle-label-main { display: none; }
 
-    .content-wrap { max-width: 850px; margin: 0 auto; padding: 60px 20px; text-align: left; }
-    .preamble { font-size: 1.6rem; font-style: italic; color: #fff; border-left: 3px solid var(--accent); padding-left: 30px; margin-bottom: 40px; }
-    
-    h2 { font-family: 'Bebas Neue', sans-serif; color: var(--accent); font-size: 2.5rem; letter-spacing: 2px; border-bottom: 1px solid #1e293b; margin-top: 60px; padding-bottom: 10px; }
-    h3 { font-family: 'Courier Prime', monospace; color: #fff; font-size: 1.3rem; margin-top: 30px; }
+    h2 { font-family: 'Bebas Neue', sans-serif; color: var(--accent); font-size: 2.5rem; border-bottom: 1px solid #1e293b; margin-top: 60px; }
     ul { list-style: none; padding: 0; }
-    li { margin-bottom: 20px; padding-left: 25px; position: relative; }
-    li::before { content: "»"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
-
+    li { margin-bottom: 15px; padding-left: 20px; border-left: 1px solid #334155; }
+    
+    .preamble { font-size: 1.8rem; font-style: italic; color: #fff; margin-bottom: 40px; border-left: 4px solid var(--accent); padding-left: 20px; }
   </style>
 </head>
 <body>
@@ -118,20 +146,18 @@
     <rect width="741" height="390" fill="#3c3c3c"/>
     <path d="M0 0H741V30H0V0ZM0 60H741V90H0V60ZM0 120H741V150H0V120ZM0 180H741V210H0V180ZM0 240H741V270H0V240ZM0 300H741V330H0V300ZM0 360H741V390H0V360Z" fill="#7b2121"/>
     <rect width="296" height="210" fill="#21294d"/>
-    <defs>
-      <pattern id="stars" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-        <path d="M20 10l2 5h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" fill="#fff" opacity="0.4"/>
-      </pattern>
-    </defs>
     <rect width="296" height="210" fill="url(#stars)" />
+    <defs><pattern id="stars" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M20 10l2 5h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" fill="#fff" opacity="0.3"/></pattern></defs>
   </svg>
   
-  <span style="font-family:'Courier Prime'; color:var(--accent); z-index:3; letter-spacing:3px; margin-bottom:10px;">SIGNAL VERIFIED // CRM114</span>
+  <span style="font-family:'Courier Prime'; color:var(--accent); z-index:10; letter-spacing:4px; margin-bottom:10px;">SIGNAL VERIFIED // CRM114</span>
   <h1>THE NEW FEDERALIST PARTY</h1>
-  <p style="z-index:3; font-style:italic; font-size:1.4rem;">“A Restoration of the American Idea”</p>
+  <p style="z-index:10; font-style:italic; font-size:1.5rem;">“A Restoration of the American Idea”</p>
 
-  <div class="morse-stream">
-    <span class="morse-pulse">...- . ... - .-. .- / .-. . ... / .- --. .. - ..- .-.</span>
+  <div class="morse-container">
+    <div class="morse-scroll">
+      ...- . ... - .-. .- / .-. . ... / .- --. .. - ..- .-. &nbsp;&nbsp;&nbsp; ...- . ... - .-. .- / .-. . ... / .- --. .. - ..- .-. &nbsp;&nbsp;&nbsp; ...- . ... - .-. .- / .-. . ... / .- --. .. - ..- .-.
+    </div>
   </div>
 </div>
 
@@ -139,33 +165,40 @@
   <input type="checkbox" id="platform-toggle">
   
   <section class="preamble">
-    "The New Federalist Party does not seek to reinvent America, but to remember it. We believe in a government that acts with intellectual rigor, moral clarity, and a profound sense of duty."
+    "The New Federalist Party does not seek to reinvent America, but to remember it."
   </section>
 
-  <label for="platform-toggle" class="toggle-btn">Read Full Platform</label>
+  <label for="platform-toggle" class="toggle-btn toggle-label-main">Analyze Full Platform</label>
 
   <div class="full-platform">
     <h2>I. PREAMBLE: THE CALL TO SERVICE</h2>
-    <p>We reject the politics of the loudest voice in favor of the politics of the best idea. Our mission is simple: to ensure that the federal government remains a "City on a Hill"—a beacon of competence, justice, and unyielding strength.</p>
+    <p>We reject the politics of the loudest voice in favor of the politics of the best idea. Our mission is to ensure the federal government remains a "City on a Hill."</p>
 
-    <h2>II. DOMESTIC POLICY: THE ARCHITECTURE OF OPPORTUNITY</h2>
-    <h3>1. Education: The Great Equalizer</h3>
+    <div class="fundraising-box">
+      <div class="signal-meter-label">
+        <span>STRATEGIC SIGNAL STRENGTH</span>
+        <span>65% ENCRYPTED</span>
+      </div>
+      <div class="signal-track">
+        <div class="signal-fill"></div>
+      </div>
+      <h3 style="font-family:'Bebas Neue'; color:#fff; margin-top:20px;">Operation: Treasury Covenant</h3>
+      <p style="font-size: 0.9rem;">To broadcast this message across the Republic, we require operational funding. Every contribution strengthens the signal.</p>
+      
+      <div style="display: flex; gap: 15px; margin-top: 25px;">
+        <a href="#" class="toggle-btn" style="flex:1; text-align:center; text-decoration:none; margin:0; font-size:0.8rem;">Contribute Funds</a>
+        <a href="#" class="toggle-btn" style="flex:1; text-align:center; text-decoration:none; margin:0; font-size:0.8rem; border-color:#fff; color:#fff;">Join the Registry</a>
+      </div>
+    </div>
+
+    <h2>II. DOMESTIC POLICY: ARCHITECTURE OF OPPORTUNITY</h2>
     <ul>
-      <li><strong>The Foundation:</strong> Universal, federally-funded Pre-K.</li>
-      <li><strong>The Bartlet Guarantee:</strong> Tuition-free public university for those maintain service-grade GPA.</li>
-      <li><strong>The National Teacher Corps:</strong> Educators as national security assets.</li>
+      <li><strong>Education:</strong> Tuition-free public university for service-grade GPA.</li>
+      <li><strong>Civil Covenant:</strong> Appointing "The Best and the Brightest" to the bench.</li>
     </ul>
 
-    <h2>IV. NATIONAL DEFENSE: THE SHIELD OF LIBERTY</h2>
-    <h3>4. Technological Primacy</h3>
-    <ul>
-      <li><strong>The Digital Frontier:</strong> Pivot to AI-driven defense and elite cyber-warfare.</li>
-      <li><strong>The Proportional Plus Doctrine:</strong> Absolute deterrent military capacity.</li>
-    </ul>
-
-    <div style="text-align: center; margin-top: 100px; opacity: 0.6; font-family: 'Courier Prime'; border-top: 1px solid #334155; padding-top: 40px;">
-      <p><strong>VESTRA RES AGITUR</strong></p>
-      <p>(Your interest is at stake)</p>
+    <div style="text-align: center; margin-top: 100px; opacity: 0.6; font-family: 'Courier Prime';">
+      <p>VESTRA RES AGITUR</p>
     </div>
   </div>
 </div>
