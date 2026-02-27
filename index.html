@@ -72,76 +72,151 @@
     <!-- TOP: illustrated hero — full width -->
     <div class="hero-image-col">
 
-      <!-- Background art (subtle gradient washes, grid, ghost circle, network) -->
+      <!-- Barcelona Pavilion — reflecting pool with sculpture (after own photo) -->
       <svg class="hero-art-svg" viewBox="0 0 1600 500" xmlns="http://www.w3.org/2000/svg"
            preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
-          <radialGradient id="hgc" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#b30505" stop-opacity="0.42"/>
-            <stop offset="100%" stop-color="#b30505" stop-opacity="0"/>
-          </radialGradient>
-          <radialGradient id="hgg" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#d4a517" stop-opacity="0.34"/>
-            <stop offset="100%" stop-color="#d4a517" stop-opacity="0"/>
-          </radialGradient>
-          <radialGradient id="hgb" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#1a5a7a" stop-opacity="0.32"/>
-            <stop offset="100%" stop-color="#1a5a7a" stop-opacity="0"/>
+          <!-- Marble texture: green onyx (panels 1 & 3) -->
+          <filter id="mbl1" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.016 0.005" numOctaves="7" seed="11"/>
+            <feColorMatrix type="matrix" values="
+              0.08 0.10 0.05 0 0.16
+              0.12 0.18 0.07 0 0.26
+              0.07 0.09 0.04 0 0.13
+              0    0    0    1 0"/>
+          </filter>
+          <!-- Marble texture: green onyx (panels 2 & 4) -->
+          <filter id="mbl2" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.016 0.005" numOctaves="7" seed="29"/>
+            <feColorMatrix type="matrix" values="
+              0.08 0.10 0.05 0 0.14
+              0.12 0.18 0.07 0 0.24
+              0.07 0.09 0.04 0 0.12
+              0    0    0    1 0"/>
+          </filter>
+          <!-- Pool gradient: near-black water -->
+          <linearGradient id="poolGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#0f1419"/>
+            <stop offset="60%"  stop-color="#111820"/>
+            <stop offset="100%" stop-color="#0d1117"/>
+          </linearGradient>
+          <!-- Sky/foliage gradient -->
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#141d0f"/>
+            <stop offset="100%" stop-color="#1e2e18"/>
+          </linearGradient>
+          <!-- Edge vignette -->
+          <radialGradient id="vig" cx="50%" cy="35%" r="75%">
+            <stop offset="0%"   stop-color="#000000" stop-opacity="0"/>
+            <stop offset="80%"  stop-color="#000000" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0.60"/>
           </radialGradient>
         </defs>
 
-        <!-- Background -->
-        <rect width="1600" height="500" fill="#111017"/>
+        <!-- ① Sky / foliage band -->
+        <rect width="1600" height="84" fill="url(#skyGrad)"/>
+        <!-- Foliage blobs (trees above pavilion wall) -->
+        <ellipse cx="280"  cy="52" rx="230" ry="58" fill="#182514" opacity="0.75"/>
+        <ellipse cx="680"  cy="42" rx="290" ry="52" fill="#152010" opacity="0.65"/>
+        <ellipse cx="1080" cy="56" rx="250" ry="62" fill="#182514" opacity="0.55"/>
+        <ellipse cx="1440" cy="46" rx="210" ry="50" fill="#152010" opacity="0.65"/>
+        <!-- Leaf edge hints -->
+        <ellipse cx="480"  cy="80" rx="120" ry="30" fill="#1c2e18" opacity="0.5"/>
+        <ellipse cx="900"  cy="75" rx="140" ry="28" fill="#1a2a14" opacity="0.45"/>
+        <ellipse cx="1300" cy="78" rx="130" ry="32" fill="#1c2e18" opacity="0.5"/>
 
-        <!-- Color washes -->
-        <ellipse cx="420" cy="340" rx="460" ry="340" fill="url(#hgc)"/>
-        <ellipse cx="1490" cy="85"  rx="380" ry="280" fill="url(#hgg)"/>
-        <ellipse cx="1310" cy="455" rx="320" ry="220" fill="url(#hgb)"/>
+        <!-- ② Green onyx marble wall — 4 panels -->
+        <!-- Base colors -->
+        <rect x="0"    y="78" width="400" height="268" fill="#2b3d31"/>
+        <rect x="403"  y="78" width="394" height="268" fill="#2f4235"/>
+        <rect x="800"  y="78" width="400" height="268" fill="#2d4033"/>
+        <rect x="1203" y="78" width="397" height="268" fill="#314438"/>
+        <!-- Marble texture overlays -->
+        <rect x="0"    y="78" width="400" height="268" filter="url(#mbl1)" opacity="0.88"/>
+        <rect x="403"  y="78" width="394" height="268" filter="url(#mbl2)" opacity="0.88"/>
+        <rect x="800"  y="78" width="400" height="268" filter="url(#mbl1)" opacity="0.82"/>
+        <rect x="1203" y="78" width="397" height="268" filter="url(#mbl2)" opacity="0.82"/>
+        <!-- Subtle book-match hints (lighter center stripe on each panel) -->
+        <rect x="170"  y="78" width="60"  height="268" fill="#4a6a52" opacity="0.08"/>
+        <rect x="570"  y="78" width="55"  height="268" fill="#4a6a52" opacity="0.07"/>
+        <rect x="970"  y="78" width="60"  height="268" fill="#4a6a52" opacity="0.07"/>
+        <rect x="1365" y="78" width="55"  height="268" fill="#4a6a52" opacity="0.07"/>
 
-        <!-- Faint ledger grid -->
-        <g stroke="#e8e2d4" stroke-width="0.5" opacity="0.07">
-          <line x1="0" y1="50"  x2="1600" y2="50"/>
-          <line x1="0" y1="100" x2="1600" y2="100"/>
-          <line x1="0" y1="150" x2="1600" y2="150"/>
-          <line x1="0" y1="200" x2="1600" y2="200"/>
-          <line x1="0" y1="250" x2="1600" y2="250"/>
-          <line x1="0" y1="300" x2="1600" y2="300"/>
-          <line x1="0" y1="350" x2="1600" y2="350"/>
-          <line x1="0" y1="400" x2="1600" y2="400"/>
-          <line x1="0" y1="450" x2="1600" y2="450"/>
-          <line x1="160"  y1="0" x2="160"  y2="500"/>
-          <line x1="320"  y1="0" x2="320"  y2="500"/>
-          <line x1="480"  y1="0" x2="480"  y2="500"/>
-          <line x1="640"  y1="0" x2="640"  y2="500"/>
-          <line x1="800"  y1="0" x2="800"  y2="500"/>
-          <line x1="960"  y1="0" x2="960"  y2="500"/>
-          <line x1="1120" y1="0" x2="1120" y2="500"/>
-          <line x1="1280" y1="0" x2="1280" y2="500"/>
-          <line x1="1440" y1="0" x2="1440" y2="500"/>
+        <!-- ③ Architectural details -->
+        <!-- Panel joints (dark mortar lines) -->
+        <rect x="400"  y="78" width="4" height="268" fill="#0c0d10"/>
+        <rect x="797"  y="78" width="5" height="268" fill="#0c0d10"/>
+        <rect x="1200" y="78" width="4" height="268" fill="#0c0d10"/>
+        <!-- Roof cap rail (top of marble) -->
+        <rect y="72" width="1600" height="8" fill="#0e0f14"/>
+        <!-- Marble sill (pool threshold) -->
+        <rect y="344" width="1600" height="5" fill="#0c0d10"/>
+        <!-- Travertine floor sill highlight -->
+        <rect y="341" width="1600" height="3" fill="#c4bdb0" opacity="0.22"/>
+
+        <!-- ④ Reflecting pool -->
+        <rect y="349" width="1600" height="151" fill="url(#poolGrad)"/>
+        <!-- Pool surface ripples -->
+        <path d="M0,362 C260,360 520,364 780,362 C1040,360 1300,364 1600,362"
+              stroke="#e8e2d4" stroke-width="0.7" fill="none" opacity="0.09"/>
+        <path d="M0,382 C320,379 640,385 960,382 C1280,379 1500,383 1600,382"
+              stroke="#e8e2d4" stroke-width="0.5" fill="none" opacity="0.06"/>
+        <path d="M200,408 C500,405 800,411 1100,408 C1350,406 1530,409 1600,408"
+              stroke="#e8e2d4" stroke-width="0.4" fill="none" opacity="0.04"/>
+        <!-- Pool far-wall reflection (faint green wash in water) -->
+        <rect y="349" width="1600" height="80" fill="#2d4033" opacity="0.14"/>
+
+        <!-- ⑤ Figure: Georg Kolbe "Alba" — bronze silhouette, right-center -->
+        <g transform="translate(980,0)" opacity="0.94">
+          <!-- Head (slightly tilted back, joyful) -->
+          <ellipse cx="0" cy="188" rx="14" ry="16" fill="#b8855a"/>
+          <!-- Neck -->
+          <rect x="-5" y="202" width="10" height="12" fill="#a87848" rx="2"/>
+          <!-- Torso -->
+          <path d="M-15,213 C-17,234 -19,256 -18,276 C-17,294 -12,310 0,315
+                   C12,310 17,294 18,276 C19,256 17,234 15,213 Z" fill="#b8855a"/>
+          <!-- Hips to feet -->
+          <path d="M-18,276 C-18,290 -14,305 -10,318
+                   C-7,328 -7,334 -8,344 L8,344
+                   C7,334 7,328 10,318 C14,305 18,290 18,276 Z" fill="#a87848"/>
+          <!-- Left arm — raised, spreading left -->
+          <path d="M-15,220 Q-32,212 -52,204 Q-70,197 -88,193"
+                stroke="#b8855a" stroke-width="11" fill="none" stroke-linecap="round"/>
+          <path d="M-88,193 Q-100,191 -106,187"
+                stroke="#b8855a" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <!-- Right arm — raised, spreading right -->
+          <path d="M15,220 Q32,212 52,204 Q70,197 88,193"
+                stroke="#b8855a" stroke-width="11" fill="none" stroke-linecap="round"/>
+          <path d="M88,193 Q100,191 106,187"
+                stroke="#b8855a" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <!-- Subtle highlight on torso edge -->
+          <path d="M15,213 C17,234 19,256 18,276" stroke="#d4a070" stroke-width="2" fill="none" opacity="0.4"/>
         </g>
 
-        <!-- Ghost circle — whisper of the all-seeing eye -->
-        <circle cx="1110" cy="225" r="192" fill="none" stroke="#d4a517" stroke-width="1.5" opacity="0.20"/>
-        <circle cx="1110" cy="225" r="86"  fill="none" stroke="#d4a517" stroke-width="0.8" opacity="0.14"/>
+        <!-- ⑥ Figure reflection in pool (mirrored at y=347) -->
+        <!-- transform reflects around y=347: final_y = 694 - original_y -->
+        <g transform="translate(980,0)" opacity="0.20">
+          <g transform="translate(0,694) scale(1,-1)">
+            <ellipse cx="0" cy="188" rx="14" ry="11" fill="#b8855a"/>
+            <rect x="-5" y="202" width="10" height="12" fill="#a87848" rx="2"/>
+            <path d="M-15,213 C-17,234 -19,256 -18,276 C-17,294 -12,310 0,315
+                     C12,310 17,294 18,276 C19,256 17,234 15,213 Z" fill="#b8855a"/>
+            <path d="M-18,276 C-18,290 -14,305 -10,318
+                     C-7,328 -7,334 -8,344 L8,344
+                     C7,334 7,328 10,318 C14,305 18,290 18,276 Z" fill="#a87848"/>
+            <path d="M-15,220 Q-32,212 -52,204 Q-70,197 -88,193"
+                  stroke="#b8855a" stroke-width="11" fill="none" stroke-linecap="round"/>
+            <path d="M-88,193 Q-100,191 -106,187"
+                  stroke="#b8855a" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M15,220 Q32,212 52,204 Q70,197 88,193"
+                  stroke="#b8855a" stroke-width="11" fill="none" stroke-linecap="round"/>
+            <path d="M88,193 Q100,191 106,187"
+                  stroke="#b8855a" stroke-width="8" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
 
-        <!-- Network nodes — conspiracy web, upper right -->
-        <g stroke="#1a5a7a" stroke-width="1.4" opacity="0.45">
-          <line x1="872" y1="80"  x2="944" y2="140"/>
-          <line x1="944" y1="140" x2="1020" y2="64"/>
-          <line x1="1020" y1="64" x2="1090" y2="110"/>
-          <line x1="944" y1="140" x2="968" y2="194"/>
-          <line x1="1090" y1="110" x2="1165" y2="74"/>
-          <line x1="968" y1="194" x2="1034" y2="190"/>
-        </g>
-        <g fill="#1a5a7a">
-          <circle cx="872"  cy="80"  r="3.5" opacity="0.65"/>
-          <circle cx="944"  cy="140" r="3.5" opacity="0.65"/>
-          <circle cx="1020" cy="64"  r="3"   opacity="0.55"/>
-          <circle cx="1090" cy="110" r="3"   opacity="0.55"/>
-          <circle cx="1165" cy="74"  r="2.5" opacity="0.48"/>
-          <circle cx="968"  cy="194" r="3"   opacity="0.52"/>
-          <circle cx="1034" cy="190" r="2.5" opacity="0.44"/>
-        </g>
+        <!-- ⑦ Vignette (edges darker, drawing eye to center) -->
+        <rect width="1600" height="500" fill="url(#vig)"/>
       </svg>
 
       <!-- Text overlay -->
