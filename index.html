@@ -4,6 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>fgd135 — Matt Biggins</title>
+  <meta name="description" content="Fiction, nonfiction, essay, and satire from the Pacific Northwest." />
+  <meta property="og:title" content="fgd135 — Matt Biggins" />
+  <meta property="og:description" content="Fiction, nonfiction, essay, and satire from the Pacific Northwest." />
+  <meta property="og:image" content="https://fgd135.com/og-image.png" />
+  <meta property="og:url" content="https://fgd135.com" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="fgd135 — Matt Biggins" />
+  <meta name="twitter:description" content="Fiction, nonfiction, essay, and satire from the Pacific Northwest." />
+  <meta name="twitter:image" content="https://fgd135.com/og-image.png" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
@@ -303,22 +314,24 @@ function toggleMobile() {
   const sw2 = amps.map(A => 2 * Math.pow(55 + A,       2));
   const sw3 = amps.map(A => 2 * Math.pow(60 + A,       2));
 
-  // Animation — peaks drift slowly at individual phases
+  // Animation — peaks drift + slow amplitude breathing
   let t = 0;
   function tick() {
     t += 0.0022;
+    const breathe = 0.86 + 0.14 * Math.sin(t * 0.38); // inhale/exhale cycle ~17s
     for (let i = 0; i < rows; i++) {
       const A = amps[i];
       if (A === 0) { pls[i].setAttribute('points', '0,' + rowY[i] + ' 800,' + rowY[i]); continue; }
+      const Ab = A * breathe;
       const drift = Math.sin(t + i * 0.20) * (8 + A * 0.08);
       const c  = bx[i]  + drift;
       const c2 = bx2[i] + drift * 0.6;
       const c3 = bx3[i] + drift * 0.6;
       const pts = [];
       for (let x = 0; x <= 800; x += 5) {
-        const g  = A      * Math.exp(-Math.pow(x-c,  2) / sw1[i]);
-        const s1 = A*0.42 * Math.exp(-Math.pow(x-c2, 2) / sw2[i]);
-        const s2 = A*0.35 * Math.exp(-Math.pow(x-c3, 2) / sw3[i]);
+        const g  = Ab      * Math.exp(-Math.pow(x-c,  2) / sw1[i]);
+        const s1 = Ab*0.42 * Math.exp(-Math.pow(x-c2, 2) / sw2[i]);
+        const s2 = Ab*0.35 * Math.exp(-Math.pow(x-c3, 2) / sw3[i]);
         pts.push(x + ',' + (rowY[i] - g - s1 - s2).toFixed(1));
       }
       pls[i].setAttribute('points', pts.join(' '));
