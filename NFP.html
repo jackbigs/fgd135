@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NFP Platform | fgd135</title>
+  <title>The New Federalist Party | fgd135</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Courier+Prime&family=Bebas+Neue&display=swap" rel="stylesheet" />
   <style>
     :root { --accent: #c5a059; --bg: #0d0e15; }
     body { background: var(--bg); color: #cbd5e1; font-family: 'Cormorant Garamond', serif; margin: 0; line-height: 1.6; }
     
-    /* Header with Flag Background */
+    /* Corrected Flag Header */
     .nfp-header {
       position: relative;
       height: 60vh;
@@ -20,130 +20,148 @@
       align-items: center;
       text-align: center;
       background: #000;
-      border-bottom: 1px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
       overflow: hidden;
     }
     .flag-overlay {
       position: absolute;
-      width: 120%;
-      opacity: 0.12;
-      filter: sepia(0.5) contrast(1.2);
+      width: 110%;
+      height: auto;
+      opacity: 0.15;
+      filter: grayscale(0.4) contrast(1.2);
       pointer-events: none;
+      z-index: 1;
     }
     .nfp-header h1 { 
       font-family: 'Bebas Neue', sans-serif; 
-      font-size: clamp(3rem, 10vw, 6rem); 
+      font-size: clamp(3rem, 8vw, 6rem); 
       color: #fff; margin: 0; 
       letter-spacing: 8px; 
       z-index: 2;
+      text-shadow: 0 0 15px rgba(0,0,0,0.9);
     }
 
-    /* Toggle Logic */
+    /* Interactive Toggle */
     #platform-toggle { display: none; }
     .full-platform { 
       max-height: 0; 
       overflow: hidden; 
-      transition: max-height 0.8s ease-out; 
+      transition: max-height 0.8s ease-out, opacity 0.5s; 
       opacity: 0;
     }
     #platform-toggle:checked ~ .full-platform { 
-      max-height: 5000px; 
+      max-height: 8000px; 
       opacity: 1; 
-      transition: max-height 1.5s ease-in, opacity 1s;
     }
 
-    .toggle-label {
+    .toggle-btn {
       display: inline-block;
       margin: 40px auto;
-      padding: 12px 30px;
+      padding: 12px 40px;
       border: 1px solid var(--accent);
       font-family: 'Courier Prime', monospace;
       color: var(--accent);
       cursor: pointer;
       text-transform: uppercase;
       transition: 0.3s;
-      z-index: 10;
     }
-    .toggle-label:hover { background: var(--accent); color: #000; }
-    #platform-toggle:checked ~ .toggle-label { display: none; }
+    .toggle-btn:hover { background: var(--accent); color: #000; }
+    #platform-toggle:checked ~ .toggle-btn { display: none; }
 
-    .content-wrap { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-    .preamble { font-size: 1.5rem; font-style: italic; color: #fff; margin-bottom: 40px; }
+    .content-wrap { max-width: 850px; margin: 0 auto; padding: 60px 20px; text-align: left; }
+    .preamble { font-size: 1.6rem; font-style: italic; color: #fff; border-left: 3px solid var(--accent); padding-left: 30px; margin-bottom: 40px; }
     
-    h2 { font-family: 'Bebas Neue', sans-serif; color: var(--accent); font-size: 2.2rem; border-bottom: 1px solid #334155; margin-top: 50px; }
-    h3 { font-family: 'Courier Prime', monospace; color: #fff; font-size: 1.2rem; }
+    h2 { font-family: 'Bebas Neue', sans-serif; color: var(--accent); font-size: 2.5rem; letter-spacing: 2px; border-bottom: 1px solid #1e293b; margin-top: 60px; padding-bottom: 10px; }
+    h3 { font-family: 'Courier Prime', monospace; color: #fff; font-size: 1.3rem; margin-top: 30px; }
     ul { list-style: none; padding: 0; }
-    li { margin-bottom: 15px; padding-left: 20px; border-left: 1px solid #334155; }
-    li::before { content: "• "; color: var(--accent); margin-left: -15px; }
+    li { margin-bottom: 20px; padding-left: 25px; position: relative; }
+    li::before { content: "»"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+    strong { color: #fff; font-weight: 600; }
 
-    /* Scanlines */
-    body::after {
-      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
-      background-size: 100% 4px; z-index: 100; pointer-events: none; opacity: 0.2;
-    }
+    /* Signal Flicker */
+    @keyframes scan { from { top: -100px; } to { top: 100%; } }
+    .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: linear-gradient(to bottom, transparent, rgba(197, 160, 89, 0.05), transparent); animation: scan 8s linear infinite; pointer-events: none; z-index: 1000; }
   </style>
 </head>
 <body>
 
+<div class="scanline"></div>
+
 <div class="nfp-header">
-  <svg class="flag-overlay" viewBox="0 0 741 390"><rect width="741" height="390" fill="#333"/><path d="M0 0H741V30H0V0ZM0 60H741V90H0V60ZM0 120H741V150H0V120ZM0 180H741V210H0V180ZM0 240H741V270H0V240ZM0 300H741V330H0V300ZM0 360H741V390H0V360Z" fill="#550000"/><rect width="296" height="210" fill="#111"/></svg>
-  <span style="font-family:'Courier Prime'; color:var(--accent); z-index:2; letter-spacing:2px;">SIGNAL VERIFIED // CRM114</span>
+  <svg class="flag-overlay" viewBox="0 0 741 390" xmlns="http://www.w3.org/2000/svg">
+    <rect width="741" height="390" fill="#3c3c3c"/>
+    <path d="M0 0H741V30H0V0ZM0 60H741V90H0V60ZM0 120H741V150H0V120ZM0 180H741V210H0V180ZM0 240H741V270H0V240ZM0 300H741V330H0V300ZM0 360H741V390H0V360Z" fill="#7b2121"/>
+    <rect width="296" height="210" fill="#21294d"/>
+    <path d="M15 15l2 5h5l-4 3 2 5-5-3-5 3 2-5-4-3h5z" fill="#fff" opacity="0.6"/>
+    <rect x="0" y="0" width="296" height="210" fill="url(#star-pattern)" />
+    <defs>
+      <pattern id="star-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M20 10l2 5h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" fill="#fff" opacity="0.4"/>
+      </pattern>
+    </defs>
+  </svg>
+  
+  <span style="font-family:'Courier Prime'; color:var(--accent); z-index:2; letter-spacing:3px; margin-bottom:10px;">DE-CLASSIFIED // RESTRICTED ACCESS</span>
   <h1>THE NEW FEDERALIST PARTY</h1>
-  <p style="z-index:2; font-style:italic;">“A Restoration of the American Idea”</p>
+  <p style="z-index:2; font-style:italic; font-size:1.4rem;">“A Restoration of the American Idea”</p>
 </div>
 
 <div class="content-wrap">
   <input type="checkbox" id="platform-toggle">
   
   <section class="preamble">
-    <p>The New Federalist Party does not seek to reinvent America, but to remember it. We believe in a government that acts with intellectual rigor, moral clarity, and a profound sense of duty.</p>
+    "The New Federalist Party does not seek to reinvent America, but to remember it. We believe in a government that acts with intellectual rigor, moral clarity, and a profound sense of duty."
   </section>
 
-  <label for="platform-toggle" class="toggle-label">Access Full Platform</label>
+  <label for="platform-toggle" class="toggle-btn">Read Full Platform</label>
 
   <div class="full-platform">
     <h2>I. PREAMBLE: THE CALL TO SERVICE</h2>
     <p>We reject the politics of the loudest voice in favor of the politics of the best idea. Our mission is simple: to ensure that the federal government remains a "City on a Hill"—a beacon of competence, justice, and unyielding strength.</p>
 
-    <h2>II. DOMESTIC POLICY: ARCHITECTURE OF OPPORTUNITY</h2>
+    <h2>II. DOMESTIC POLICY: THE ARCHITECTURE OF OPPORTUNITY</h2>
     <h3>1. Education: The Great Equalizer</h3>
     <ul>
-      <li><strong>The Foundation:</strong> Implementation of universal, federally-funded Pre-K.</li>
-      <li><strong>The Bartlet Guarantee:</strong> No student admitted to a public university is turned away due to inability to pay.</li>
-      <li><strong>National Teacher Corps:</strong> Treating educators as national security assets.</li>
+      <li><strong>The Foundation:</strong> Implementation of universal, federally-funded Pre-K to close the achievement gap before it begins.</li>
+      <li><strong>The Bartlet Guarantee:</strong> A federal-state partnership ensuring that no student who earns admission to a public university is turned away due to an inability to pay.</li>
+      <li><strong>The National Teacher Corps:</strong> Treating educators as national security assets with full scholarships and competitive federal salary subsidies.</li>
     </ul>
 
     <h3>2. Justice and the Civil Covenant</h3>
     <ul>
-      <li><strong>The Living Constitution:</strong> Appointing "The Best and the Brightest"—jurists who prioritize individual liberties.</li>
-      <li><strong>The John Lewis Mandate:</strong> Comprehensive federal voting rights protections.</li>
-      <li><strong>Rational Safety:</strong> Universal background checks for all firearm transfers.</li>
+      <li><strong>The Living Constitution:</strong> Appointing jurists who prioritize the protection of individual liberties and the strict separation of church and state.</li>
+      <li><strong>The John Lewis Mandate:</strong> Passing comprehensive federal voting rights protections for an unencumbered path to the ballot.</li>
+      <li><strong>Rational Safety:</strong> Universal background checks for all firearm transfers while respecting responsible ownership heritage.</li>
     </ul>
 
     <h2>III. ECONOMIC POLICY: FISCAL STEWARDSHIP</h2>
-    <h3>3. The "Grand Bargain"</h3>
+    <h3>3. The "Big Bang" Social Security Reform</h3>
     <ul>
-      <li><strong>A Century of Solvency:</strong> Securing the Social Security Trust Fund for the next 75 years.</li>
-      <li><strong>The Fair Share Tax Code:</strong> Eliminating loopholes and taxing capital gains to reflect the value of labor.</li>
+      <li><strong>A Century of Solvency:</strong> A bipartisan "Grand Bargain" to secure the Trust Fund for the next 75 years.</li>
+      <li><strong>The Fair Share Tax Code:</strong> Eliminating corporate loopholes and taxing capital gains at a rate reflecting the true value of labor.</li>
     </ul>
 
     <h2>IV. NATIONAL DEFENSE: THE SHIELD OF LIBERTY</h2>
-    <h3>4. Technological Primacy</h3>
+    <h3>4. Technological Primacy and Deterrence</h3>
     <ul>
-      <li><strong>The Digital Frontier:</strong> Pivoting to AI-driven defense and elite cyber-warfare.</li>
-      <li><strong>The Proportional Plus Doctrine:</strong> A military capacity so advanced it serves as an absolute deterrent.</li>
+      <li><strong>The Digital Frontier:</strong> Pivoting the defense budget to AI-driven defense, satellite security, and elite cyber-warfare.</li>
+      <li><strong>The Proportional Plus Doctrine:</strong> Maintaining military capacity so advanced it serves as an absolute deterrent.</li>
+      <li><strong>The HUMINT Initiative:</strong> Drastically increasing funding for human intelligence and diplomatic presence.</li>
     </ul>
 
     <h3>5. The Veteran Covenant</h3>
-    <p>A total overhaul of the VA system, providing "concierge-level" healthcare and mental health services.</p>
+    <p>A total overhaul of the VA system, providing "concierge-level" healthcare and mental health services for life.</p>
 
     <h2>V. FOREIGN POLICY: THE BARTLET DOCTRINE</h2>
-    <p>The United States has a moral obligation to prevent genocide. We lead through multilateral diplomacy first, but we do not stand by while the innocent are slaughtered.</p>
+    <p>The United States has a moral obligation to prevent genocide and systemic human rights abuses. We lead with diplomacy first, but we do not stand by while the innocent are slaughtered.</p>
 
     <h2>VI. CONCLUSION: WHAT’S NEXT?</h2>
-    <p>Decisions are made by those who show up. It’s time to get to work.</p>
-    <p style="font-family:'Courier Prime'; text-align:center; color:var(--accent); margin-top:50px;">Vestra Res Agitur</p>
+    <p>The New Federalist Party is focused on securing the future. Expertise is a virtue, and the American people are capable of handling the truth.</p>
+    
+    <div style="text-align: center; margin-top: 100px; opacity: 0.6; font-family: 'Courier Prime'; border-top: 1px solid #334155; padding-top: 40px;">
+      <p><strong>VESTRA RES AGITUR</strong></p>
+      <p>(Your interest is at stake)</p>
+    </div>
   </div>
 </div>
 
