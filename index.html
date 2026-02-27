@@ -317,7 +317,7 @@ function toggleMobile() {
   // Animation — peaks drift + slow amplitude breathing
   let t = 0;
   function tick() {
-    t += 0.0022;
+    t += 0.014;
     const breathe = 0.86 + 0.14 * Math.sin(t * 0.38); // inhale/exhale cycle ~17s
     for (let i = 0; i < rows; i++) {
       const A = amps[i];

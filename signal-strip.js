@@ -32,7 +32,7 @@
 
   let t = 0;
   function tick() {
-    t += 0.0022;
+    t += 0.014;
     for (let i = 0; i < rows; i++) {
       const A = amps[i];
       if (A === 0) { pls[i].setAttribute('points', '0,' + rowY[i] + ' 800,' + rowY[i]); continue; }
