@@ -33,7 +33,6 @@
       <li><a onclick="window.location='stories.html'" data-page="stories">Stories</a></li>
       <li><a onclick="window.location='photos.html'" data-page="photos">Photos</a></li>
       <li><a onclick="showPage('about')"   data-page="about">About</a></li>
-      <li><a onclick="showPage('now')"     data-page="now">Now</a></li>
       <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
     </ul>
     <button class="nav-burger" onclick="toggleMobile()" aria-label="Menu">
@@ -48,7 +47,6 @@
   <a onclick="window.location='stories.html';toggleMobile()">Stories</a>
   <a onclick="window.location='photos.html';toggleMobile()">Photos</a>
   <a onclick="showPage('about');toggleMobile()">About</a>
-  <a onclick="showPage('now');toggleMobile()">Now</a>
   <a onclick="showPage('contact');toggleMobile()">Contact</a>
 </div>
 
@@ -71,14 +69,89 @@
 
   <div class="hero-split">
 
-    <!-- TOP: signal graphic — full width with ghost headline -->
-    <div class="hero-graphic-col">
-      <div class="hero-signal-headline" aria-hidden="true">Words from somewhere<br>worth going.</div>
-      <svg id="signalSvg" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg"
-        class="signal-svg" preserveAspectRatio="xMidYMid meet">
-        <text x="8" y="193" font-family="Courier Prime, monospace" font-size="9"
-          fill="#b30505" opacity="0.28" letter-spacing="0.1em">CRM-114 · SIGNAL ANALYSIS · 135Hz</text>
+    <!-- TOP: illustrated hero — full width -->
+    <div class="hero-image-col">
+
+      <!-- Background art (subtle gradient washes, grid, ghost circle, network) -->
+      <svg class="hero-art-svg" viewBox="0 0 1600 500" xmlns="http://www.w3.org/2000/svg"
+           preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <radialGradient id="hgc" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#b30505" stop-opacity="0.20"/>
+            <stop offset="100%" stop-color="#b30505" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="hgg" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#d4a517" stop-opacity="0.16"/>
+            <stop offset="100%" stop-color="#d4a517" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="hgb" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1a5a7a" stop-opacity="0.14"/>
+            <stop offset="100%" stop-color="#1a5a7a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Background -->
+        <rect width="1600" height="500" fill="#111017"/>
+
+        <!-- Color washes -->
+        <ellipse cx="420" cy="340" rx="460" ry="340" fill="url(#hgc)"/>
+        <ellipse cx="1490" cy="85"  rx="380" ry="280" fill="url(#hgg)"/>
+        <ellipse cx="1310" cy="455" rx="320" ry="220" fill="url(#hgb)"/>
+
+        <!-- Faint ledger grid -->
+        <g stroke="#e8e2d4" stroke-width="0.5" opacity="0.028">
+          <line x1="0" y1="50"  x2="1600" y2="50"/>
+          <line x1="0" y1="100" x2="1600" y2="100"/>
+          <line x1="0" y1="150" x2="1600" y2="150"/>
+          <line x1="0" y1="200" x2="1600" y2="200"/>
+          <line x1="0" y1="250" x2="1600" y2="250"/>
+          <line x1="0" y1="300" x2="1600" y2="300"/>
+          <line x1="0" y1="350" x2="1600" y2="350"/>
+          <line x1="0" y1="400" x2="1600" y2="400"/>
+          <line x1="0" y1="450" x2="1600" y2="450"/>
+          <line x1="160"  y1="0" x2="160"  y2="500"/>
+          <line x1="320"  y1="0" x2="320"  y2="500"/>
+          <line x1="480"  y1="0" x2="480"  y2="500"/>
+          <line x1="640"  y1="0" x2="640"  y2="500"/>
+          <line x1="800"  y1="0" x2="800"  y2="500"/>
+          <line x1="960"  y1="0" x2="960"  y2="500"/>
+          <line x1="1120" y1="0" x2="1120" y2="500"/>
+          <line x1="1280" y1="0" x2="1280" y2="500"/>
+          <line x1="1440" y1="0" x2="1440" y2="500"/>
+        </g>
+
+        <!-- Ghost circle — whisper of the all-seeing eye -->
+        <circle cx="1110" cy="225" r="192" fill="none" stroke="#d4a517" stroke-width="0.7" opacity="0.07"/>
+        <circle cx="1110" cy="225" r="86"  fill="none" stroke="#d4a517" stroke-width="0.4" opacity="0.05"/>
+
+        <!-- Network nodes — conspiracy web, upper right -->
+        <g stroke="#1a5a7a" stroke-width="0.8" opacity="0.18">
+          <line x1="872" y1="80"  x2="944" y2="140"/>
+          <line x1="944" y1="140" x2="1020" y2="64"/>
+          <line x1="1020" y1="64" x2="1090" y2="110"/>
+          <line x1="944" y1="140" x2="968" y2="194"/>
+          <line x1="1090" y1="110" x2="1165" y2="74"/>
+          <line x1="968" y1="194" x2="1034" y2="190"/>
+        </g>
+        <g fill="#1a5a7a">
+          <circle cx="872"  cy="80"  r="2.5" opacity="0.28"/>
+          <circle cx="944"  cy="140" r="2.5" opacity="0.28"/>
+          <circle cx="1020" cy="64"  r="2"   opacity="0.22"/>
+          <circle cx="1090" cy="110" r="2"   opacity="0.22"/>
+          <circle cx="1165" cy="74"  r="1.8" opacity="0.18"/>
+          <circle cx="968"  cy="194" r="2"   opacity="0.20"/>
+          <circle cx="1034" cy="190" r="1.5" opacity="0.16"/>
+        </g>
       </svg>
+
+      <!-- Text overlay -->
+      <div class="hero-art-text" aria-label="Writing by Matt Biggins">
+        <span class="hero-art-label">Writing by</span>
+        <div class="hero-art-rule"></div>
+        <h1 class="hero-art-name">Matt Biggins</h1>
+        <p class="hero-art-bio">Fiction, essay, and satire from the Pacific Northwest.<br>Writing that follows power, truth, and memory wherever they lead.</p>
+      </div>
+
     </div>
 
     <!-- BOTTOM: id + tagline + featured -->
@@ -248,12 +321,12 @@
 <footer>
   <div class="footer-inner" style="max-width:1080px;margin:0 auto;">
     <div class="site-name">fgd135</div>
+    <p class="footer-motto">Words from somewhere worth going.</p>
     <div class="footer-links">
       <a onclick="showPage('home')">Home</a>
       <a onclick="window.location='stories.html'">Stories</a>
       <a onclick="window.location='photos.html'">Photos</a>
       <a onclick="showPage('about')">About</a>
-      <a onclick="showPage('now')">Now</a>
       <a onclick="showPage('contact')">Contact</a>
     </div>
     <div class="footer-copy">© 2026 fgd135. All rights reserved.</div>
@@ -275,71 +348,7 @@ function toggleMobile() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
 
-/* ── SIGNAL DISPLAY GENERATOR ──────────────────────────────── */
-(function() {
-  const svg = document.getElementById('signalSvg');
-  if (!svg) return;
-
-  // 28 rows, tightly spaced — gradient #990202 → #b30505, animated drift
-  const rows = 28, startY = 14, rowH = 6, maxA = 38;
-  const amps = [0,0.3,0.8,2,4,7,11,16,22,28,33,36,38,38,38,38,36,33,28,22,16,11,7,4,2,0.8,0.3,0];
-
-  // Base peak centers — main, left shoulder, right shoulder
-  const bx  = [400,403,396,406,410,401,397,404,400,396,403,398,406,402,397,404,399,406,401,397,403,398,405,400,396,403,399,400];
-  const bx2 = [195,198,192,200,203,196,192,199,195,191,197,193,200,196,191,198,194,200,195,191,197,193,199,194,191,197,193,195];
-  const bx3 = [605,608,601,611,614,606,602,609,605,601,608,603,611,607,602,609,604,611,606,602,608,603,610,605,601,608,604,605];
-
-  // Color gradient: #990202 (quiet) → #b30505 (peak)
-  function rowColor(A) {
-    const t = Math.min(A / maxA, 1);
-    return 'rgb(' + Math.round(153+26*t) + ',' + Math.round(2+3*t) + ',' + Math.round(2+3*t) + ')';
-  }
-
-  // Create all polylines once, update points each frame
-  const pls = [], rowY = [];
-  for (let i = 0; i < rows; i++) {
-    const A = amps[i];
-    const pl = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
-    pl.setAttribute('stroke', rowColor(A));
-    pl.setAttribute('stroke-width', A > 30 ? '1.1' : A > 14 ? '0.75' : '0.45');
-    pl.setAttribute('fill', 'none');
-    pl.setAttribute('opacity', String(A > 30 ? 0.92 : A > 10 ? 0.62 : A > 2 ? 0.38 : 0.18));
-    svg.insertBefore(pl, svg.firstChild);
-    pls.push(pl);
-    rowY.push(startY + i * rowH);
-  }
-
-  // Precompute Gaussian widths (constant per row)
-  const sw1 = amps.map(A => 2 * Math.pow(80 + A * 1.6, 2));
-  const sw2 = amps.map(A => 2 * Math.pow(55 + A,       2));
-  const sw3 = amps.map(A => 2 * Math.pow(60 + A,       2));
-
-  // Animation — peaks drift + slow amplitude breathing
-  let t = 0;
-  function tick() {
-    t += 0.014;
-    const breathe = 0.86 + 0.14 * Math.sin(t * 0.38); // inhale/exhale cycle ~17s
-    for (let i = 0; i < rows; i++) {
-      const A = amps[i];
-      if (A === 0) { pls[i].setAttribute('points', '0,' + rowY[i] + ' 800,' + rowY[i]); continue; }
-      const Ab = A * breathe;
-      const drift = Math.sin(t + i * 0.20) * (8 + A * 0.08);
-      const c  = bx[i]  + drift;
-      const c2 = bx2[i] + drift * 0.6;
-      const c3 = bx3[i] + drift * 0.6;
-      const pts = [];
-      for (let x = 0; x <= 800; x += 5) {
-        const g  = Ab      * Math.exp(-Math.pow(x-c,  2) / sw1[i]);
-        const s1 = Ab*0.42 * Math.exp(-Math.pow(x-c2, 2) / sw2[i]);
-        const s2 = Ab*0.35 * Math.exp(-Math.pow(x-c3, 2) / sw3[i]);
-        pts.push(x + ',' + (rowY[i] - g - s1 - s2).toFixed(1));
-      }
-      pls[i].setAttribute('points', pts.join(' '));
-    }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-})();
+/* ── (signal display moved to story pages via signal-strip.js) ── */
 
 /* ── LOGO / EASTER EGG TRIGGER ────────────────────────────── */
 (function() {
