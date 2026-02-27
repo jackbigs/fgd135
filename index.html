@@ -56,39 +56,38 @@
 ═══════════════════════════════════════════════════════ -->
 <div class="page active" id="page-home">
 
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-vignette"></div>
-    <div class="hero-rim"></div>
-    <div class="hero-content">
-      <div class="hero-kicker">Fiction · Food · Travel · &amp;c.</div>
-      <h1 class="hero-title">Words from<br><em>somewhere</em><br>worth going</h1>
-      <p class="hero-sub">Stories that follow curiosity wherever it leads.</p>
-      <button class="btn-ghost" onclick="window.location='stories.html'">Read the archive</button>
+  <div class="hero-editorial">
+
+    <!-- LEFT: image -->
+    <div class="hero-img-col">
+      <img src="WarRoom.jpg" alt="War Room — Dr. Strangelove"
+        onerror="this.src=''; this.parentElement.style.background='#1a1714';" />
+      <div class="hero-img-caption">Dr. Strangelove — Stanley Kubrick, 1964</div>
     </div>
-  </section>
 
-  <div class="rim-rule"></div>
-
-  <section class="featured-band">
-    <div class="container">
-      <div>
-        <div class="featured-meta">
-          <span class="label cr">Featured</span>
-          <span class="label sep">—</span>
-          <span class="label">Fiction</span>
-          <span class="label sep">·</span>
-          <span class="label">Paris</span>
+    <!-- RIGHT: text -->
+    <div class="hero-text-col">
+      <div class="hero-text-top">
+        <div class="hero-issue-line">Fiction · Nonfiction · Essay</div>
+        <div class="hero-wordmark">
+          <em>fgd135</em>
+          Words from<br>somewhere<br>worth going
         </div>
-        <h2 class="featured-title">Truth to Power</h2>
-        <p class="featured-excerpt">A White House press secretary discovers a secret that could unmake a presidency.</p>
-        <button class="btn-text" onclick="window.location='truth.html'">Read the story →</button>
+        <p class="hero-tagline">Stories that follow curiosity wherever it leads.</p>
+        <button class="hero-cta" onclick="window.location='stories.html'">Read the archive</button>
       </div>
-      <div class="featured-img" onclick="window.location='truth.html'" style="cursor:pointer">
-        <img src="WarRoom.jpg" alt="War Room" onerror="this.parentElement.innerHTML='<div class=\'featured-img-placeholder\'><span>Add WarRoom.jpg here</span></div>'" />
+
+      <div class="hero-featured-strip" onclick="window.location='truth.html'" style="cursor:pointer">
+        <div class="hero-featured-num">—</div>
+        <div>
+          <div class="hero-featured-label">Featured · Fiction</div>
+          <div class="hero-featured-title">Truth to Power</div>
+          <div class="hero-featured-lede">A White House press secretary discovers a secret that could unmake a presidency.</div>
+        </div>
       </div>
     </div>
-  </section>
+
+  </div>
 
   <section class="story-list-section">
     <div class="container-wide">
@@ -165,11 +164,11 @@
         <p style="color:var(--ink-muted); font-style:italic;">The name fgd135 is from Dr. Strangelove — a code on the CRM114 Discriminator, a device that filters out all but verified signal. It works until it doesn't. This site operates on a similar principle.</p>
       </div>
       <aside class="about-aside">
-        <div class="about-photo"><img src="Matt_basq_style.png" alt="Matt Biggins" style="width:100%;height:100%;object-fit:cover;" /></div>
+        <div class="about-photo"><img src="matt.png" alt="Matt Biggins" style="width:100%;height:100%;object-fit:cover;" /></div>
         <div class="about-details">
           <div class="about-detail-row"><span class="label">Based in</span><span class="about-detail-value">Pacific Northwest</span></div>
-          <div class="about-detail-row"><span class="label">Writing since</span><span class="about-detail-value">Update this</span></div>
-          <div class="about-detail-row"><span class="label">Currently</span><span class="about-detail-value">Something in progress</span></div>
+          <div class="about-detail-row"><span class="label">Writing since</span><span class="about-detail-value">I started</span></div>
+          <div class="about-detail-row"><span class="label">Currently</span><span class="about-detail-value">A sci-fi story</span></div>
         </div>
       </aside>
     </div>
@@ -266,7 +265,7 @@ function toggleMobile() {
 async function fetchBluesky() {
   const feed = document.getElementById('bskyFeed');
   try {
-    const res = await fetch('https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=jackbigs.bsky.social&limit=6&filter=posts_no_replies');
+    const res = await fetch('https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=jackbigs.bsky.social&limit=12&filter=posts_and_author_threads');
     if (!res.ok) throw new Error('API error');
     const data = await res.json();
     const posts = (data.feed || []).filter(f => !f.post.record.reply).slice(0, 5);
