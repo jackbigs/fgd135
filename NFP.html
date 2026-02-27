@@ -10,10 +10,10 @@
     :root { --accent: #c5a059; --bg: #0d0e15; }
     body { background: var(--bg); color: #cbd5e1; font-family: 'Cormorant Garamond', serif; margin: 0; line-height: 1.6; }
     
-    /* Corrected Flag Header */
+    /* THE HEADER */
     .nfp-header {
       position: relative;
-      height: 60vh;
+      height: 70vh; 
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -23,22 +23,30 @@
       border-bottom: 2px solid var(--accent);
       overflow: hidden;
     }
+
+    /* THE FLAG - Visibility Boosted */
     .flag-overlay {
       position: absolute;
-      width: 110%;
+      width: 120%;
       height: auto;
-      opacity: 0.15;
-      filter: grayscale(0.4) contrast(1.2);
+      opacity: 0.6; /* Increased from 0.15 to 0.6 */
+      filter: grayscale(0.1) contrast(1.2) brightness(0.7);
       pointer-events: none;
       z-index: 1;
     }
-    .nfp-header h1 { 
-      font-family: 'Bebas Neue', sans-serif; 
-      font-size: clamp(3rem, 8vw, 6rem); 
-      color: #fff; margin: 0; 
-      letter-spacing: 8px; 
+
+    /* THE VIGNETTE - Ensures text stays readable */
+    .nfp-header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle, rgba(13,14,21,0.4) 0%, rgba(13,14,21,0.9) 90%);
       z-index: 2;
-      text-shadow: 0 0 15px rgba(0,0,0,0.9);
+    }
+
+    .nfp-header h1, .nfp-header span, .nfp-header p {
+      z-index: 3;
+      text-shadow: 0 0 20px rgba(0,0,0,1);
     }
 
     /* Interactive Toggle */
