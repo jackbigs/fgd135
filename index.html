@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fgd135</title>
+  <title>fgd135 — Matt Biggins</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+<!-- the name means something. five clicks on the logo if you want to find out what. -->
 
 <!-- ─── NAV ──────────────────────────────────────────────── -->
 <nav>
@@ -40,11 +42,11 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════
-     TRIVIA OVERLAY
+     TRIVIA OVERLAY  (easter egg — find it yourself)
 ═══════════════════════════════════════════════════════ -->
 <div id="bomberOverlay">
   <div class="bomber-topbar">
-    <span class="bomber-title">◈ CRM114 — Strangelove Intelligence Test</span>
+    <span class="bomber-title">◈ CRM114 — Intelligence Test</span>
     <span class="bomber-score-display">SCORE: <span id="bomberScoreDisplay">0</span></span>
     <button class="bomber-close" onclick="GAME.close()">✕ Escape</button>
   </div>
@@ -56,62 +58,75 @@
 ═══════════════════════════════════════════════════════ -->
 <div class="page active" id="page-home">
 
-  <div class="hero-editorial">
+  <div class="hero-split">
 
-    <!-- LEFT: image -->
-    <div class="hero-img-col">
-      <img src="WarRoom.jpg" alt="War Room — Dr. Strangelove"
-        onerror="this.src=''; this.parentElement.style.background='#1a1714';" />
-      <div class="hero-img-caption">Dr. Strangelove — Stanley Kubrick, 1964</div>
+    <!-- TOP: signal graphic — full width with ghost headline -->
+    <div class="hero-graphic-col">
+      <div class="hero-signal-headline" aria-hidden="true">Words from somewhere<br>worth going.</div>
+      <svg id="signalSvg" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg"
+        class="signal-svg" preserveAspectRatio="xMidYMid meet">
+        <text x="8" y="193" font-family="Courier Prime, monospace" font-size="9"
+          fill="#b30505" opacity="0.28" letter-spacing="0.1em">CRM-114 · SIGNAL ANALYSIS · 135Hz</text>
+      </svg>
     </div>
 
-    <!-- RIGHT: text -->
+    <!-- BOTTOM: id + tagline + featured -->
     <div class="hero-text-col">
-      <div class="hero-text-top">
-        <div class="hero-issue-line">Fiction · Nonfiction · Essay</div>
-        <div class="hero-wordmark">
-          <em>fgd135</em>
-          Words from<br>somewhere<br>worth going
-        </div>
-        <p class="hero-tagline">Stories that follow curiosity wherever it leads.</p>
-        <button class="hero-cta" onclick="window.location='stories.html'">Read the archive</button>
-      </div>
+      <div class="hero-text-inner">
 
-      <div class="hero-featured-strip" onclick="window.location='truth.html'" style="cursor:pointer">
-        <div class="hero-featured-num">—</div>
-        <div>
-          <div class="hero-featured-label">Featured · Fiction</div>
-          <div class="hero-featured-title">Truth to Power</div>
-          <div class="hero-featured-lede">A White House press secretary discovers a secret that could unmake a presidency.</div>
+        <div class="hero-id-row">
+          <span class="hero-site-name">fgd135</span>
+          <span class="hero-categories">Fiction · Nonfiction · Essay · Satire</span>
         </div>
+
+        <div class="hero-text-body">
+          <div class="hero-text-left">
+            <p class="hero-tagline">Stories that follow curiosity wherever it leads — through power, truth, memory, and everything that falls between.</p>
+            <a class="hero-cta" href="stories.html">Read the archive</a>
+          </div>
+          <div class="hero-text-right">
+            <div class="hero-featured" onclick="window.location='badday.html'" style="cursor:pointer">
+              <div class="hero-featured-eyebrow">Featured · Fiction</div>
+              <div class="hero-featured-title">A Bad Day?</div>
+              <div class="hero-featured-lede">In a regime built on filtered data, a man's worst day becomes the moment that changes everything.</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
   </div>
 
+  <!-- ── RECENT WRITING ──────────────────────────────────── -->
   <section class="story-list-section">
     <div class="container-wide">
       <div class="section-header">
         <span class="section-title">Recent Writing</span>
         <button class="btn-text dim" onclick="window.location='stories.html'">All stories →</button>
       </div>
-      <div class="story-row" onclick="window.location='truth.html'">
+      <div class="story-row" onclick="window.location='badday.html'">
         <span class="story-num">01</span>
+        <div class="story-row-title">A Bad Day?<small>Fiction · 2025</small></div>
+        <span class="story-row-date">2025</span>
+      </div>
+      <div class="story-row" onclick="window.location='truth.html'">
+        <span class="story-num">02</span>
         <div class="story-row-title">Truth to Power<small>Fiction · 2024</small></div>
         <span class="story-row-date">2024</span>
       </div>
       <div class="story-row" onclick="window.location='braided.html'">
-        <span class="story-num">02</span>
+        <span class="story-num">03</span>
         <div class="story-row-title">Three Strands<small>Nonfiction · 2024</small></div>
         <span class="story-row-date">2024</span>
       </div>
       <div class="story-row" onclick="window.location='rabbit.html'">
-        <span class="story-num">03</span>
+        <span class="story-num">04</span>
         <div class="story-row-title">My Journey Through the Rabbit Hole<small>Nonfiction · 2024</small></div>
         <span class="story-row-date">2024</span>
       </div>
       <div class="story-row" onclick="window.location='orange.html'">
-        <span class="story-num">04</span>
+        <span class="story-num">05</span>
         <div class="story-row-title">The Orange Man and the End of America<small>Essay · 2024</small></div>
         <span class="story-row-date">2024</span>
       </div>
@@ -134,12 +149,12 @@
   <section class="about-strip">
     <div class="container">
       <div class="eyebrow">fgd135</div>
-      <p>Fiction, food, travel, and whatever falls between. The name is from Strangelove. Look it up.</p>
-      <button class="btn-ghost" onclick="showPage('about')">About this</button>
+      <p>Born near Salt Lake City. Escaped to the Pacific Northwest. Been writing longer than I've been admitting to it.</p>
+      <button class="btn-ghost" onclick="showPage('about')">About me</button>
     </div>
   </section>
 
-</div>
+</div><!-- end page-home -->
 
 
 
@@ -157,18 +172,18 @@
   <div class="about-body">
     <div class="container">
       <div class="about-prose">
-        <p>Born and raised in or near Salt Lake City, Utah. They baptized me but it certainly didn't stick. From there I've traveled the country a good bit. Made it across the Atlantic a few times in a burst of fabulous luck and happenstance and saw most of Western Europe. I'm currently awaiting sponsorship to Asia :).</p>
-        <p>I've been doodling with words my whole life. It's later in my episode that I'm actually producing. Here's a sampling of my writing. Also, photos from my travels and music obsession. I spent a decade plus shooting indie rock concerts. Those photos will be posted as I get them scanned and organized.</p>
-        <p>I'm a proud, but not terribly outspoken atheist. The Pacific Northwest became my home just before Covid. I very much doubt I'll leave.</p>
+        <p>Born and raised in or near Salt Lake City, Utah. They baptized me but it certainly didn't stick. From there I've traveled the country a good bit. Made it across the Atlantic a few times in a burst of fabulous luck and happenstance and saw most of Western Europe. I'm currently awaiting sponsorship to Asia.</p>
+        <p>I've been doodling with words my whole life. It's later in my episode that I'm actually producing. Here's a sampling. I also spent a decade-plus shooting indie rock concerts — those photos will be posted as I get them scanned and organized.</p>
+        <p>I'm a proud, if not terribly outspoken, atheist. The Pacific Northwest became my home just before Covid. I very much doubt I'll leave.</p>
         <hr class="rule-h">
-        <p style="color:var(--ink-muted); font-style:italic;">The name fgd135 is from Dr. Strangelove — a code on the CRM114 Discriminator, a device that filters out all but verified signal. It works until it doesn't. This site operates on a similar principle.</p>
+        <p style="color:var(--ink-muted); font-style:italic;">The name fgd135 is a signal filter from a film. Designed to pass only the verified transmission and block everything else. It works until it doesn't. This site operates on the same principle.</p>
       </div>
       <aside class="about-aside">
         <div class="about-photo"><img src="matt.png" alt="Matt Biggins" style="width:100%;height:100%;object-fit:cover;" /></div>
         <div class="about-details">
           <div class="about-detail-row"><span class="label">Based in</span><span class="about-detail-value">Pacific Northwest</span></div>
           <div class="about-detail-row"><span class="label">Writing since</span><span class="about-detail-value">I started</span></div>
-          <div class="about-detail-row"><span class="label">Currently</span><span class="about-detail-value">A sci-fi story</span></div>
+          <div class="about-detail-row"><span class="label">Currently</span><span class="about-detail-value">More fiction</span></div>
         </div>
       </aside>
     </div>
@@ -208,7 +223,7 @@
   </div>
   <div class="contact-body">
     <div class="container">
-      <p>If something you read here struck a chord — or you have a bone to pick with the duck order — the best way to reach me is email. I read everything and reply when I have something useful to say.</p>
+      <p>If something you read here struck a chord — or a nerve — the best way to reach me is email. I read everything and reply when I have something useful to say.</p>
       <div class="contact-links">
         <div class="contact-link-row"><span class="contact-link-label">Email</span><span class="contact-link-val"><a href="mailto:guytao@proton.me">guytao@proton.me</a></span></div>
         <div class="contact-link-row"><span class="contact-link-label">Bluesky</span><span class="contact-link-val"><a href="https://bsky.app/profile/jackbigs.bsky.social" target="_blank">@jackbigs.bsky.social</a></span></div>
@@ -249,6 +264,70 @@ function toggleMobile() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
 
+/* ── SIGNAL DISPLAY GENERATOR ──────────────────────────────── */
+(function() {
+  const svg = document.getElementById('signalSvg');
+  if (!svg) return;
+
+  // 28 rows, tightly spaced — gradient #990202 → #b30505, animated drift
+  const rows = 28, startY = 14, rowH = 6, maxA = 38;
+  const amps = [0,0.3,0.8,2,4,7,11,16,22,28,33,36,38,38,38,38,36,33,28,22,16,11,7,4,2,0.8,0.3,0];
+
+  // Base peak centers — main, left shoulder, right shoulder
+  const bx  = [400,403,396,406,410,401,397,404,400,396,403,398,406,402,397,404,399,406,401,397,403,398,405,400,396,403,399,400];
+  const bx2 = [195,198,192,200,203,196,192,199,195,191,197,193,200,196,191,198,194,200,195,191,197,193,199,194,191,197,193,195];
+  const bx3 = [605,608,601,611,614,606,602,609,605,601,608,603,611,607,602,609,604,611,606,602,608,603,610,605,601,608,604,605];
+
+  // Color gradient: #990202 (quiet) → #b30505 (peak)
+  function rowColor(A) {
+    const t = Math.min(A / maxA, 1);
+    return 'rgb(' + Math.round(153+26*t) + ',' + Math.round(2+3*t) + ',' + Math.round(2+3*t) + ')';
+  }
+
+  // Create all polylines once, update points each frame
+  const pls = [], rowY = [];
+  for (let i = 0; i < rows; i++) {
+    const A = amps[i];
+    const pl = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    pl.setAttribute('stroke', rowColor(A));
+    pl.setAttribute('stroke-width', A > 30 ? '1.1' : A > 14 ? '0.75' : '0.45');
+    pl.setAttribute('fill', 'none');
+    pl.setAttribute('opacity', String(A > 30 ? 0.92 : A > 10 ? 0.62 : A > 2 ? 0.38 : 0.18));
+    svg.insertBefore(pl, svg.firstChild);
+    pls.push(pl);
+    rowY.push(startY + i * rowH);
+  }
+
+  // Precompute Gaussian widths (constant per row)
+  const sw1 = amps.map(A => 2 * Math.pow(80 + A * 1.6, 2));
+  const sw2 = amps.map(A => 2 * Math.pow(55 + A,       2));
+  const sw3 = amps.map(A => 2 * Math.pow(60 + A,       2));
+
+  // Animation — peaks drift slowly at individual phases
+  let t = 0;
+  function tick() {
+    t += 0.0022;
+    for (let i = 0; i < rows; i++) {
+      const A = amps[i];
+      if (A === 0) { pls[i].setAttribute('points', '0,' + rowY[i] + ' 800,' + rowY[i]); continue; }
+      const drift = Math.sin(t + i * 0.20) * (8 + A * 0.08);
+      const c  = bx[i]  + drift;
+      const c2 = bx2[i] + drift * 0.6;
+      const c3 = bx3[i] + drift * 0.6;
+      const pts = [];
+      for (let x = 0; x <= 800; x += 5) {
+        const g  = A      * Math.exp(-Math.pow(x-c,  2) / sw1[i]);
+        const s1 = A*0.42 * Math.exp(-Math.pow(x-c2, 2) / sw2[i]);
+        const s2 = A*0.35 * Math.exp(-Math.pow(x-c3, 2) / sw3[i]);
+        pts.push(x + ',' + (rowY[i] - g - s1 - s2).toFixed(1));
+      }
+      pls[i].setAttribute('points', pts.join(' '));
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
 /* ── LOGO / EASTER EGG TRIGGER ────────────────────────────── */
 (function() {
   let clicks = 0, timer = null;
@@ -273,7 +352,7 @@ async function fetchBluesky() {
     feed.innerHTML = posts.map(f => {
       const post = f.post;
       const text = post.record.text || '';
-      const uri = post.uri; // at://did:.../app.bsky.feed.post/RKEY
+      const uri = post.uri;
       const rkey = uri.split('/').pop();
       const url = `https://bsky.app/profile/jackbigs.bsky.social/post/${rkey}`;
       const likes = post.likeCount || 0;
@@ -418,7 +497,6 @@ const GAME = (function() {
         score++;
         document.getElementById('bomberScoreDisplay').textContent = score;
         opts[idx].classList.add('correct');
-    
       } else {
         opts[idx].classList.add('wrong');
         opts[q.ans].classList.add('correct');
