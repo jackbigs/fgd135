@@ -365,6 +365,51 @@ nav {
 .page-header h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.08; color: var(--ink); }
 .page-header p { margin-top: 1rem; color: var(--ink-muted); font-style: italic; font-size: 1.05rem; }
 
+/* ── CITYSCAPE HERO BAND (about / contact) ─────────────── */
+.page-hero-band {
+  position: relative;
+  height: 38vh;
+  min-height: 260px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--rule);
+}
+.page-hero-band img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.page-hero-band .hero-band-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(17,16,23,0.05) 0%,
+    rgba(17,16,23,0.55) 50%,
+    rgba(17,16,23,0.96) 100%
+  );
+}
+.page-hero-band .hero-band-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 2rem 2.5rem;
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+}
+.page-hero-band .hero-band-content .label { display: block; margin-bottom: 0.8rem; }
+.page-hero-band .hero-band-content h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.08;
+  color: var(--ink);
+  margin: 0;
+}
+
 /* ── ARCHIVE ──────────────────────────────────────────── */
 .archive-section { padding: 3.5rem 2rem 6rem; }
 .archive-category { margin-bottom: 3.5rem; }
