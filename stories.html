@@ -13,8 +13,8 @@
     /* ── Stories hero ── */
     .stories-hero {
       position: relative;
-      height: 42vh;
-      min-height: 280px;
+      height: 50vh;
+      min-height: 320px;
       overflow: hidden;
       display: flex;
       align-items: flex-end;
@@ -42,23 +42,35 @@
       width: 100%;
       max-width: 1080px;
       margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
     }
-    .stories-hero-content .label {
+    .stories-hero-byline .label {
       display: block;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
     }
-    .stories-hero-content h1 {
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      font-weight: 300;
-      line-height: 1.08;
+    .stories-hero-name {
+      font-family: 'Bebas Neue', var(--font-serif);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
       color: var(--ink);
-      margin-bottom: 0.6rem;
+      letter-spacing: 0.04em;
+      line-height: 1;
     }
-    .stories-hero-content p {
-      color: var(--ink-muted);
+    .stories-hero-tagline {
+      font-family: var(--font-serif);
       font-style: italic;
-      font-size: 1.05rem;
+      font-size: clamp(1.4rem, 3.2vw, 2.6rem);
+      color: var(--ink);
+      line-height: 1.2;
+      text-align: right;
       margin: 0;
+      max-width: 520px;
+    }
+    @media (max-width: 620px) {
+      .stories-hero-content { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+      .stories-hero-tagline { text-align: left; }
     }
   </style>
 </head>
@@ -97,9 +109,11 @@
   <div class="stories-hero-img"></div>
   <div class="stories-hero-vignette"></div>
   <div class="stories-hero-content">
-    <span class="label">Archive</span>
-    <h1>All Writing</h1>
-    <p>Fiction, nonfiction, essay, satire, and whatever falls between.</p>
+    <div class="stories-hero-byline">
+      <span class="label">Writing by</span>
+      <div class="stories-hero-name">Matt Biggins</div>
+    </div>
+    <p class="stories-hero-tagline">Words from somewhere<br>worth going.</p>
   </div>
 </div>
 
@@ -160,7 +174,7 @@
 <footer>
   <div class="footer-inner" style="max-width:1080px;margin:0 auto;">
     <div class="site-name">fgd135</div>
-    <p class="footer-motto">Words from somewhere worth going.</p>
+
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="stories.html">Stories</a>
