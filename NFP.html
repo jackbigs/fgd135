@@ -3,205 +3,570 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The New Federalist Party | fgd135</title>
+  <title>The New Federalist Party — fgd135</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Courier+Prime&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <style>
-    :root { --accent: #c5a059; --bg: #0d0e15; --signal-green: #4ade80; }
-    body { background: var(--bg); color: #cbd5e1; font-family: 'Cormorant Garamond', serif; margin: 0; line-height: 1.6; overflow-x: hidden; }
-    
-    /* THE HEADER */
-    .nfp-header {
+    /* ── NFP page-specific styles — inherits all site CSS vars ── */
+
+    /* HERO */
+    .nfp-hero {
       position: relative;
-      height: 75vh; 
+      height: 75vh;
+      min-height: 520px;
+      overflow: hidden;
+      background: var(--void);
+      border-bottom: 1px solid var(--rule);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: #000;
-      border-bottom: 2px solid var(--accent);
-      overflow: hidden;
     }
-
-    .flag-overlay {
+    .nfp-flag {
       position: absolute;
-      width: 120%;
+      width: 110%;
       height: auto;
-      opacity: 0.45; 
-      filter: grayscale(0.2) contrast(1.2) brightness(0.6);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.11;
+      filter: grayscale(1) contrast(1.6) brightness(0.9);
       pointer-events: none;
-      z-index: 1;
     }
-
-    .nfp-header::after {
-      content: "";
+    .nfp-vignette {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(circle, rgba(13,14,21,0.2) 0%, rgba(13,14,21,0.95) 90%);
-      z-index: 2;
+      inset: 0;
+      background: radial-gradient(ellipse 85% 75% at 50% 48%,
+        rgba(17,16,23,0.15) 0%,
+        rgba(17,16,23,0.72) 65%,
+        rgba(17,16,23,0.97) 100%);
+      pointer-events: none;
     }
-
-    .nfp-header h1, .nfp-header span, .nfp-header p {
+    .nfp-hero-content {
+      position: relative;
       z-index: 10;
-      text-shadow: 0 0 30px rgba(0,0,0,1);
+      padding: 0 2rem;
+    }
+    .nfp-callsign {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.82;
+      margin-bottom: 1.6rem;
+    }
+    .nfp-title {
+      font-family: 'Bebas Neue', var(--font-serif);
+      font-size: clamp(3.2rem, 8.5vw, 9rem);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 0.90;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.6rem;
+    }
+    .nfp-subtitle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+      color: rgba(232,226,212,0.55);
+      margin: 0;
+      line-height: 1.5;
     }
 
-    /* MASSIVE SCROLLING MORSE CODE */
+    /* MORSE CODE TICKER */
     .morse-container {
       position: absolute;
-      bottom: 5%;
+      bottom: 0;
       width: 100%;
       white-space: nowrap;
       overflow: hidden;
-      z-index: 5;
-      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+      z-index: 8;
+      padding: 0.65rem 0;
+      border-top: 1px solid rgba(212,165,23,0.10);
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
     }
-
     .morse-scroll {
       display: inline-block;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 8rem; 
-      color: var(--accent);
-      opacity: 0.15; 
-      letter-spacing: 25px;
-      animation: ticker 40s linear infinite;
+      font-family: 'Bebas Neue', monospace;
+      font-size: clamp(2.5rem, 6vw, 6.5rem);
+      color: var(--gold);
+      opacity: 0.13;
+      letter-spacing: 18px;
+      animation: nfp-ticker 50s linear infinite;
     }
-
-    @keyframes ticker {
-      0% { transform: translateX(0); }
+    @keyframes nfp-ticker {
+      0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
-    /* FUNDRAISING SIGNAL METER */
-    .fundraising-box {
-      margin: 60px 0;
-      padding: 40px;
-      border: 1px solid var(--accent);
-      background: rgba(197, 160, 89, 0.03);
-      position: relative;
+    /* BODY */
+    .nfp-body {
+      padding: 5.5rem 2rem 8rem;
+    }
+    .nfp-body .container {
+      max-width: 760px;
+    }
+    .nfp-preamble {
+      font-family: var(--font-serif);
+      font-size: clamp(1.25rem, 2.1vw, 1.65rem);
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.70;
+      border-left: 3px solid var(--gold);
+      padding: 0.4rem 0 0.4rem 1.8rem;
+      margin-bottom: 3.5rem;
     }
 
+    /* TOGGLE */
+    #platform-toggle { display: none; }
+    .platform-reveal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.88rem 2.4rem;
+      border: 1px solid rgba(212,165,23,0.45);
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      cursor: pointer;
+      background: none;
+      transition: background 0.25s, border-color 0.25s;
+      margin-bottom: 0;
+    }
+    .platform-reveal-btn::before {
+      content: '▶';
+      font-size: 0.48rem;
+      transition: transform 0.3s;
+    }
+    .platform-reveal-btn:hover {
+      background: rgba(212,165,23,0.06);
+      border-color: var(--gold);
+    }
+    #platform-toggle:checked ~ .platform-reveal-btn { display: none; }
+
+    .full-platform {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 1.2s cubic-bezier(0.4,0,0.2,1);
+    }
+    #platform-toggle:checked ~ .full-platform {
+      max-height: 30000px;
+    }
+
+    /* SIGNAL STRENGTH BOX */
+    .signal-box {
+      position: relative;
+      border: 1px solid rgba(212,165,23,0.25);
+      background: rgba(212,165,23,0.018);
+      padding: 2.8rem;
+      margin: 4rem 0 3rem;
+    }
+    .signal-box::before {
+      content: 'OPERATIONAL STATUS';
+      position: absolute;
+      top: -0.62rem;
+      left: 2.2rem;
+      background: var(--void);
+      padding: 0 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.54rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.65;
+    }
     .signal-meter-label {
-      font-family: 'Courier Prime', monospace;
-      font-size: 0.8rem;
-      color: var(--accent);
       display: flex;
       justify-content: space-between;
-      margin-bottom: 10px;
+      align-items: baseline;
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 0.75rem;
     }
-
+    .signal-meter-label span:last-child {
+      color: var(--gold);
+      opacity: 0.75;
+    }
     .signal-track {
       width: 100%;
-      height: 12px;
-      background: #1e293b;
-      border-radius: 2px;
+      height: 5px;
+      background: var(--surface-3);
+      border-radius: 1px;
       overflow: hidden;
-      position: relative;
     }
-
     .signal-fill {
-      width: 65%; /* ADJUST THIS NUMBER TO CHANGE PROGRESS */
+      width: 0;
       height: 100%;
-      background: var(--accent);
-      box-shadow: 0 0 15px var(--accent);
-      transition: width 2s ease-in-out;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(212,165,23,0.55);
+      transition: width 2.8s ease-out;
     }
-
-    /* CONTENT WRAPPER */
-    .content-wrap { max-width: 850px; margin: 0 auto; padding: 60px 20px; text-align: left; }
-    
-    /* TOGGLE LOGIC */
-    #platform-toggle { display: none; }
-    .full-platform { max-height: 0; overflow: hidden; transition: max-height 0.8s ease-out; opacity: 0; }
-    #platform-toggle:checked ~ .full-platform { max-height: 10000px; opacity: 1; margin-bottom: 100px; }
-
-    .toggle-btn {
-      display: inline-block;
-      margin: 40px auto;
-      padding: 15px 45px;
-      border: 1px solid var(--accent);
-      font-family: 'Courier Prime', monospace;
-      color: var(--accent);
-      cursor: pointer;
+    .signal-fill.animated { width: 65%; }
+    .signal-box-title {
+      font-family: 'Bebas Neue', var(--font-serif);
+      font-size: 1.55rem;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      margin: 2rem 0 0.6rem;
+    }
+    .signal-box-body {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+    .signal-btn-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .signal-btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.78rem 1rem;
+      border: 1px solid rgba(212,165,23,0.35);
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      transition: 0.3s;
-      background: none;
+      color: var(--gold);
+      text-decoration: none;
+      transition: background 0.2s;
     }
-    .toggle-btn:hover { background: var(--accent); color: #000; }
-    #platform-toggle:checked ~ .toggle-label-main { display: none; }
+    .signal-btn:hover { background: rgba(212,165,23,0.08); }
+    .signal-btn.dim { border-color: var(--rule-mid); color: var(--ink-muted); }
+    .signal-btn.dim:hover { background: rgba(232,226,212,0.04); color: var(--ink); }
 
-    h2 { font-family: 'Bebas Neue', sans-serif; color: var(--accent); font-size: 2.5rem; border-bottom: 1px solid #1e293b; margin-top: 60px; }
-    ul { list-style: none; padding: 0; }
-    li { margin-bottom: 15px; padding-left: 20px; border-left: 1px solid #334155; }
-    
-    .preamble { font-size: 1.8rem; font-style: italic; color: #fff; margin-bottom: 40px; border-left: 4px solid var(--accent); padding-left: 20px; }
+    /* PLATFORM SECTIONS */
+    .nfp-section-head {
+      font-family: 'Bebas Neue', var(--font-serif);
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      margin: 4.5rem 0 1.4rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(212,165,23,0.16);
+    }
+    .nfp-section-head:first-of-type { margin-top: 3rem; }
+    .nfp-body p {
+      font-family: var(--font-serif);
+      font-size: 1.06rem;
+      color: var(--ink-muted);
+      line-height: 1.78;
+    }
+    .nfp-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0.5rem;
+    }
+    .nfp-list li {
+      padding: 1rem 0 1rem 1.6rem;
+      border-left: 1px solid rgba(212,165,23,0.20);
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--font-serif);
+      font-size: 1.04rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+    .nfp-list li:first-child { border-top: 1px solid var(--rule); }
+    .nfp-list li strong {
+      color: var(--ink);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* CLOSING */
+    .nfp-motto {
+      text-align: center;
+      padding: 5rem 0 0;
+      opacity: 0.35;
+    }
+    .nfp-motto span {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .nfp-motto-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--rule-mid);
+      margin: 1.2rem auto;
+    }
+
+    /* READER NAV */
+    .reader-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--rule);
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 620px) {
+      .signal-btn-row  { flex-direction: column; }
+      .nfp-title       { font-size: clamp(2.8rem, 14vw, 5.5rem); }
+      .nfp-hero        { min-height: 460px; }
+      .signal-box      { padding: 2rem 1.5rem; }
+    }
   </style>
 </head>
 <body>
 
-<div class="nfp-header">
-  <svg class="flag-overlay" viewBox="0 0 741 390" xmlns="http://www.w3.org/2000/svg">
-    <rect width="741" height="390" fill="#3c3c3c"/>
+<!-- ─── NAV ──────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">fgd135</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="stories.html" class="active">Stories</a></li>
+      <li><a href="photos.html">Photos</a></li>
+      <li><a href="index.html">About</a></li>
+      <li><a href="index.html">Contact</a></li>
+    </ul>
+    <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="signal-strip" aria-hidden="true"><svg class="strip-svg" viewBox="0 0 800 55" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"></svg></div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.toggle('open')">✕ Close</button>
+  <a href="index.html">Home</a>
+  <a href="stories.html">Stories</a>
+  <a href="photos.html">Photos</a>
+  <a href="index.html">About</a>
+  <a href="index.html">Contact</a>
+</div>
+
+<!-- ─── NFP HERO ──────────────────────────────────────── -->
+<div class="nfp-hero" id="nfpHero">
+
+  <!-- US Flag watermark — ghosted, desaturated -->
+  <svg class="nfp-flag" viewBox="0 0 741 390" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="741" height="390" fill="#2a2a2a"/>
     <path d="M0 0H741V30H0V0ZM0 60H741V90H0V60ZM0 120H741V150H0V120ZM0 180H741V210H0V180ZM0 240H741V270H0V240ZM0 300H741V330H0V300ZM0 360H741V390H0V360Z" fill="#7b2121"/>
     <rect width="296" height="210" fill="#21294d"/>
-    <rect width="296" height="210" fill="url(#stars)" />
-    <defs><pattern id="stars" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M20 10l2 5h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" fill="#fff" opacity="0.3"/></pattern></defs>
+    <defs>
+      <pattern id="nfp-stars" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M20 10l2 5h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" fill="#fff" opacity="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="296" height="210" fill="url(#nfp-stars)"/>
   </svg>
-  
-  <span style="font-family:'Courier Prime'; color:var(--accent); z-index:10; letter-spacing:4px; margin-bottom:10px;">SIGNAL VERIFIED // CRM114</span>
-  <h1>THE NEW FEDERALIST PARTY</h1>
-  <p style="z-index:10; font-style:italic; font-size:1.5rem;">“A Restoration of the American Idea”</p>
 
-  <div class="morse-container">
-    <div class="morse-scroll">
-      ...- . ... - .-. .- / .-. . ... / .- --. .. - ..- .-. &nbsp;&nbsp;&nbsp; ...- . ... - .-. .- / .-. . ... / .- --. .. - ..- .-. &nbsp;&nbsp;&nbsp; ...- . ... - .-. .- / .-. . ... / .- --. .. - ..- .-.
-    </div>
+  <!-- Dark radial vignette over flag -->
+  <div class="nfp-vignette"></div>
+
+  <!-- Hero text -->
+  <div class="nfp-hero-content">
+    <span class="nfp-callsign">Signal Verified &nbsp;·&nbsp; CRM114 &nbsp;·&nbsp; Transmission Open</span>
+    <h1 class="nfp-title">The New<br>Federalist<br>Party</h1>
+    <p class="nfp-subtitle">"A Restoration of the American Idea"</p>
+  </div>
+
+  <!-- Morse code scrolling ticker -->
+  <div class="morse-container" aria-hidden="true">
+    <span class="morse-scroll">
+      ...- . ... - .-. .- / .-. . ... / .- --. .. - ..- .-. &nbsp;&nbsp;&nbsp;&nbsp; ...- . ... - .-. .- / .-. . ... / .- --. .. - ..- .-. &nbsp;&nbsp;&nbsp;&nbsp; ...- . ... - .-. .- / .-. . ... / .- --. .. - ..- .-. &nbsp;&nbsp;&nbsp;&nbsp; ...- . ... - .-. .- / .-. . ... / .- --. .. - ..- .-. &nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+  </div>
+
+</div>
+
+<!-- ─── NFP CONTENT ───────────────────────────────────── -->
+<div class="nfp-body">
+  <div class="container">
+
+    <input type="checkbox" id="platform-toggle">
+
+    <p class="nfp-preamble">
+      "The New Federalist Party does not seek to reinvent America, but to remember it — the founding bargain, the covenant between the governed and those who govern, the premise that public service is a form of sacrifice, not extraction."
+    </p>
+
+    <label for="platform-toggle" class="platform-reveal-btn">
+      Analyze Full Platform
+    </label>
+
+    <div class="full-platform">
+
+      <h2 class="nfp-section-head">I. Preamble — The Call to Service</h2>
+      <p>We reject the politics of the loudest voice in favor of the politics of the best idea. We reject grievance as platform, nostalgia as policy, and spectacle as governance. Our mission: to ensure that the federal government remains what Lincoln called "a last best hope" — and what Lincoln's America was never quite able to fully become.</p>
+      <p>The New Federalist Party believes in competence, in the patient work of institutions, in the radical notion that the people who administer the republic should be, above all else, good at it.</p>
+
+      <!-- Signal Strength Box -->
+      <div class="signal-box">
+        <div class="signal-meter-label">
+          <span>Strategic Signal Strength</span>
+          <span id="signalPct">0% Encrypted</span>
+        </div>
+        <div class="signal-track">
+          <div class="signal-fill" id="signalFill"></div>
+        </div>
+        <p class="signal-box-title">Operation: Treasury Covenant</p>
+        <p class="signal-box-body">To broadcast this message across the Republic, we require operational funding. Every contribution strengthens the signal and expands the transmission range. The frequency is open. The channel is clear. The noise is everywhere.</p>
+        <div class="signal-btn-row">
+          <a href="#" class="signal-btn">Contribute Funds</a>
+          <a href="#" class="signal-btn dim">Join the Registry</a>
+        </div>
+      </div>
+
+      <h2 class="nfp-section-head">II. Domestic Policy — Architecture of Opportunity</h2>
+      <ul class="nfp-list">
+        <li>
+          <strong>Education</strong>
+          Tuition-free public university for students who maintain a service-grade GPA. Knowledge is infrastructure.
+        </li>
+        <li>
+          <strong>Civil Covenant</strong>
+          Judicial appointments drawn exclusively from a pool of candidates with demonstrated record of impartiality. The bench is not a reward for loyalty.
+        </li>
+        <li>
+          <strong>Healthcare Architecture</strong>
+          A public option administered with the rigor of a flight safety board. No one should go bankrupt for staying alive.
+        </li>
+        <li>
+          <strong>Infrastructure</strong>
+          The nation's physical plant — roads, bridges, water systems, power grids — treated as a long-term capital investment, not a campaign prop. Boring, important, done.
+        </li>
+        <li>
+          <strong>Housing</strong>
+          Federal land-use reform to break the zoning cartels that have made American cities unaffordable. The dream of owning a modest home should not require generational wealth.
+        </li>
+      </ul>
+
+      <h2 class="nfp-section-head">III. Foreign Policy — Responsible Sovereignty</h2>
+      <ul class="nfp-list">
+        <li>
+          <strong>Alliances</strong>
+          Recommitment to treaty obligations as binding law, not conditional favor. Allies are not leverage; they are architecture.
+        </li>
+        <li>
+          <strong>Intelligence</strong>
+          Separation of the intelligence community from political directorate. The CRM114 discriminator passes only verified transmission — so should our foreign policy apparatus.
+        </li>
+        <li>
+          <strong>Aid and Engagement</strong>
+          Foreign assistance tied explicitly to democratic governance benchmarks. We do not fund autocracy in the name of stability.
+        </li>
+        <li>
+          <strong>Military</strong>
+          An armed force sized for actual defense — not projection of dominance, not theater, not the enrichment of contractors. Lethal when required. Restrained as a first principle.
+        </li>
+      </ul>
+
+      <h2 class="nfp-section-head">IV. Electoral Integrity — The Transmission</h2>
+      <p>The signal is only as good as the channel. The New Federalist Party supports:</p>
+      <ul class="nfp-list">
+        <li>
+          <strong>Independent Redistricting</strong>
+          All congressional maps drawn by nonpartisan commissions with published methodology. The map is not the territory; it should not be weaponized as one.
+        </li>
+        <li>
+          <strong>Ranked-Choice Voting</strong>
+          Federal elections conducted by ranked-choice method to eliminate the spoiler effect and the lesser-evil calculus that has demoralized the electorate for forty years.
+        </li>
+        <li>
+          <strong>Paper Ballots</strong>
+          Every vote cast on paper. Every paper retained. The simplest systems are the hardest to corrupt.
+        </li>
+        <li>
+          <strong>Campaign Finance</strong>
+          Strict aggregate limits on political donations with public matching for small-dollar contributions. Democracy should not be a subscription service.
+        </li>
+      </ul>
+
+      <h2 class="nfp-section-head">V. The Record</h2>
+      <p style="font-style:italic; color:var(--ink-muted);">The New Federalist Party has not yet won an election. It has, however, been right about most things, which counts for something in the long run and nothing in the short.</p>
+
+      <div class="nfp-motto">
+        <div class="nfp-motto-rule"></div>
+        <span>Vestra Res Agitur</span>
+        <div class="nfp-motto-rule"></div>
+      </div>
+
+    </div><!-- end .full-platform -->
+
   </div>
 </div>
 
-<div class="content-wrap">
-  <input type="checkbox" id="platform-toggle">
-  
-  <section class="preamble">
-    "The New Federalist Party does not seek to reinvent America, but to remember it."
-  </section>
-
-  <label for="platform-toggle" class="toggle-btn toggle-label-main">Analyze Full Platform</label>
-
-  <div class="full-platform">
-    <h2>I. PREAMBLE: THE CALL TO SERVICE</h2>
-    <p>We reject the politics of the loudest voice in favor of the politics of the best idea. Our mission is to ensure the federal government remains a "City on a Hill."</p>
-
-    <div class="fundraising-box">
-      <div class="signal-meter-label">
-        <span>STRATEGIC SIGNAL STRENGTH</span>
-        <span>65% ENCRYPTED</span>
-      </div>
-      <div class="signal-track">
-        <div class="signal-fill"></div>
-      </div>
-      <h3 style="font-family:'Bebas Neue'; color:#fff; margin-top:20px;">Operation: Treasury Covenant</h3>
-      <p style="font-size: 0.9rem;">To broadcast this message across the Republic, we require operational funding. Every contribution strengthens the signal.</p>
-      
-      <div style="display: flex; gap: 15px; margin-top: 25px;">
-        <a href="#" class="toggle-btn" style="flex:1; text-align:center; text-decoration:none; margin:0; font-size:0.8rem;">Contribute Funds</a>
-        <a href="#" class="toggle-btn" style="flex:1; text-align:center; text-decoration:none; margin:0; font-size:0.8rem; border-color:#fff; color:#fff;">Join the Registry</a>
-      </div>
-    </div>
-
-    <h2>II. DOMESTIC POLICY: ARCHITECTURE OF OPPORTUNITY</h2>
-    <ul>
-      <li><strong>Education:</strong> Tuition-free public university for service-grade GPA.</li>
-      <li><strong>Civil Covenant:</strong> Appointing "The Best and the Brightest" to the bench.</li>
-    </ul>
-
-    <div style="text-align: center; margin-top: 100px; opacity: 0.6; font-family: 'Courier Prime';">
-      <p>VESTRA RES AGITUR</p>
-    </div>
-  </div>
+<!-- ─── READER NAV ────────────────────────────────────── -->
+<div class="reader-nav">
+  <a class="btn-text dim" href="stories.html">← All stories</a>
 </div>
 
+<!-- ─── FOOTER ───────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner" style="max-width:1080px;margin:0 auto;">
+    <div class="site-name">fgd135</div>
+    <p class="footer-motto">Words from somewhere worth going.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="stories.html">Stories</a>
+      <a href="photos.html">Photos</a>
+      <a href="index.html">About</a>
+      <a href="index.html">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 fgd135. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="signal-strip.js"></script>
+<script>
+  // Animate the signal fill meter when it enters the viewport
+  (function() {
+    const fill   = document.getElementById('signalFill');
+    const pct    = document.getElementById('signalPct');
+    const toggle = document.getElementById('platform-toggle');
+    let animated = false;
+
+    function animateMeter() {
+      if (animated) return;
+      animated = true;
+      fill.classList.add('animated');
+      let val = 0;
+      const target = 65;
+      const step = () => {
+        val = Math.min(val + 1, target);
+        pct.textContent = val + '% Encrypted';
+        if (val < target) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    // Trigger when platform is revealed
+    toggle.addEventListener('change', function() {
+      if (this.checked) {
+        setTimeout(animateMeter, 400);
+      }
+    });
+
+    // Also trigger if already scrolled to
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && toggle.checked) animateMeter();
+    }, { threshold: 0.3 });
+    if (fill) obs.observe(fill);
+  })();
+</script>
 </body>
 </html>
