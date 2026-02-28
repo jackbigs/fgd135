@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The New Federalist Party — fgd135</title>
+  <title>The Independent Alliance — fgd135</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <style>
-    /* ── NFP page-specific styles — inherits all site CSS vars ── */
+    /* ── Alliance page-specific styles — inherits all site CSS vars ── */
 
     /* HERO */
     .nfp-hero {
@@ -26,15 +26,14 @@
       align-items: center;
       text-align: center;
     }
-    .nfp-flag {
+    .nfp-logo-bg {
       position: absolute;
-      width: 110%;
+      width: 160%;
       height: auto;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      opacity: 0.11;
-      filter: grayscale(1) contrast(1.6) brightness(0.9);
+      opacity: 0.22;
       pointer-events: none;
     }
     .nfp-vignette {
@@ -159,7 +158,7 @@
       transition: max-height 1.2s cubic-bezier(0.4,0,0.2,1);
     }
     #platform-toggle:checked ~ .full-platform {
-      max-height: 30000px;
+      max-height: 60000px;
     }
 
     /* SIGNAL STRENGTH BOX */
@@ -213,7 +212,7 @@
       box-shadow: 0 0 10px rgba(212,165,23,0.55);
       transition: width 2.8s ease-out;
     }
-    .signal-fill.animated { width: 65%; }
+    .signal-fill.animated { width: 78%; }
     .signal-box-title {
       font-family: 'Bebas Neue', var(--font-serif);
       font-size: 1.55rem;
@@ -289,6 +288,44 @@
       margin-bottom: 0.25rem;
     }
 
+    /* PILLAR KEYWORD BADGE */
+    .pillar-keyword {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      border: 1px solid rgba(212,165,23,0.40);
+      padding: 0.18rem 0.8rem 0.14rem;
+      margin-right: 0.75rem;
+      vertical-align: middle;
+      position: relative;
+      top: -0.08em;
+    }
+
+    /* PHASE HEADING */
+    .phase-head {
+      font-family: var(--font-mono);
+      font-size: 0.60rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.65;
+      margin: 3.2rem 0 0.75rem;
+    }
+
+    /* BLOCKQUOTE PULL */
+    .nfp-pull {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.06rem;
+      color: var(--ink-muted);
+      border-left: 2px solid rgba(212,165,23,0.30);
+      padding-left: 1.4rem;
+      margin: 2rem 0;
+      line-height: 1.75;
+    }
+
     /* CLOSING */
     .nfp-motto {
       text-align: center;
@@ -359,30 +396,32 @@
   <a href="index.html">Contact</a>
 </div>
 
-<!-- ─── NFP HERO ──────────────────────────────────────── -->
+<!-- ─── HERO ──────────────────────────────────────────── -->
 <div class="nfp-hero" id="nfpHero">
 
-  <!-- US Flag watermark — ghosted, desaturated -->
-  <svg class="nfp-flag" viewBox="0 0 741 390" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="741" height="390" fill="#2a2a2a"/>
-    <path d="M0 0H741V30H0V0ZM0 60H741V90H0V60ZM0 120H741V150H0V120ZM0 180H741V210H0V180ZM0 240H741V270H0V240ZM0 300H741V330H0V300ZM0 360H741V390H0V360Z" fill="#7b2121"/>
-    <rect width="296" height="210" fill="#21294d"/>
-    <defs>
-      <pattern id="nfp-stars" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-        <path d="M20 10l2 5h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" fill="#fff" opacity="0.5"/>
-      </pattern>
-    </defs>
-    <rect width="296" height="210" fill="url(#nfp-stars)"/>
+  <!-- Party logo watermark — colors remapped to site palette -->
+  <svg class="nfp-logo-bg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g>
+      <path style="fill:#6aafd4" d="M1449.67,586.68l-29.06-3.34c-11.55-1.33-22.98-2.08-33.91-1.45.12-.15-2.48-1.45-3.38-1.54-87.62-8.91-174.11-14.05-262.25-14.25l-97.71-.22c-4.47,0-9.73-3.36-10.87-6.46-1.29-3.48-.75-9.99,1.74-12.45l33.49-33.16c7.72-7.64,16.89-13.48,24.8-22.92-.04-6.97-1.69-15.81-2.98-23.01l-7.19-39.92,139.31-80.67c1.87-1.08,7.48.62,8.86,2.11s1.78,6.49.44,8.48l-90.37,134.65,60.89,16.29,156.9,40.27,103.32,26.6c5.35,1.38,8.54,6.61,7.97,10.98Z"/>
+      <path style="fill:#6aafd4" d="M1367.44,520.3c-39.03-147.96-161.39-265.06-310.88-296.36l-8.56-29.51c-.3-1.04-.14-3.78.43-4.57.76-1.05,4.2-1.69,6-1.32,173.18,35.79,318.31,170.22,351.74,347.03-15.35-3.91-25.39-9.64-38.73-15.27Z"/>
+    </g>
+    <g>
+      <path style="fill:#d4a517" d="M1062.34,427.96l7.19,39.92c1.3,7.19,2.94,16.04,2.98,23.01-7.91,9.44-17.08,15.27-24.8,22.92.29-.94,1.09-5.12.77-6.6l-40.9-194.21-30.29-148.27-3.86,158.02-1.68,195.87c-.05,5.36-2.5,10.26-6.02,13.53-9.45,8.79-33.9,32.9-45.83,33.44l-97.55,4.43c-59.87,2.72-172.69,24.49-213.37,72.3-36.35,42.72-5.81,97.06,24.85,132.95,28.24,32.35,61.63,58.19,99.39,79.12,46.58,27.63,94.98,46.51,147.17,65.14-126.88-15.89-276.62-92.32-354.56-193.33-12.96-16.8-22.93-34.87-29.11-54.73-12.15-39.07,10.99-67.96,42.54-87.17,19.89-12.11,39.89-20.83,62.7-27.01l228.61-61.98-91.12-136.18c-.89-1.32-.29-5.07.37-6.33s5.35-2.89,7.44-1.7l141.77,80.76c7.7-29.87,12.21-56.51,17.98-85.24l61.84-308.24c.55-2.75,3.73-5.87,5.6-6.5,2.13-.72,7.32,1.9,7.94,4.94l79.95,391.15Z"/>
+      <path style="fill:#d4a517" d="M1386.69,581.89c10.93-.63,22.36.13,33.91,1.45l29.06,3.34c-.56,4.25-3.39,6.51-8.04,7.7l-83.94,21.43-83.87,19.9-150.45,35.52c12.07,20.22,25.64,37.49,39.89,56l35.6,46.23c1.28,1.66,1.72,6.19.64,7.46-6.17,7.21-71.8-32.13-84.04-38.26l-6.56-3.29-45.72-22.83-70.86,226.08c-.71,2.26-4.69,4.87-6.58,4.53-1.61-.29-4.96-2.91-5.44-4.71l-58.33-220c-4.65-17.54-18.66-30.27-32.75-40.59-39.17-28.69-104.98-47.81-153.03-50.76-34.88-2.14-66.17,7.06-100.08,21,15.09-12.77,33.17-21.35,52.78-28.45,84.99-30.73,152.88-24.99,241.65-20.14l41.2,43.74,1.46,23.96,7.02,152.24c4.15-29.94,5.52-59.84,7.17-90.74l4.92-92.52c.78-14.64,20.45-29.4,32.53-34.62,13.13-5.67,25.74-6.24,39.29-6.86l152.38-7.02,170.18-9.78Z"/>
+      <path style="fill:#d4a517" d="M632.25,861.3c89.27,58.6,191.83,100.36,298.27,114.17,8.42,1.09,15.97,1.43,24.96,1.96,122.39,7.14,242.41-39.84,323.57-132.25,49.03-55.83,78.13-125.35,89.47-198.63l44.61-19.36c2,23.95-9.52,75.84-16.68,99.25-36.27,118.52-111.81,211.23-224.37,264.65-156.6,74.32-349.81,46.85-488.37-53.52-44.74-32.41-82.78-73-110.29-120.52,20.54,15.98,38.07,30.6,58.84,44.24Z"/>
+      <path style="fill:#d4a517" d="M894.21,223.56c-142.84,29.25-265.75,144.09-301.29,286.41l-40.85,25.57c4.23-31.57,13.53-59.92,25.76-88.36,46.49-108.08,133.49-192.14,242.59-236.32,13.15-5.33,73.28-24.74,81.08-21.54,4.67,1.92-5.59,28-7.29,34.23Z"/>
+      <path style="fill:#d4a517" d="M879.73,719.63l-115.73,62.26c-2.1,1.13-6.33.6-7.71-.28-1.65-1.05-2.16-6.41-.85-8.14l73.52-97.1c19.01,10.01,37.67,21.55,53.58,32.74,1.46,1.03,2.87,4.82,2.53,6.18s-2.41,2.76-5.34,4.33Z"/>
+    </g>
   </svg>
 
-  <!-- Dark radial vignette over flag -->
+  <!-- Dark radial vignette -->
   <div class="nfp-vignette"></div>
 
   <!-- Hero text -->
   <div class="nfp-hero-content">
-    <span class="nfp-callsign">Signal Verified &nbsp;·&nbsp; CRM114 &nbsp;·&nbsp; Transmission Open</span>
-    <h1 class="nfp-title">The New<br>Federalist<br>Party</h1>
-    <p class="nfp-subtitle">"A Restoration of the American Idea"</p>
+    <span class="nfp-callsign">Signal Verified &nbsp;·&nbsp; CRM114 &nbsp;·&nbsp; What Is Next?</span>
+    <h1 class="nfp-title">The Independent<br>Alliance</h1>
+    <p class="nfp-subtitle">"For the Commonweal. For the Future."</p>
   </div>
 
   <!-- Morse code scrolling ticker -->
@@ -394,14 +433,14 @@
 
 </div>
 
-<!-- ─── NFP CONTENT ───────────────────────────────────── -->
+<!-- ─── CONTENT ───────────────────────────────────────── -->
 <div class="nfp-body">
   <div class="container">
 
     <input type="checkbox" id="platform-toggle">
 
     <p class="nfp-preamble">
-      "The New Federalist Party does not seek to reinvent America, but to remember it — the founding bargain, the covenant between the governed and those who govern, the premise that public service is a form of sacrifice, not extraction."
+      "The Independent Alliance is founded on the conviction that government is a noble profession and a collective responsibility. We reject the cynicism of the modern political duopoly — and commit ourselves to a government defined by intellectual rigor, moral clarity, and an unshakeable belief in the American promise."
     </p>
 
     <label for="platform-toggle" class="platform-reveal-btn">
@@ -410,9 +449,9 @@
 
     <div class="full-platform">
 
-      <h2 class="nfp-section-head">I. Preamble — The Call to Service</h2>
-      <p>We reject the politics of the loudest voice in favor of the politics of the best idea. We reject grievance as platform, nostalgia as policy, and spectacle as governance. Our mission: to ensure that the federal government remains what Lincoln called "a last best hope" — and what Lincoln's America was never quite able to fully become.</p>
-      <p>The New Federalist Party believes in competence, in the patient work of institutions, in the radical notion that the people who administer the republic should be, above all else, good at it.</p>
+      <h2 class="nfp-section-head">I. Guiding Philosophy — Practical Idealism</h2>
+      <p>Inspired by the principle that "decisions are made by those who show up," the Independent Alliance commits to a government of intellectual rigor, moral clarity, and genuine service. We are not the party of the loudest voice. We are the party of the best idea — and the discipline to see it through.</p>
+      <p>We believe in the power of the expert, the stability of the law, and the capacity of the American people to hear the hard truth. We are the party of <em>What's Next?</em></p>
 
       <!-- Signal Strength Box -->
       <div class="signal-box">
@@ -423,85 +462,113 @@
         <div class="signal-track">
           <div class="signal-fill" id="signalFill"></div>
         </div>
-        <p class="signal-box-title">Operation: Treasury Covenant</p>
-        <p class="signal-box-body">To broadcast this message across the Republic, we require operational funding. Every contribution strengthens the signal and expands the transmission range. The frequency is open. The channel is clear. The noise is everywhere.</p>
+        <p class="signal-box-title">Operation: Commonweal Initiative</p>
+        <p class="signal-box-body">One hundred days. Five pillars. A government that answers to the governed. The frequency is open. The channel is clear. We require operational citizens — not donors, not spectators. Citizens.</p>
         <div class="signal-btn-row">
-          <a href="#" class="signal-btn">Contribute Funds</a>
-          <a href="#" class="signal-btn dim">Join the Registry</a>
+          <a href="#" class="signal-btn">Join the Alliance</a>
+          <a href="#" class="signal-btn dim">Read the Vow</a>
         </div>
       </div>
 
-      <h2 class="nfp-section-head">II. Domestic Policy — Architecture of Opportunity</h2>
+      <h2 class="nfp-section-head">II. The Five Pillars</h2>
+
       <ul class="nfp-list">
         <li>
-          <strong>Education</strong>
-          Tuition-free public university for students who maintain a service-grade GPA. Knowledge is infrastructure.
+          <strong><span class="pillar-keyword">Free</span> The Sanctity of the Individual</strong>
+          The Privacy Covenant: the government has no business in the bedrooms or private consciences of its citizens. We protect the constitutional right to be left alone. Economic Liberty: a marketplace that rewards innovation and hard work, stripped of corporate subsidies that stifle competition — and guaranteeing a fair start for every entrepreneur.
         </li>
         <li>
-          <strong>Civil Covenant</strong>
-          Judicial appointments drawn exclusively from a pool of candidates with demonstrated record of impartiality. The bench is not a reward for loyalty.
+          <strong><span class="pillar-keyword">Fair</span> The Architecture of Opportunity</strong>
+          Education as the Great Equalizer: universal access to high-quality early learning, and a federal commitment that no "best and brightest" student is barred from a public university due to the size of their bank account. Systemic Integrity: Ranked Choice Voting and independent redistricting to end the era of safe seats. Politicians should have to work for your vote, every single time.
         </li>
         <li>
-          <strong>Healthcare Architecture</strong>
-          A public option administered with the rigor of a flight safety board. No one should go bankrupt for staying alive.
+          <strong><span class="pillar-keyword">Strong</span> The Shield of Liberty</strong>
+          National defense centered on technological primacy — cyber-defense, satellite security, advanced intelligence. The Proportional Plus Doctrine: a nation of peace, but our deterrent is absolute. If diplomacy fails, the American response will be swift, decisive, and technologically overwhelming. We do not send our citizens into forever wars.
         </li>
         <li>
-          <strong>Infrastructure</strong>
-          The nation's physical plant — roads, bridges, water systems, power grids — treated as a long-term capital investment, not a campaign prop. Boring, important, done.
+          <strong><span class="pillar-keyword">Independent</span> The End of the Machine</strong>
+          The Glass House Mandate: every Alliance representative publishes their professional calendar in real-time and accepts a total ban on individual stock trading for members and their families. The Alliance accepts zero corporate PAC money. Our independence is funded by the citizens we serve. Our only debt is to the Constitution.
         </li>
         <li>
-          <strong>Housing</strong>
-          Federal land-use reform to break the zoning cartels that have made American cities unaffordable. The dream of owning a modest home should not require generational wealth.
+          <strong><span class="pillar-keyword">Charitable</span> The Moral Obligation — <em>Caritas</em></strong>
+          Charitable here does not mean charity in the thin sense. It means <em>Caritas</em> — the Latin concept of social love and responsibility for one's neighbor. The Global Health Mandate: we lead the world in fighting pandemics and eradicating preventable diseases. The Veteran Covenant: the care of our veterans is a sacred, non-negotiable debt — a modernized VA that treats mental health and physical wounds with equal urgency.
         </li>
       </ul>
 
-      <h2 class="nfp-section-head">III. Foreign Policy — Responsible Sovereignty</h2>
+      <h2 class="nfp-section-head">III. The Alliance Vow</h2>
+      <p>We believe in the power of the expert, the stability of the law, and the capacity of the American people to hear the hard truth.</p>
+      <p class="nfp-pull">"We are a small group of thoughtful, committed citizens. We intend to change the world."</p>
+      <p>We are the party of <em>What's Next?</em></p>
+
+      <h2 class="nfp-section-head">IV. First 100 Days — The Commonweal Initiative</h2>
+      <p style="font-style:italic; color:var(--ink-muted);">"Restoring the Republic through Practical Idealism."</p>
+      <p>This is not a list of bills. It is a series of Big Bang moves designed to shock the system back into a state of high-functioning service. It moves fast, relies on experts, and treats the American public like adults.</p>
+
+      <p class="phase-head">Phase 1 — The Integrity Initiative &middot; Days 1–20</p>
       <ul class="nfp-list">
         <li>
-          <strong>Alliances</strong>
-          Recommitment to treaty obligations as binding law, not conditional favor. Allies are not leverage; they are architecture.
+          <strong>Day 1 — Executive Order 001: The Glass House Mandate</strong>
+          All executive branch appointees immediately place individual stocks into blind trusts and publish their professional calendars in real-time.
         </li>
         <li>
-          <strong>Intelligence</strong>
-          Separation of the intelligence community from political directorate. The CRM114 discriminator passes only verified transmission — so should our foreign policy apparatus.
+          <strong>Day 5 — The "Unbought" Act</strong>
+          Federal tax credits for small-dollar donations to independent candidates; a ban on all corporate PAC contributions to Alliance members.
         </li>
         <li>
-          <strong>Aid and Engagement</strong>
-          Foreign assistance tied explicitly to democratic governance benchmarks. We do not fund autocracy in the name of stability.
-        </li>
-        <li>
-          <strong>Military</strong>
-          An armed force sized for actual defense — not projection of dominance, not theater, not the enrichment of contractors. Lethal when required. Restrained as a first principle.
+          <strong>Day 15 — The Summit on Civic Trust</strong>
+          Leaders from all 50 states convene at the White House to draft a framework for National Ranked Choice Voting and independent redistricting.
         </li>
       </ul>
 
-      <h2 class="nfp-section-head">IV. Electoral Integrity — The Transmission</h2>
-      <p>The signal is only as good as the channel. The New Federalist Party supports:</p>
+      <p class="phase-head">Phase 2 — The Architecture of Opportunity &middot; Days 21–50</p>
       <ul class="nfp-list">
         <li>
-          <strong>Independent Redistricting</strong>
-          All congressional maps drawn by nonpartisan commissions with published methodology. The map is not the territory; it should not be weaponized as one.
+          <strong>Day 25 — The "Great Equalizer" Education Bill</strong>
+          A massive federal grant program for Universal Pre-K and the Alliance Scholarship Fund: a federal-state match to zero out tuition for high-performing students at public universities.
         </li>
         <li>
-          <strong>Ranked-Choice Voting</strong>
-          Federal elections conducted by ranked-choice method to eliminate the spoiler effect and the lesser-evil calculus that has demoralized the electorate for forty years.
+          <strong>Day 40 — The Big Bang Social Security Summit</strong>
+          A closed-door, bipartisan commission of economists and actuaries to finalize a 75-year solvency plan — based on math, not politics.
         </li>
         <li>
-          <strong>Paper Ballots</strong>
-          Every vote cast on paper. Every paper retained. The simplest systems are the hardest to corrupt.
-        </li>
-        <li>
-          <strong>Campaign Finance</strong>
-          Strict aggregate limits on political donations with public matching for small-dollar contributions. Democracy should not be a subscription service.
+          <strong>Day 45 — Fair Start Tax Reform</strong>
+          A simplified tax code that closes the Carried Interest loophole and redirects those funds into a National Innovation Fund for small businesses and entrepreneurs.
         </li>
       </ul>
 
-      <h2 class="nfp-section-head">V. The Record</h2>
-      <p style="font-style:italic; color:var(--ink-muted);">The New Federalist Party has not yet won an election. It has, however, been right about most things, which counts for something in the long run and nothing in the short.</p>
+      <p class="phase-head">Phase 3 — The Shield &amp; The Covenant &middot; Days 51–80</p>
+      <ul class="nfp-list">
+        <li>
+          <strong>Day 55 — The Defense Modernization Act</strong>
+          A strategic pivot of the defense budget: $40 billion reallocated from legacy systems into the Impenetrable Shield — total hardening of the U.S. electrical grid, satellite arrays, and cyber-warfare commands.
+        </li>
+        <li>
+          <strong>Day 65 — The Veteran Covenant Surge</strong>
+          Emergency funding to eliminate the VA backlog and integrate private-sector mental health providers into the VA network. Immediate care for PTSD and invisible wounds is a non-negotiable obligation.
+        </li>
+        <li>
+          <strong>Day 75 — The Global Health Accord</strong>
+          A global summit to fund the eradication of three preventable diseases — proving that a Strong America is a Charitable America.
+        </li>
+      </ul>
+
+      <p class="phase-head">Phase 4 — The State of the Commonweal &middot; Days 81–100</p>
+      <ul class="nfp-list">
+        <li>
+          <strong>Day 90 — The National Town Hall</strong>
+          A prime-time, televised address: a Report Card on the first 90 days — admitting where we hit snags and explaining the data behind the next 100.
+        </li>
+        <li>
+          <strong>Day 100 — The Commonweal Legislative Package</strong>
+          The final, unified bill codifying the Free, Fair, Strong, Independent, and Charitable pillars into federal law.
+        </li>
+      </ul>
+
+      <p style="font-style:italic; margin-top:2.5rem;">Every Tuesday night during these 100 days, the President hosts a Lecture Series from the East Room — Nobel laureates, retired generals, teachers — explaining the science and data behind these policies. We are not just passing laws. We are educating the electorate.</p>
 
       <div class="nfp-motto">
         <div class="nfp-motto-rule"></div>
-        <span>Vestra Res Agitur</span>
+        <span>Vestra Res Agitur &nbsp;·&nbsp; What Is Next?</span>
         <div class="nfp-motto-rule"></div>
       </div>
 
@@ -533,7 +600,7 @@
 
 <script src="signal-strip.js"></script>
 <script>
-  // Animate the signal fill meter when it enters the viewport
+  // Animate the signal fill meter when platform is revealed
   (function() {
     const fill   = document.getElementById('signalFill');
     const pct    = document.getElementById('signalPct');
@@ -545,7 +612,7 @@
       animated = true;
       fill.classList.add('animated');
       let val = 0;
-      const target = 65;
+      const target = 78;
       const step = () => {
         val = Math.min(val + 1, target);
         pct.textContent = val + '% Encrypted';
@@ -554,14 +621,10 @@
       requestAnimationFrame(step);
     }
 
-    // Trigger when platform is revealed
     toggle.addEventListener('change', function() {
-      if (this.checked) {
-        setTimeout(animateMeter, 400);
-      }
+      if (this.checked) setTimeout(animateMeter, 400);
     });
 
-    // Also trigger if already scrolled to
     const obs = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting && toggle.checked) animateMeter();
     }, { threshold: 0.3 });
