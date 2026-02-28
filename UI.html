@@ -60,6 +60,18 @@
       opacity: 0.82;
       margin-bottom: 1.6rem;
     }
+    .crm-link {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212,165,23,0.45);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s, text-shadow 0.2s;
+    }
+    .crm-link:hover {
+      color: #f5c842;
+      border-color: #f5c842;
+      text-shadow: 0 0 12px rgba(212,165,23,0.70);
+    }
     .nfp-title {
       font-family: 'Bebas Neue', var(--font-serif);
       font-size: clamp(3.2rem, 8.5vw, 9rem);
@@ -446,7 +458,7 @@
 
   <!-- Hero text -->
   <div class="nfp-hero-content">
-    <span class="nfp-callsign">Signal Verified &nbsp;·&nbsp; CRM114 &nbsp;·&nbsp; What Is Next?</span>
+    <span class="nfp-callsign">Signal Verified &nbsp;·&nbsp; <a href="https://youtu.be/MB21sEtIAc0?si=UbisI5AQSlLBUwj6" target="_blank" rel="noopener" class="crm-link">CRM114</a> &nbsp;·&nbsp; What Is Next?</span>
     <h1 class="nfp-title">The Independent<br>Alliance</h1>
     <p class="nfp-subtitle">"For the Nation. For the Future."</p>
   </div>
