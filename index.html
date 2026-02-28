@@ -72,178 +72,310 @@
     <!-- TOP: illustrated hero — full width -->
     <div class="hero-image-col">
 
-      <!-- Barcelona Pavilion + The Motherland Calls silhouette (after own photos) -->
+      <!-- Dark city riverfront — lone silhouette at the water's edge (after create_art.py) -->
       <svg class="hero-art-svg" viewBox="0 0 1600 500" xmlns="http://www.w3.org/2000/svg"
            preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
-          <!-- Marble texture: green onyx (panels 1 & 3) -->
-          <filter id="mbl1" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-            <feTurbulence type="fractalNoise" baseFrequency="0.016 0.005" numOctaves="7" seed="11"/>
-            <feColorMatrix type="matrix" values="
-              0.08 0.10 0.05 0 0.16
-              0.12 0.18 0.07 0 0.26
-              0.07 0.09 0.04 0 0.13
-              0    0    0    1 0"/>
-          </filter>
-          <!-- Marble texture: green onyx (panels 2 & 4) -->
-          <filter id="mbl2" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-            <feTurbulence type="fractalNoise" baseFrequency="0.016 0.005" numOctaves="7" seed="29"/>
-            <feColorMatrix type="matrix" values="
-              0.08 0.10 0.05 0 0.14
-              0.12 0.18 0.07 0 0.24
-              0.07 0.09 0.04 0 0.12
-              0    0    0    1 0"/>
-          </filter>
-          <!-- Pool gradient: near-black water -->
-          <linearGradient id="poolGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stop-color="#0f1419"/>
-            <stop offset="60%"  stop-color="#111820"/>
-            <stop offset="100%" stop-color="#0d1117"/>
+          <!-- Sky: deep midnight navy, warm amber at horizon -->
+          <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#05080f"/>
+            <stop offset="50%"  stop-color="#080d1a"/>
+            <stop offset="85%"  stop-color="#0f0e20"/>
+            <stop offset="100%" stop-color="#1a1030"/>
           </linearGradient>
-          <!-- Sky/foliage gradient -->
-          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stop-color="#141d0f"/>
-            <stop offset="100%" stop-color="#1e2e18"/>
+          <!-- Water: near-black with slight blue tint -->
+          <linearGradient id="waterG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#090910"/>
+            <stop offset="100%" stop-color="#040508"/>
+          </linearGradient>
+          <!-- City glow bloom — amber light pollution at the skyline -->
+          <radialGradient id="glowSky" cx="54%" cy="54%" r="46%">
+            <stop offset="0%"   stop-color="#b87010" stop-opacity="0.26"/>
+            <stop offset="40%"  stop-color="#7a4808" stop-opacity="0.11"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+          </radialGradient>
+          <!-- Surveillance cold glow — left side of sky -->
+          <radialGradient id="glowCold" cx="22%" cy="45%" r="38%">
+            <stop offset="0%"   stop-color="#0a2860" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+          </radialGradient>
+          <!-- Reflection column in water below city -->
+          <linearGradient id="reflG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#c88010" stop-opacity="0.28"/>
+            <stop offset="55%"  stop-color="#c88010" stop-opacity="0.09"/>
+            <stop offset="100%" stop-color="#c88010" stop-opacity="0"/>
           </linearGradient>
           <!-- Edge vignette -->
-          <radialGradient id="vig" cx="50%" cy="35%" r="75%">
+          <radialGradient id="vig2" cx="50%" cy="42%" r="72%">
             <stop offset="0%"   stop-color="#000000" stop-opacity="0"/>
-            <stop offset="80%"  stop-color="#000000" stop-opacity="0.35"/>
-            <stop offset="100%" stop-color="#000000" stop-opacity="0.60"/>
+            <stop offset="70%"  stop-color="#000000" stop-opacity="0.26"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0.74"/>
           </radialGradient>
         </defs>
 
-        <!-- ① Sky / foliage band -->
-        <rect width="1600" height="84" fill="url(#skyGrad)"/>
-        <ellipse cx="280"  cy="52" rx="230" ry="58" fill="#182514" opacity="0.75"/>
-        <ellipse cx="680"  cy="42" rx="290" ry="52" fill="#152010" opacity="0.65"/>
-        <ellipse cx="1080" cy="56" rx="250" ry="62" fill="#182514" opacity="0.55"/>
-        <ellipse cx="1440" cy="46" rx="210" ry="50" fill="#152010" opacity="0.65"/>
-        <ellipse cx="480"  cy="80" rx="120" ry="30" fill="#1c2e18" opacity="0.5"/>
-        <ellipse cx="900"  cy="75" rx="140" ry="28" fill="#1a2a14" opacity="0.45"/>
-        <ellipse cx="1300" cy="78" rx="130" ry="32" fill="#1c2e18" opacity="0.5"/>
+        <!-- ① Sky base — deep midnight blue -->
+        <rect width="1600" height="500" fill="url(#skyG)"/>
+        <!-- Warm city glow in sky -->
+        <rect width="1600" height="500" fill="url(#glowSky)"/>
+        <!-- Cold surveillance glow — left side -->
+        <rect width="1600" height="500" fill="url(#glowCold)"/>
 
-        <!-- ② Green onyx marble wall — 4 panels -->
-        <rect x="0"    y="78" width="400" height="268" fill="#2b3d31"/>
-        <rect x="403"  y="78" width="394" height="268" fill="#2f4235"/>
-        <rect x="800"  y="78" width="400" height="268" fill="#2d4033"/>
-        <rect x="1203" y="78" width="397" height="268" fill="#314438"/>
-        <rect x="0"    y="78" width="400" height="268" filter="url(#mbl1)" opacity="0.88"/>
-        <rect x="403"  y="78" width="394" height="268" filter="url(#mbl2)" opacity="0.88"/>
-        <rect x="800"  y="78" width="400" height="268" filter="url(#mbl1)" opacity="0.82"/>
-        <rect x="1203" y="78" width="397" height="268" filter="url(#mbl2)" opacity="0.82"/>
-        <rect x="170"  y="78" width="60"  height="268" fill="#4a6a52" opacity="0.08"/>
-        <rect x="570"  y="78" width="55"  height="268" fill="#4a6a52" opacity="0.07"/>
-        <rect x="970"  y="78" width="60"  height="268" fill="#4a6a52" opacity="0.07"/>
-        <rect x="1365" y="78" width="55"  height="268" fill="#4a6a52" opacity="0.07"/>
+        <!-- ② Stars — faint, upper sky only -->
+        <circle cx="96"  cy="32" r="0.7" fill="#c8d4e8" opacity="0.60"/>
+        <circle cx="228" cy="16" r="0.6" fill="#c0c8e0" opacity="0.50"/>
+        <circle cx="358" cy="46" r="0.8" fill="#c8d4e8" opacity="0.55"/>
+        <circle cx="498" cy="11" r="0.6" fill="#c8d4e8" opacity="0.46"/>
+        <circle cx="614" cy="39" r="0.5" fill="#c0c8e0" opacity="0.40"/>
+        <circle cx="730" cy="9"  r="0.8" fill="#c8d4e8" opacity="0.54"/>
+        <circle cx="844" cy="53" r="0.6" fill="#c8d4e8" opacity="0.38"/>
+        <circle cx="946" cy="24" r="0.7" fill="#c0c8e0" opacity="0.60"/>
+        <circle cx="1054" cy="14" r="0.8" fill="#c8d4e8" opacity="0.50"/>
+        <circle cx="1170" cy="40" r="0.6" fill="#c0c8e0" opacity="0.46"/>
+        <circle cx="1286" cy="27" r="0.8" fill="#c8d4e8" opacity="0.58"/>
+        <circle cx="1400" cy="17" r="0.5" fill="#c8d4e8" opacity="0.44"/>
+        <circle cx="1500" cy="48" r="0.7" fill="#c0c8e0" opacity="0.54"/>
+        <circle cx="174"  cy="72" r="0.5" fill="#c8d4e8" opacity="0.32"/>
+        <circle cx="822"  cy="79" r="0.4" fill="#c8d4e8" opacity="0.27"/>
+        <circle cx="1342" cy="65" r="0.5" fill="#c8d4e8" opacity="0.34"/>
 
-        <!-- ③ Architectural details -->
-        <rect x="400"  y="78" width="4" height="268" fill="#0c0d10"/>
-        <rect x="797"  y="78" width="5" height="268" fill="#0c0d10"/>
-        <rect x="1200" y="78" width="4" height="268" fill="#0c0d10"/>
-        <rect y="72" width="1600" height="8" fill="#0e0f14"/>
-        <rect y="344" width="1600" height="5" fill="#0c0d10"/>
-        <rect y="341" width="1600" height="3" fill="#c4bdb0" opacity="0.22"/>
+        <!-- ③ CITY SKYLINE — buildings, horizon at y=268 -->
+        <!-- Far left: low residential (cool blue-grey, left/surveillance side) -->
+        <rect x="0"   y="228" width="46"  height="40" fill="#0b0e1c"/>
+        <rect x="49"  y="202" width="62"  height="66" fill="#0c1020"/>
+        <rect x="114" y="218" width="40"  height="50" fill="#0a0c18"/>
+        <rect x="157" y="184" width="54"  height="84" fill="#0d1122"/>
+        <rect x="214" y="212" width="44"  height="56" fill="#0b0e1c"/>
+        <!-- Left cluster -->
+        <rect x="261" y="197" width="57"  height="71" fill="#0c1020"/>
+        <rect x="321" y="170" width="46"  height="98" fill="#0b0f1e"/>
+        <rect x="370" y="134" width="38"  height="134" fill="#0d1124"/>
+        <rect x="411" y="154" width="60"  height="114" fill="#0c1022"/>
+        <rect x="474" y="167" width="46"  height="101" fill="#0b0f1c"/>
+        <rect x="523" y="122" width="36"  height="146" fill="#0e122a"/>
+        <rect x="562" y="150" width="64"  height="118" fill="#0c1022"/>
+        <rect x="629" y="170" width="42"  height="98" fill="#0b0f1c"/>
+        <!-- CENTER: tallest, densest cluster — transitioning warm right -->
+        <rect x="674" y="157" width="56"  height="111" fill="#0d1124"/>
+        <rect x="733" y="137" width="40"  height="131" fill="#0f1428"/>
+        <rect x="776" y="110" width="52"  height="158" fill="#0e1328"/>
+        <rect x="831" y="124" width="62"  height="144" fill="#0d1226"/>
+        <rect x="896" y="142" width="48"  height="126" fill="#0c1122"/>
+        <rect x="947" y="120" width="44"  height="148" fill="#0e1328"/>
+        <rect x="994" y="150" width="58"  height="118" fill="#0d1124"/>
+        <!-- Right cluster: stepping down, warmer tones -->
+        <rect x="1055" y="164" width="52" height="104" fill="#0c1020"/>
+        <rect x="1110" y="147" width="46" height="121" fill="#0d1124"/>
+        <rect x="1159" y="134" width="60" height="134" fill="#0c1022"/>
+        <rect x="1222" y="157" width="44" height="111" fill="#0b0f1c"/>
+        <rect x="1269" y="172" width="57" height="96"  fill="#0c1020"/>
+        <rect x="1329" y="187" width="42" height="81"  fill="#0a0d1a"/>
+        <!-- Far right: low -->
+        <rect x="1374" y="200" width="50" height="68"  fill="#0b0e1c"/>
+        <rect x="1427" y="182" width="62" height="86"  fill="#0d1122"/>
+        <rect x="1492" y="208" width="44" height="60"  fill="#0a0c18"/>
+        <rect x="1539" y="193" width="54" height="75"  fill="#0c1020"/>
+        <rect x="1596" y="218" width="4"  height="50"  fill="#0a0c18"/>
 
-        <!-- ④ Reflecting pool -->
-        <rect y="349" width="1600" height="151" fill="url(#poolGrad)"/>
-        <path d="M0,362 C260,360 520,364 780,362 C1040,360 1300,364 1600,362"
-              stroke="#e8e2d4" stroke-width="0.7" fill="none" opacity="0.09"/>
-        <path d="M0,382 C320,379 640,385 960,382 C1280,379 1500,383 1600,382"
-              stroke="#e8e2d4" stroke-width="0.5" fill="none" opacity="0.06"/>
-        <path d="M200,408 C500,405 800,411 1100,408 C1350,406 1530,409 1600,408"
-              stroke="#e8e2d4" stroke-width="0.4" fill="none" opacity="0.04"/>
-        <rect y="349" width="1600" height="80" fill="#2d4033" opacity="0.14"/>
+        <!-- ④ BUILDING AMBIENT GLOW — low-opacity warm wash on buildings -->
+        <!-- Left side: cool blue tint (surveillance) -->
+        <rect x="0"   y="184" width="310" height="84" fill="#082060" opacity="0.04"/>
+        <rect x="261" y="134" width="310" height="134" fill="#082060" opacity="0.035"/>
+        <!-- Right side: warm amber glow (power/money) -->
+        <rect x="776" y="112" width="50"  height="154" fill="#c88010" opacity="0.055"/>
+        <rect x="831" y="126" width="60"  height="140" fill="#c88010" opacity="0.046"/>
+        <rect x="733" y="140" width="40"  height="126" fill="#c88010" opacity="0.038"/>
+        <rect x="947" y="122" width="42"  height="144" fill="#c88010" opacity="0.042"/>
+        <rect x="1110" y="150" width="44" height="116" fill="#c88010" opacity="0.038"/>
+        <rect x="1159" y="137" width="58" height="128" fill="#c88010" opacity="0.042"/>
 
-        <!-- ⑤ Wind-form figure — standing body with horizontal blades streaming right -->
-        <g transform="translate(900,0)" opacity="0.92">
+        <!-- ⑤ WINDOWS — left buildings: cold blue; right buildings: warm amber -->
+        <!-- Left tower x=370: cold blue windows (surveillance side) -->
+        <rect x="375" y="142" width="3" height="2" fill="#4a82c8" opacity="0.78"/>
+        <rect x="381" y="142" width="3" height="2" fill="#3a70b8" opacity="0.60"/>
+        <rect x="387" y="142" width="3" height="2" fill="#5090d8" opacity="0.72"/>
+        <rect x="375" y="150" width="3" height="2" fill="#3a70b8" opacity="0.84"/>
+        <rect x="387" y="150" width="3" height="2" fill="#4a82c8" opacity="0.52"/>
+        <rect x="381" y="158" width="3" height="2" fill="#5090d8" opacity="0.76"/>
+        <rect x="375" y="166" width="3" height="2" fill="#4a82c8" opacity="0.62"/>
+        <rect x="387" y="166" width="3" height="2" fill="#3a70b8" opacity="0.84"/>
+        <rect x="375" y="174" width="3" height="2" fill="#5090d8" opacity="0.68"/>
+        <rect x="381" y="182" width="3" height="2" fill="#4a82c8" opacity="0.57"/>
+        <rect x="387" y="190" width="3" height="2" fill="#3a70b8" opacity="0.80"/>
+        <rect x="375" y="198" width="3" height="2" fill="#4a82c8" opacity="0.74"/>
+        <rect x="381" y="206" width="3" height="2" fill="#5090d8" opacity="0.52"/>
+        <rect x="387" y="214" width="3" height="2" fill="#3a70b8" opacity="0.76"/>
+        <!-- Slim left tower x=523: cold blue -->
+        <rect x="528" y="130" width="3" height="2" fill="#4a82c8" opacity="0.80"/>
+        <rect x="534" y="130" width="3" height="2" fill="#3a70b8" opacity="0.56"/>
+        <rect x="528" y="138" width="3" height="2" fill="#5090d8" opacity="0.76"/>
+        <rect x="540" y="138" width="3" height="2" fill="#4a82c8" opacity="0.66"/>
+        <rect x="534" y="146" width="3" height="2" fill="#3a70b8" opacity="0.84"/>
+        <rect x="528" y="154" width="3" height="2" fill="#4a82c8" opacity="0.60"/>
+        <rect x="540" y="154" width="3" height="2" fill="#5090d8" opacity="0.78"/>
+        <rect x="534" y="162" width="3" height="2" fill="#4a82c8" opacity="0.50"/>
+        <rect x="528" y="170" width="3" height="2" fill="#3a70b8" opacity="0.74"/>
+        <rect x="540" y="178" width="3" height="2" fill="#4a82c8" opacity="0.64"/>
+        <rect x="534" y="186" width="3" height="2" fill="#5090d8" opacity="0.80"/>
+        <!-- Center tallest tower x=776: warm amber windows -->
+        <rect x="781" y="118" width="3" height="2" fill="#e0a820" opacity="0.90"/>
+        <rect x="787" y="118" width="3" height="2" fill="#d4940a" opacity="0.75"/>
+        <rect x="793" y="118" width="3" height="2" fill="#e0a820" opacity="0.83"/>
+        <rect x="799" y="118" width="3" height="2" fill="#c88010" opacity="0.57"/>
+        <rect x="781" y="126" width="3" height="2" fill="#d4940a" opacity="0.85"/>
+        <rect x="793" y="126" width="3" height="2" fill="#e0a820" opacity="0.67"/>
+        <rect x="799" y="126" width="3" height="2" fill="#d4940a" opacity="0.79"/>
+        <rect x="787" y="134" width="3" height="2" fill="#c88010" opacity="0.62"/>
+        <rect x="799" y="134" width="3" height="2" fill="#e0a820" opacity="0.87"/>
+        <rect x="781" y="142" width="3" height="2" fill="#d4940a" opacity="0.72"/>
+        <rect x="793" y="142" width="3" height="2" fill="#e0a820" opacity="0.52"/>
+        <rect x="781" y="150" width="3" height="2" fill="#c88010" opacity="0.85"/>
+        <rect x="787" y="150" width="3" height="2" fill="#d4940a" opacity="0.67"/>
+        <rect x="799" y="150" width="3" height="2" fill="#e0a820" opacity="0.77"/>
+        <rect x="793" y="158" width="3" height="2" fill="#d4940a" opacity="0.62"/>
+        <rect x="781" y="166" width="3" height="2" fill="#e0a820" opacity="0.87"/>
+        <rect x="799" y="166" width="3" height="2" fill="#c88010" opacity="0.69"/>
+        <rect x="787" y="174" width="3" height="2" fill="#d4940a" opacity="0.82"/>
+        <rect x="781" y="182" width="3" height="2" fill="#e0a820" opacity="0.57"/>
+        <rect x="793" y="182" width="3" height="2" fill="#d4940a" opacity="0.75"/>
+        <rect x="799" y="190" width="3" height="2" fill="#e0a820" opacity="0.85"/>
+        <rect x="787" y="198" width="3" height="2" fill="#c88010" opacity="0.67"/>
+        <rect x="781" y="206" width="3" height="2" fill="#d4940a" opacity="0.77"/>
+        <rect x="793" y="214" width="3" height="2" fill="#e0a820" opacity="0.52"/>
+        <rect x="781" y="222" width="3" height="2" fill="#d4940a" opacity="0.82"/>
+        <rect x="799" y="230" width="3" height="2" fill="#c88010" opacity="0.62"/>
+        <rect x="787" y="238" width="3" height="2" fill="#e0a820" opacity="0.72"/>
+        <rect x="781" y="246" width="3" height="2" fill="#d4940a" opacity="0.47"/>
+        <rect x="793" y="254" width="3" height="2" fill="#e0a820" opacity="0.57"/>
+        <!-- 2nd center tower x=947: warm amber -->
+        <rect x="952" y="128" width="3" height="2" fill="#e0a820" opacity="0.85"/>
+        <rect x="958" y="128" width="3" height="2" fill="#d4940a" opacity="0.67"/>
+        <rect x="964" y="128" width="3" height="2" fill="#c88010" opacity="0.79"/>
+        <rect x="952" y="136" width="3" height="2" fill="#d4940a" opacity="0.62"/>
+        <rect x="964" y="136" width="3" height="2" fill="#e0a820" opacity="0.87"/>
+        <rect x="952" y="144" width="3" height="2" fill="#c88010" opacity="0.72"/>
+        <rect x="958" y="144" width="3" height="2" fill="#d4940a" opacity="0.52"/>
+        <rect x="964" y="152" width="3" height="2" fill="#e0a820" opacity="0.82"/>
+        <rect x="952" y="160" width="3" height="2" fill="#d4940a" opacity="0.77"/>
+        <rect x="964" y="168" width="3" height="2" fill="#c88010" opacity="0.62"/>
+        <rect x="958" y="176" width="3" height="2" fill="#e0a820" opacity="0.85"/>
+        <rect x="952" y="184" width="3" height="2" fill="#d4940a" opacity="0.57"/>
+        <rect x="964" y="192" width="3" height="2" fill="#e0a820" opacity="0.72"/>
+        <rect x="958" y="200" width="3" height="2" fill="#c88010" opacity="0.82"/>
+        <rect x="952" y="208" width="3" height="2" fill="#d4940a" opacity="0.67"/>
+        <rect x="964" y="216" width="3" height="2" fill="#e0a820" opacity="0.52"/>
+        <rect x="952" y="224" width="3" height="2" fill="#d4940a" opacity="0.79"/>
+        <rect x="958" y="232" width="3" height="2" fill="#c88010" opacity="0.62"/>
+        <!-- Right cluster x=1159: warm amber -->
+        <rect x="1164" y="142" width="3" height="2" fill="#d4940a" opacity="0.82"/>
+        <rect x="1170" y="142" width="3" height="2" fill="#e0a820" opacity="0.62"/>
+        <rect x="1176" y="142" width="3" height="2" fill="#c88010" opacity="0.75"/>
+        <rect x="1182" y="142" width="3" height="2" fill="#d4940a" opacity="0.52"/>
+        <rect x="1164" y="150" width="3" height="2" fill="#e0a820" opacity="0.87"/>
+        <rect x="1176" y="150" width="3" height="2" fill="#d4940a" opacity="0.69"/>
+        <rect x="1164" y="158" width="3" height="2" fill="#c88010" opacity="0.59"/>
+        <rect x="1182" y="158" width="3" height="2" fill="#e0a820" opacity="0.82"/>
+        <rect x="1170" y="166" width="3" height="2" fill="#d4940a" opacity="0.75"/>
+        <rect x="1176" y="174" width="3" height="2" fill="#e0a820" opacity="0.52"/>
+        <rect x="1164" y="182" width="3" height="2" fill="#d4940a" opacity="0.85"/>
+        <rect x="1182" y="182" width="3" height="2" fill="#c88010" opacity="0.62"/>
+        <rect x="1170" y="190" width="3" height="2" fill="#e0a820" opacity="0.77"/>
+        <rect x="1176" y="198" width="3" height="2" fill="#d4940a" opacity="0.57"/>
+        <rect x="1164" y="206" width="3" height="2" fill="#e0a820" opacity="0.72"/>
+        <rect x="1182" y="214" width="3" height="2" fill="#c88010" opacity="0.82"/>
+        <rect x="1170" y="222" width="3" height="2" fill="#d4940a" opacity="0.52"/>
+        <rect x="1176" y="230" width="3" height="2" fill="#e0a820" opacity="0.67"/>
 
-          <!-- HORIZONTAL WIND BLADES — drawn first (behind figure) -->
+        <!-- ⑥ Horizon haze — warm glow band at the waterline -->
+        <rect x="0" y="260" width="1600" height="12" fill="#200e08" opacity="0.65"/>
+        <rect x="0" y="265" width="1600" height="5"  fill="#c88010" opacity="0.07"/>
 
-          <!-- B1: hair blade — thin, at head level -->
-          <path d="M-24,73  C  18,73  200,69  278,66
-                   C200,63   18,59  -24,63 Z" fill="#c09050"/>
+        <!-- ⑦ Water — near-black with deep blue undertone -->
+        <rect x="0" y="268" width="1600" height="232" fill="url(#waterG)"/>
+        <!-- Reflection column below city core -->
+        <rect x="580" y="268" width="500" height="210" fill="url(#reflG)"/>
+        <!-- Amber shimmer lines — city lights rippling in the water -->
+        <path d="M576,274 Q700,271 800,274 Q930,277 1056,274" stroke="#c88010" stroke-width="1.4" fill="none" opacity="0.28"/>
+        <path d="M596,281 Q714,278 814,281 Q944,284 1060,281" stroke="#c88010" stroke-width="0.9" fill="none" opacity="0.20"/>
+        <path d="M612,289 Q736,286 836,289 Q956,292 1072,289" stroke="#d4940a" stroke-width="1.1" fill="none" opacity="0.15"/>
+        <path d="M556,297 Q692,294 792,297 Q924,300 1064,297" stroke="#c88010" stroke-width="0.7" fill="none" opacity="0.12"/>
+        <path d="M598,306 Q706,303 810,306 Q934,309 1048,306" stroke="#b87808" stroke-width="0.8" fill="none" opacity="0.09"/>
+        <path d="M636,316 Q752,313 852,316 Q968,319 1072,316" stroke="#c88010" stroke-width="1.0" fill="none" opacity="0.07"/>
+        <path d="M618,327 Q736,324 836,327 Q956,330 1066,327" stroke="#d4940a" stroke-width="0.6" fill="none" opacity="0.05"/>
+        <path d="M598,340 Q720,337 820,340 Q944,343 1064,340" stroke="#c88010" stroke-width="0.8" fill="none" opacity="0.04"/>
+        <!-- Cold blue shimmer on left (surveillance reflection) -->
+        <path d="M68,280 Q162,277 256,280 Q328,283 400,280" stroke="#2850a8" stroke-width="0.6" fill="none" opacity="0.10"/>
+        <path d="M78,289 Q174,286 268,289 Q340,292 412,289" stroke="#1a3880" stroke-width="0.4" fill="none" opacity="0.07"/>
+        <!-- Amber shimmer on right -->
+        <path d="M1204,280 Q1308,277 1412,280 Q1484,283 1556,280" stroke="#c88010" stroke-width="0.6" fill="none" opacity="0.11"/>
+        <path d="M1214,289 Q1318,286 1422,289 Q1494,292 1566,289" stroke="#b87808" stroke-width="0.4" fill="none" opacity="0.07"/>
 
-          <!-- B2: upper shoulder -->
-          <path d="M-18,96  C  26,96  235,91  316,88
-                   C235,85   26,80  -18,80 Z" fill="#b88048"/>
+        <!-- ⑧ Near embankment — quay/sea-wall, viewer's side -->
+        <rect x="0" y="340" width="1600" height="18" fill="#0b0c16"/>
+        <rect x="0" y="338" width="1600" height="3"  fill="#18192a" opacity="0.65"/>
+        <!-- Stone joints -->
+        <line x1="118"  y1="340" x2="118"  y2="358" stroke="#07080f" stroke-width="0.5" opacity="0.40"/>
+        <line x1="318"  y1="340" x2="318"  y2="358" stroke="#07080f" stroke-width="0.5" opacity="0.36"/>
+        <line x1="518"  y1="340" x2="518"  y2="358" stroke="#07080f" stroke-width="0.5" opacity="0.40"/>
+        <line x1="718"  y1="340" x2="718"  y2="358" stroke="#07080f" stroke-width="0.5" opacity="0.36"/>
+        <line x1="918"  y1="340" x2="918"  y2="358" stroke="#07080f" stroke-width="0.5" opacity="0.40"/>
+        <line x1="1118" y1="340" x2="1118" y2="358" stroke="#07080f" stroke-width="0.5" opacity="0.36"/>
+        <line x1="1318" y1="340" x2="1318" y2="358" stroke="#07080f" stroke-width="0.5" opacity="0.40"/>
+        <line x1="1518" y1="340" x2="1518" y2="358" stroke="#07080f" stroke-width="0.5" opacity="0.36"/>
+        <!-- Foreground ground — very dark -->
+        <rect x="0" y="358" width="1600" height="142" fill="#060710"/>
 
-          <!-- B3 -->
-          <path d="M-16,114  C  38,114  296,109  374,106
-                   C296,103   38,98  -16,98 Z" fill="#b08048"/>
-
-          <!-- B4 -->
-          <path d="M-16,132  C  46,132  336,126  408,123
-                   C336,120   46,114  -16,114 Z" fill="#b08048"/>
-
-          <!-- B5: longest — mid-body -->
-          <path d="M-14,150  C  52,150  356,144  428,140
-                   C356,136   52,130  -14,130 Z" fill="#b08048"/>
-
-          <!-- B6 -->
-          <path d="M-14,167  C  46,167  316,161  388,157
-                   C316,153   46,147  -14,147 Z" fill="#b08048"/>
-
-          <!-- B7 -->
-          <path d="M-12,183  C  40,183  266,178  334,174
-                   C266,170   40,163  -12,163 Z" fill="#a87040"/>
-
-          <!-- B8 -->
-          <path d="M-12,198  C  32,198  208,193  272,190
-                   C208,187   32,182  -12,182 Z" fill="#a87040"/>
-
-          <!-- B9 -->
-          <path d="M-10,212  C  24,212  148,208  212,205
-                   C148,202   24,196  -10,196 Z" fill="#a06838"/>
-
-          <!-- B10: lowest, shortest -->
-          <path d="M-8,225   C  18,225   86,221  150,218
-                    C 86,215   18,209   -8,209 Z" fill="#a06838"/>
-
-          <!-- Low flat base slab (drawn after blades so it sits in front) -->
-          <rect x="-38" y="278" width="148" height="20" fill="#8a6030" rx="2"/>
-          <rect x="-38" y="276" width="148" height="4"  fill="#a07838"/>
-
-          <!-- LEGS: visible below the blade mass, in front of blades -->
-          <path d="M-14,224 C-13,242 -11,260 -10,272 L-7,278 L2,278 L0,272
-                   C-1,260 -1,244 -1,226 Z" fill="#b07840"/>
-          <path d="M3,226 C3,244 5,260 7,272 L11,278 L18,278 L16,272
-                   C14,260 13,244 12,226 Z" fill="#a07030"/>
-
-          <!-- NECK — in front of blades -->
-          <path d="M-20,99 C-15,97 -6,97 -2,99 L-3,114 C-8,112 -17,112 -21,114 Z"
-                fill="#b07840"/>
-
-          <!-- HEAD: drawn last — in front of all blades -->
-          <ellipse cx="-12" cy="84" rx="15" ry="17" fill="#b88050"/>
-          <ellipse cx="-17" cy="82" rx="8"  ry="11" fill="#c89060" opacity="0.55"/>
-
+        <!-- ⑨ LONE FIGURE — standing at the embankment edge, facing the city -->
+        <!-- Centered x=860, feet y=340, head y=286 — long coat silhouette -->
+        <g>
+          <!-- Coat body — tapers at shoulder, slight flare at hem -->
+          <path d="
+            M852,340 C850,336 847,326 847,316
+            C847,307 848,302 851,299
+            C853,297 856,296 860,296
+            C864,296 867,297 869,299
+            C872,302 873,307 873,316
+            C873,326 870,336 868,340 Z
+          " fill="#07080e"/>
+          <!-- Coat shoulder width -->
+          <path d="
+            M845,308 C847,305 851,302 855,301
+            C858,300 862,300 865,301
+            C869,302 873,305 875,308
+            C877,311 879,314 880,316
+            L879,318 C877,315 875,312 872,310
+            C870,307 866,304 860,304
+            C854,304 850,307 848,310
+            C846,312 844,315 843,318
+            L842,316 C843,313 844,310 845,308 Z
+          " fill="#07080e"/>
+          <!-- Collar / neck rear -->
+          <rect x="857" y="292" width="6" height="6" fill="#07080e" rx="1"/>
+          <!-- Head — oval, seen from behind -->
+          <ellipse cx="860" cy="285" rx="8" ry="10" fill="#08090f"/>
+          <!-- Rim light — cold blue on LEFT edge (surveillance light from left) -->
+          <path d="M852,296 C850,299 849,303 849,308 C849,316 850,325 852,333 C851,332 849,327 848,318 C847,310 847,303 849,297 Z"
+                fill="#2850a8" opacity="0.20"/>
+          <!-- Rim light — warm amber on RIGHT edge (city light from across water) -->
+          <path d="M868,296 C870,299 871,303 871,308 C871,316 870,325 868,333 C869,332 871,327 872,318 C873,310 873,303 871,297 Z"
+                fill="#c88010" opacity="0.18"/>
+          <!-- Head rim — amber catch on right side -->
+          <path d="M864,290 C866,288 867,286 866,284 C865,283 863,283 862,284 C864,285 865,288 864,290 Z"
+                fill="#c88010" opacity="0.14"/>
+          <!-- Ground shadow -->
+          <ellipse cx="860" cy="341" rx="22" ry="2.5" fill="#030408" opacity="0.60"/>
         </g>
 
-        <!-- ⑥ Wind-figure reflection in pool (lower blades + legs in water) -->
-        <g transform="translate(900,0)" opacity="0.16">
-          <g transform="translate(0,684) scale(1,-1)">
-            <rect x="-38" y="278" width="148" height="20" fill="#8a6030" rx="2"/>
-            <path d="M-14,224 C-13,242 -11,260 -10,272 L-7,278 L2,278 L0,272
-                     C-1,260 -1,244 -1,226 Z" fill="#b07840"/>
-            <path d="M3,226 C3,244 5,260 7,272 L11,278 L18,278 L16,272
-                     C14,260 13,244 12,226 Z" fill="#a07030"/>
-            <path d="M-8,225   C  18,225   86,221  150,218  C 86,215  18,209  -8,209 Z" fill="#a06838"/>
-            <path d="M-10,212  C  24,212  148,208  212,205  C148,202  24,196 -10,196 Z" fill="#a06838"/>
-            <path d="M-12,198  C  32,198  208,193  272,190  C208,187  32,182 -12,182 Z" fill="#a87040"/>
-            <path d="M-12,183  C  40,183  266,178  334,174  C266,170  40,163 -12,163 Z" fill="#a87040"/>
-            <path d="M-14,167  C  46,167  316,161  388,157  C316,153  46,147 -14,147 Z" fill="#b08048"/>
-            <path d="M-14,150  C  52,150  356,144  428,140  C356,136  52,130 -14,130 Z" fill="#b08048"/>
-            <path d="M-16,132  C  46,132  336,126  408,123  C336,120  46,114 -16,114 Z" fill="#b08048"/>
-            <path d="M-16,114  C  38,114  296,109  374,106  C296,103  38,98  -16,98  Z" fill="#b08048"/>
-            <path d="M-18,96   C  26,96   235,91   316,88   C235,85   26,80  -18,80  Z" fill="#b88048"/>
-            <path d="M-24,73   C  18,73   200,69   278,66   C200,63   18,59  -24,63  Z" fill="#c09050"/>
-            <ellipse cx="-12" cy="84" rx="15" ry="17" fill="#b88050"/>
-          </g>
+        <!-- ⑩ Figure reflection in water — faint, shimmering below embankment -->
+        <g opacity="0.12">
+          <ellipse cx="860" cy="357" rx="8"  ry="10" fill="#1c2240"/>
+          <path d="M852,354 C850,358 847,368 847,378 C847,387 852,392 860,392 C868,392 873,387 873,378 C873,368 870,358 868,354 Z" fill="#1c2240"/>
         </g>
 
-        <!-- ⑦ Vignette -->
-        <rect width="1600" height="500" fill="url(#vig)"/>
+        <!-- ⑪ Crimson signal accent — site signature, horizontal rule at embankment -->
+        <line x1="0" y1="340" x2="420" y2="340" stroke="#b30505" stroke-width="0.9" opacity="0.50"/>
+
+        <!-- ⑫ Vignette overlay -->
+        <rect width="1600" height="500" fill="url(#vig2)"/>
       </svg>
 
       <!-- Text overlay -->
