@@ -410,10 +410,7 @@ nav {
   margin: 0;
 }
 
-/* ── ARCHIVE ──────────────────────────────────────────── */
-.archive-section { padding: 3.5rem 2rem 6rem; }
-.archive-category { margin-bottom: 3.5rem; }
-.archive-cat-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--crimson); padding-bottom: 0.8rem; border-bottom: 1px solid var(--rule); margin-bottom: 0; }
+
 
 /* ── READER ───────────────────────────────────────────── */
 .reader-header { background: var(--surface); padding: 5.5rem 2rem 4rem; border-bottom: 1px solid var(--rule); text-align: center; }
@@ -489,12 +486,6 @@ nav {
   filter: brightness(0.88);
 }
 .photo-item:hover img { transform: scale(1.03); filter: brightness(1); }
-.photo-placeholder {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--surface-3); border: 1px solid var(--rule);
-}
-.photo-placeholder span { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.1em; color: var(--ink-dim); text-transform: uppercase; }
 @media (max-width: 700px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 420px) { .photo-grid { grid-template-columns: 1fr; } }
 .series-nav { display: flex; gap: 2rem; flex-wrap: wrap; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
