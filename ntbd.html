@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Needs to be done &mdash; fgd135</title>
+  <meta name="description" content="Needs to be done &mdash; A political thriller in daily installments." />
+  <meta property="og:title" content="Needs to be done &mdash; fgd135" />
+  <meta property="og:url" content="https://fgd135.com/ntbd.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Courier+Prime:ital,wght@0,400;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page { display: block !important; }
+    .hub-hero {
+      padding: 4.5rem 1.5rem 3.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--rule, #1e2030);
+    }
+    .hub-eyebrow {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-muted, #6a6a7a);
+      margin-bottom: 0.8rem;
+    }
+    .hub-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      letter-spacing: 0.05em;
+      color: var(--ink, #d4cec6);
+      margin: 0 0 0.6rem;
+      line-height: 1;
+    }
+    .hub-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--ink-muted, #6a6a7a);
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      line-height: 1.65;
+    }
+    .hub-cta {
+      display: inline-block;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--crimson, #b30505);
+      text-decoration: none;
+      border: 1px solid var(--crimson, #b30505);
+      padding: 0.55rem 1.5rem;
+      transition: background 0.18s, color 0.18s;
+    }
+    .hub-cta:hover { background: var(--crimson, #b30505); color: #fff; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">fgd135</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="stories.html" class="active">Stories</a></li>
+      <li><a href="photos.html">Photos</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="ntbd.html" class="active">The Serial</a></li>
+      <li><a href="UI.html">Get Involved</a></li>
+    </ul>
+    <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕ Close</button>
+  <a href="index.html">Home</a>
+  <a href="stories.html">Stories</a>
+  <a href="photos.html">Photos</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="ntbd.html">The Serial</a>
+  <a href="UI.html">Get Involved</a>
+</div>
+
+<div class="page">
+
+  <div class="hub-hero">
+    <p class="hub-eyebrow">Serial Fiction &middot; Matt Biggins</p>
+    <h1 class="hub-title">Needs to be done</h1>
+    <p class="hub-desc">A political thriller in daily installments.</p>
+    <a class="hub-cta" href="ntbd-001.html">Start reading &rarr;</a>
+  </div>
+
+  <section class="story-list-section">
+    <div class="container-wide">
+      <div class="section-header">
+        <span class="section-title">Installments</span>
+        <span style="font-family:'Courier Prime',monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--ink-muted,#6a6a7a);">1 part &middot; ongoing</span>
+      </div>
+      <div class="story-row" onclick="window.location='ntbd-001.html'" style="cursor:pointer">
+        <span class="story-num">01</span>
+        <div class="story-row-title">Part 1<small>Serial fiction &middot; Matt Biggins</small></div>
+        <span class="story-row-date">&rarr;</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner" style="max-width:1080px;margin:0 auto;">
+    <div class="site-name">fgd135</div>
+    <p class="footer-motto">Words from somewhere worth going.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="stories.html">Stories</a>
+      <a href="photos.html">Photos</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 fgd135. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

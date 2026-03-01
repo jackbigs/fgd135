@@ -88,7 +88,7 @@ nav {
   user-select: none;
 }
 .nav-logo:hover { color: var(--crimson); }
-.nav-links { list-style: none; display: flex; gap: 2rem; }
+.nav-links { list-style: none; display: flex; gap: 1.4rem; }
 .nav-links a {
   font-family: var(--font-mono); font-size: 0.80rem;
   letter-spacing: 0.12em; text-transform: uppercase;
@@ -117,7 +117,7 @@ nav {
   letter-spacing: 0.1em; color: var(--ink-muted);
   cursor: pointer; background: none; border: none; text-transform: uppercase;
 }
-@media (max-width: 620px) {
+@media (max-width: 860px) {
   .nav-links { display: none; }
   .nav-burger { display: flex; }
 }

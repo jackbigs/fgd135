@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Needs to be done &middot; Part 1 &mdash; fgd135</title>
+  <meta name="description" content="Needs to be done &mdash; Part 1. A political thriller in daily installments." />
+  <meta property="og:title" content="Needs to be done &middot; Part 1 &mdash; fgd135" />
+  <meta property="og:url" content="https://fgd135.com/ntbd-001.html" />
+  <meta property="og:type" content="article" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Courier+Prime:ital,wght@0,400;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Serial reading styles ────────────────────────── */
+    .page { display: block !important; }
+
+    .serial-header {
+      padding: 2.8rem 1.5rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--rule, #1e2030);
+    }
+    .serial-story-link {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      letter-spacing: 0.1em;
+      color: var(--ink, #d4cec6);
+      text-decoration: none;
+      display: block;
+    }
+    .serial-story-link:hover { color: var(--crimson, #b30505); }
+    .serial-part-label {
+      display: block;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted, #6a6a7a);
+      margin-top: 0.4rem;
+    }
+
+    /* ── Reading column ───────────────────────────────── */
+    .serial-body {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .serial-body p.para {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      line-height: 1.85;
+      color: var(--ink, #d4cec6);
+      margin: 0;
+      text-indent: 1.8em;
+    }
+    .serial-body p.para.no-indent {
+      text-indent: 0;
+    }
+
+    /* Scene break */
+    .serial-body .scene-break {
+      text-align: center;
+      color: var(--ink-muted, #6a6a7a);
+      font-size: 0.95rem;
+      letter-spacing: 0.4em;
+      margin: 2.4rem 0;
+      user-select: none;
+    }
+
+    /* ── Prev / Next nav ──────────────────────────────── */
+    .serial-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 0;
+      border-top: 1px solid var(--rule, #1e2030);
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.07em;
+    }
+    .serial-nav a {
+      color: var(--ink-muted, #6a6a7a);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+    .serial-nav a:hover { color: var(--crimson, #b30505); }
+    .serial-nav .disabled { color: var(--ink-muted, #6a6a7a); opacity: 0.3; }
+  </style>
+
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">fgd135</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="stories.html" class="active">Stories</a></li>
+      <li><a href="photos.html">Photos</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="ntbd.html" class="active">The Serial</a></li>
+      <li><a href="UI.html">Get Involved</a></li>
+    </ul>
+    <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕ Close</button>
+  <a href="index.html">Home</a>
+  <a href="stories.html">Stories</a>
+  <a href="photos.html">Photos</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="ntbd.html">The Serial</a>
+  <a href="UI.html">Get Involved</a>
+</div>
+
+<div class="page">
+
+  <div class="serial-header">
+    <a class="serial-story-link" href="ntbd.html">Needs to be done</a>
+    <span class="serial-part-label">Part 1</span>
+  </div>
+
+  <main class="serial-body">
+
+    <nav class="serial-nav" aria-label="Story navigation">
+      <span class="disabled">&larr; Previous</span>
+      <a href="ntbd.html">All parts</a>
+      <span class="disabled continuing">Continuing&hellip;</span>
+    </nav>
+
+    <p class="para no-indent">"Did you hear what he did?" Mike was doing everything he could not yell into his phone.</p>
+    <p class="para">"Who?" Marisa said. She doesn't often answer calls when she's on the freeway. But seeing "Mike" projected into her heads-up display inside her motorcycle helmet, she picked up. He didn't call often.</p>
+    <p class="para">"Captain Dipshit, he's fucked us again!" Mike's pulse was racing as he sat at his cluttered desk. The news banner on his screen was plastered in type so big that it meant something big: "US bombs Velqara." The capital city of Azmeran had been vilified with increasing volume and hysteria for the last month or so. "He's dropping bombs in Azmeran. Fucking Azmeran, first he pulls us out of the Peace Accords because he didn't like the president who passed them, now he's fucking-"</p>
+    <p class="para">"I don't know if you can hear this Mikey," Marisa was yelling into the phone over the overwhelming noise of the traffic through which she was zipping, splitting lanes, "but I'm on the freeway! Slow down!"</p>
+    <p class="para">"Yeah, right, uh," he paused for a second, "we need to meet."</p>
+    <p class="para">"I can meet you at Lucky's in an hour," she said.</p>
+    <p class="para">"Done, see you there." Mike clicked the phone off and returned to the headlines. He needed a drink, but that could wait until Lucky's.</p>
+    <div class="scene-break" aria-hidden="true">◈</div>
+    <p class="para no-indent">Marisa parked her matte black Streetfighter V2 out front of the bar. She'd never be able to tell a soul about her work under the threat of multi-billion-dollar non-disclosures. So she liked to get a new toy with the tough jobs. She'd just finished a real motherfucker. As her hand ran lightly along the top of the gas tank, she was giddy at the way the matte black denied the specular reflection of the streetlights.</p>
+    <p class="para">Mike was seated at one of the rear booths. Lucky's was a DC standby for secrets. The locals joked that the design of the booths at Lucky's couldn't have been better designed by Langley. She saw two glasses on the table and walked past the bar directly to the table.</p>
+    <p class="para">"Sup Mikey, it's been a minute," Marisa said with a smile as she slid into the dark black vinyl upholstered booth.</p>
+    <p class="para">"New haircut, I like it." Mike got to business. "So, we're at war. Everyone's been speculating, saying it was going to happen. But me, damn optimism won't leave my head sometimes, I'm thinking no, it's too obvious. Even for this moron. But no. Here we are."</p>
+    <p class="para">He was still talking when Marisa pulled the phone from the pocket of her slim fit leather pants. The combination of leather pants and vinyl seat was proving sticky. She wiggled a little to settle in as the news page opened. She read for a minute or so. Mike was still going.</p>
+    <p class="para">"I keep telling you," she interrupted, "there's no bottom with this one. Literally, he'll do anything his Adderall-riddled mind comes up with."</p>
+    <p class="para">"Yeah, I know, you're usually right." He was thinking of the long-told rumor that Curwick had been abusing cocaine and Adderall for years. He famously never drank and spent a lifetime talking down about addicts and anyone he deemed "weak." Son of a bitch must be completely incontinent by now, Mike thought. He'd been around enough to know what a few decades of speed abuse did to a person's constitution. "Poor bastard," he thought for a split second. That sympathy lived about as long as antimatter as he snapped back to reality. "Fuck 'im" ran through his head in bold, neon letters.</p>
+    <p class="para">"Look, I've been thinking." Mike's finger curled to direct Marisa closer as his gaze intensified. "No one is standing up here. Congress has totally abrogated their authority; his cabinet is the biggest collection of sycophants since Sinatra asked the rat pack if they liked his new song."</p>
+    <p class="para">Marisa knew that when Mike had an idea, he was like a dog with a bone. He had that look all over his face. This wasn't a new idea for him, this was deeper. She chided herself to get out of her head and pay attention.</p>
+    <p class="para">"- if no one else is going to do something, I think we should. I want to get Quinn and Elliott and set a task." He paused. "What do you think?"</p>
+    <p class="para">"What do I think?" she said incredulously. "What do I think, I think you just said—" Her eyes did a quick scan of the immediate area and she moved closer. "That you want to take down the president and that you want me to help you do it." She settled back into her seat deeply with a sigh and looked at him the way a sister looks to a brother when in trouble.</p>
+    <p class="para">"Yup," Mike said with a smile, "and we're going to do it too."</p>
+    <p class="para">"Shit Mike, you know me." She was shaking her head and matching his smile. "Sounds dangerous as hell. How much and who's paying?"</p>
+    <p class="para">"You'll love this," Mike said with a genuine belly laugh, "no one… and nothing. This one's pro-bono."</p>
+    <p class="para">"Easy for you to-" she was saying.</p>
+    <p class="para">"Stop. Right. There." He cut her off gruffly. "Who'd you just finish a job for?"</p>
+    <p class="para">"Of course he knows, he always knows," she thought. "He's one of maybe five who knew what she'd done. Fucking Mikey," the thought continued. "Aight, fuck it. I'm in."</p>
+    <p class="para">Mike punched a message to Quinn and to Elliott: "Gig, pro-bono, BIG." He had a sense of a plan. But that's how these things went. A small group of dedicated, educated people can do great things. In this case, they'd have to. The stakes were as big as they get.</p>
+
+    <nav class="serial-nav" aria-label="Story navigation">
+      <span class="disabled">&larr; Previous</span>
+      <a href="ntbd.html">All parts</a>
+      <span class="disabled continuing">Continuing&hellip;</span>
+    </nav>
+
+  </main>
+
+</div>
+
+<footer>
+  <div class="footer-inner" style="max-width:1080px;margin:0 auto;">
+    <div class="site-name">fgd135</div>
+    <p class="footer-motto">Words from somewhere worth going.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="stories.html">Stories</a>
+      <a href="photos.html">Photos</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 fgd135. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
