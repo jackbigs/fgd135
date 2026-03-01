@@ -82,7 +82,7 @@ nav {
   display: flex; align-items: center; justify-content: space-between; height: 52px;
 }
 .nav-logo {
-  font-family: var(--font-mono); font-size: 0.8rem;
+  font-family: var(--font-mono); font-size: 1.6rem;
   letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--ink); cursor: pointer; transition: color 0.2s;
   user-select: none;
@@ -456,12 +456,12 @@ nav {
 /* ── CONTACT ──────────────────────────────────────────── */
 .contact-body { padding: 3.5rem 2rem 6rem; }
 .contact-body .container { max-width: 560px; }
-.contact-body p { font-size: 1.1rem; line-height: 1.82; color: var(--ink); }
+.contact-body p { font-size: 2.2rem; line-height: 1.82; color: var(--ink); }
 .contact-links { margin-top: 3rem; }
 .contact-link-row { display: flex; align-items: baseline; justify-content: space-between; padding: 1.1rem 0; border-bottom: 1px solid var(--rule); }
 .contact-link-row:first-child { border-top: 1px solid var(--rule); }
-.contact-link-label { font-size: 1.05rem; }
-.contact-link-val { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--crimson); }
+.contact-link-label { font-size: 2.1rem; }
+.contact-link-val { font-family: var(--font-mono); font-size: 1.4rem; letter-spacing: 0.08em; color: var(--gold); }
 .contact-link-val a { color: inherit; }
 .contact-link-val a:hover { opacity: 0.75; }
 
@@ -612,6 +612,17 @@ footer .footer-motto { font-family: var(--font-serif); font-style: italic; font-
   font-family: var(--font-serif); font-size: 1.15rem;
   font-style: italic; color: var(--ink-muted);
   line-height: 1.65; margin-bottom: 2rem;
+}
+
+/* ── SERIAL READING PAGES (black text on white — master rule) ── */
+.serial-body {
+  background: #ffffff !important;
+  color: #111111 !important;
+}
+.serial-body p,
+.serial-body p.para,
+.serial-body p.no-indent {
+  color: #111111 !important;
 }
 
 /* ── SURVEY / VOTER ───────────────────────────────────── */
