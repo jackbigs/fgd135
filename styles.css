@@ -238,6 +238,25 @@ nav {
 .hero-cta::after { content: '→'; }
 .hero-cta:hover { color: var(--crimson); gap: 1.1rem; }
 
+.serial-btn {
+  display: inline-block;
+  margin-top: 1.6rem;
+  padding: 0.85rem 2rem;
+  background: var(--crimson);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--crimson);
+  transition: background 0.2s, color 0.2s;
+}
+.serial-btn:hover {
+  background: transparent;
+  color: var(--crimson);
+}
+
 .hero-featured {
   border-top: 1px solid var(--rule-mid);
   padding-top: 1.8rem;
